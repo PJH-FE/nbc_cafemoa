@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { PrivateRouter, PublicRouter } from './PrivateRouter';
 import MyPage from '../pages/MyPage';
 import Write from '../pages/Write';
 import Login from '../pages/login';
