@@ -1,4 +1,4 @@
 const Header = () => {
-  return <div>Header</div>;
+  return <header>헤더입니당</header>;
 };
 export default Header;
