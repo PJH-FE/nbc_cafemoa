@@ -1,13 +1,19 @@
 import { create } from 'zustand';
 
 const initialState = {
-  userData: {},
+  formData: {
+    id: '',
+    password: '',
+    nickname: '',
+  },
 };
 
 const useUserStore = create(set => ({
   ...initialState,
   setData: data => {
-    set(state => ({ userData: data }));
+    set(state => ({
+      formData: { ...state.formData, ...data },
+    }));
   },
 }));
 
