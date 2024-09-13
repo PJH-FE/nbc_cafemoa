@@ -1,4 +1,11 @@
+import { useState } from 'react';
+import MainBanner from '../components/MainBanner';
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <MainBanner />
+    </div>
+  );
 };
 export default Home;
