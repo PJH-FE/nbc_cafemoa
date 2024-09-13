@@ -13,17 +13,11 @@ const useUserStore = create(
   immer(set => ({
     ...initialState,
     setData: data => {
-      set(state => ({ userData: data }));
+      set(state => ({
+        formData: { ...state.formData, ...data },
+      }));
     },
   })),
 );
-const useUserStore = create(set => ({
-  ...initialState,
-  setData: data => {
-    set(state => ({
-      formData: { ...state.formData, ...data },
-    }));
-  },
-}));
 
 export default useUserStore;
