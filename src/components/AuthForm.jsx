@@ -1,17 +1,22 @@
 import { useMutation } from '@tanstack/react-query';
-import { register } from '../api/AuthClient';
+import { login, register } from '../api/AuthClient';
 import useUserStore from '../zustand/bearStore';
 import { useNavigate } from 'react-router-dom';
 
-const AuthForm = () => {
-  const { formData, setData } = useUserStore();
+const AuthForm = ({ mode }) => {
+  const { formData, setData, setUserInfo } = useUserStore();
 
   const navigate = useNavigate();
 
   const { mutate } = useMutation({
-    mutationFn: userData => register(userData),
-    onSuccess: () => {
-      navigate('/login');
+    mutationFn: userData => (mode === 'signup' ? register(userData) : login(userData)),
+    onSuccess: data => {
+      if (mode === 'signup') {
+        navigate('/login');
+      } else {
+        setUserInfo(data);
+        navigate('/');
+      }
     },
     onError: error => {
       console.error('회원가입 실패', error.message);
@@ -44,16 +49,18 @@ const AuthForm = () => {
           onChange={handleChange}
           required
         />
-        <input
-          type="text"
-          name="nickname"
-          placeholder="닉네임"
-          value={formData.nickname}
-          onChange={handleChange}
-          required
-        />
+        {mode === 'signup' && (
+          <input
+            type="text"
+            name="nickname"
+            placeholder="닉네임"
+            value={formData.nickname}
+            onChange={handleChange}
+            required
+          />
+        )}
       </div>
-      <button type="sumbit">회원가입</button>
+      <button type="sumbit">{mode === 'signup' ? '회원가입' : '로그인'}</button>
     </form>
   );
 };

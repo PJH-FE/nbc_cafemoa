@@ -8,3 +8,8 @@ export const register = async userData => {
   const { data } = await authClinet.post('/register', userData);
   return data;
 };
+
+export const login = async userData => {
+  const { data } = await authClinet.post('/login', userData);
+  return data;
+};

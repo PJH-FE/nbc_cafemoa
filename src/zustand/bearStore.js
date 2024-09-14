@@ -1,4 +1,6 @@
+import { produce } from 'immer';
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
 const initialState = {
@@ -7,15 +9,25 @@ const initialState = {
     password: '',
     nickname: '',
   },
+  userInfo: null,
 };
 
 const useUserStore = create(
   immer(set => ({
     ...initialState,
     setData: data => {
-      set(state => ({
-        formData: { ...state.formData, ...data },
-      }));
+      set(
+        produce(state => ({
+          formData: { ...state.formData, ...data },
+        })),
+      );
+    },
+    setUserInfo: data => {
+      set(
+        produce(state => {
+          state.userInfo = data;
+        }),
+      );
     },
   })),
 );
