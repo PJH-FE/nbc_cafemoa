@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { AlignJustify, X, Search } from 'lucide-react';
 import { useState } from 'react';
+import useUserStore from '../../zustand/bearStore';
 
 const Header = () => {
+  const { userInfo } = useUserStore();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
 
   const toggleMenu = () => {
@@ -32,9 +35,14 @@ const Header = () => {
           <div className="cursor-pointer">
             <Search />
           </div>
-          {/* 로그인상태에 따라 조건부스타일링 */}
-          <Link to="/login">LOGIN</Link>
-          <Link to="/singup">SING UP</Link>
+          {!userInfo ? (
+            <>
+              <Link to="/login">LOGIN</Link>
+              <Link to="/singup">SING UP</Link>
+            </>
+          ) : (
+            <button>LOGOUT</button>
+          )}
         </div>
       </header>
       {isMenuOpen ? (
