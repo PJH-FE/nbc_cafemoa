@@ -5,13 +5,12 @@ import Map from '../components/board/Map';
 const Detail = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const nowPostId = searchParams.get('post_id');
-  const { data, isPending, isError } = useFetchDetail();
+  const { data: detailData, isPending, isError } = useFetchDetail(nowPostId);
   const delPost = useDeletePost();
   const navigate = useNavigate();
 
   if (isPending) return;
   if (isError) return;
-  const detailData = data.filter(post => post.id === nowPostId)[0];
   const cafeData = { cafe_name: detailData?.cafe_name, cafe_address: detailData?.cafe_address };
 
   // 결과 삭제

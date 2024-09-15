@@ -8,14 +8,15 @@ export const queryKeys = {
 };
 
 // 게시글 불러오기
-const fetchDetail = async () => {
-  const response = await DATA_API.get('/articles');
+const fetchDetail = async ({ queryKey }) => {
+  const [_, id] = queryKey;
+  const response = await DATA_API.get(`/articles/${id}`);
   return response.data;
 };
 
-export const useFetchDetail = () => {
+export const useFetchDetail = id => {
   return useQuery({
-    queryKey: queryKeys.boardController.articles(),
+    queryKey: [...queryKeys.boardController.articles(), id],
     queryFn: fetchDetail,
   });
 };
@@ -33,22 +34,16 @@ export const useDeletePost = () => {
 };
 
 // 공개/비공개 전환
-export const useChangeVisible = () => {
+export const useUpdatePost = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async id => {
-      const response = await DATA_API.get('/results');
-      const nowVisible = response.data.filter(result => {
-        return result.id === id;
-      });
-
-      await DATA_API.patch(`/results/${id}`, {
-        visibility: !nowVisible[0].visibility,
-      });
+    mutationFn: async updateData => {
+      console.log(updateData);
+      await DATA_API.patch(`/articles/${updateData.id}`, updateData.post);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(queryKeys.testController.results);
+      queryClient.invalidateQueries(queryKeys.boardController.articles);
     },
   });
 };

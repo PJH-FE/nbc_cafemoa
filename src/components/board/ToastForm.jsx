@@ -1,12 +1,13 @@
+import { useCallback, useRef, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import _ from 'lodash';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/toastui-editor.css';
 import { supabase, supabaseUrl } from '../../supabase/supabase';
 import Map from './Map';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import _ from 'lodash';
 import { DATA_API } from '../../api/api';
 import getNowDate from '../../utils/getNowDate';
-import { useNavigate } from 'react-router-dom';
+import { useUpdatePost } from '../../queries/boardQueries';
 
 const toolbar = [['heading', 'bold', 'italic', 'strike'], ['hr', 'quote', 'ul', 'ol'], ['image']];
 
@@ -20,11 +21,15 @@ const initialState = {
   region: '',
 };
 
-function TuiEditor({ content }) {
-  const [postId, setPostId] = useState(crypto.randomUUID());
+function TuiEditor({ content, isEdit = false }) {
+  const [postId] = useState(crypto.randomUUID());
   const [post, setPost] = useState(content || initialState);
-  const [cafeData, setCafeData] = useState({ cafe_address: content.cafe_address || '' });
+  const [cafeData, setCafeData] = useState({ cafe_address: content?.cafe_address || '' });
   const navigate = useNavigate();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const nowPostId = searchParams.get('post_id');
+  const updatePost = useUpdatePost();
 
   // 카테고리, 타이틀 관리
   const changeValue = e => {
@@ -80,10 +85,17 @@ function TuiEditor({ content }) {
     }
     const createResult = async post => {
       await DATA_API.post('/articles', post);
+      navigate(`/detail?post_id=${postId}`);
     };
 
-    createResult({ ...post, id: postId, date: getNowDate() });
-    navigate(`/detail?post_id=${postId}`);
+    const updateResult = () => {
+      updatePost.mutate({ id: nowPostId, post: { ...post } });
+      navigate(`/detail?post_id=${nowPostId}`);
+    };
+
+    {
+      isEdit ? updateResult({ post }) : createResult({ ...post, id: postId, date: getNowDate() });
+    }
   };
 
   return (
@@ -109,7 +121,7 @@ function TuiEditor({ content }) {
         </div>
 
         <Editor
-          initialValue={post.content ?? ' '}
+          initialValue={post.content || ' '}
           initialEditType="wysiwyg"
           autofocus={false}
           ref={editorRef}
@@ -151,7 +163,7 @@ function TuiEditor({ content }) {
           <Map cafeData={cafeData} post={post} setPost={setPost} />
         </div>
 
-        <button type="submit">등록</button>
+        <button type="submit">{isEdit ? '수정' : '등록'}</button>
       </form>
     </>
   );
