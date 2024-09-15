@@ -39,7 +39,6 @@ export const useUpdatePost = () => {
 
   return useMutation({
     mutationFn: async updateData => {
-      console.log(updateData);
       await DATA_API.patch(`/articles/${updateData.id}`, updateData.post);
     },
     onSuccess: () => {

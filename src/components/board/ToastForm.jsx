@@ -55,15 +55,14 @@ function TuiEditor({ content, isEdit = false }) {
   const editorRef = useRef();
 
   // 카페 정보 관리
-  const changeCafeInfo = e => {
-    const { id, value } = e.target;
-    handleCafeData({ [id]: value });
-  };
-
   const handleCafeData = useCallback(
     _.debounce(info => setCafeData(info), 500),
     [],
   );
+  const changeCafeInfo = e => {
+    const { id, value } = e.target;
+    handleCafeData({ [id]: value });
+  };
 
   // 데이터 전송
   const handleOnSubmit = () => {
