@@ -10,21 +10,22 @@ import { useNavigate } from 'react-router-dom';
 
 const toolbar = [['heading', 'bold', 'italic', 'strike'], ['hr', 'quote', 'ul', 'ol'], ['image']];
 
+const initialState = {
+  category: '24시',
+  title: '',
+  content: '',
+  author_id: '',
+  date: '',
+  cafe_address: '',
+  region: '',
+};
+
 function TuiEditor({ content }) {
   const [postId, setPostId] = useState(crypto.randomUUID());
-
-  const [post, setPost] = useState({
-    category: '24시',
-    title: '',
-    content: '',
-    author_id: '',
-    date: '',
-    cafe_address: '',
-    region: '',
-  });
-  const [cafe, setCafe] = useState({ cafeName: '', cafeAddress: '' });
-  const [cafeData, setCafeData] = useState({});
+  const [post, setPost] = useState(content || initialState);
+  const [cafeData, setCafeData] = useState({ cafe_address: content.cafe_address || '' });
   const navigate = useNavigate();
+
   // 카테고리, 타이틀 관리
   const changeValue = e => {
     const { id, value } = e.target;
@@ -51,8 +52,7 @@ function TuiEditor({ content }) {
   // 카페 정보 관리
   const changeCafeInfo = e => {
     const { id, value } = e.target;
-    setCafe({ ...cafe, [id]: value });
-    handleCafeData({ ...cafe, [id]: value });
+    handleCafeData({ [id]: value });
   };
 
   const handleCafeData = useCallback(
@@ -74,7 +74,7 @@ function TuiEditor({ content }) {
       alert('카페 주소를 입력해주세요');
       return;
     }
-    if (!cafe.cafeName) {
+    if (!post.cafe_name) {
       alert('카페 상호명을 입력해주세요');
       return;
     }
@@ -82,7 +82,7 @@ function TuiEditor({ content }) {
       await DATA_API.post('/articles', post);
     };
 
-    createResult({ ...post, id: postId, cafe_name: cafe.cafeName, date: getNowDate() });
+    createResult({ ...post, id: postId, date: getNowDate() });
     navigate(`/detail?post_id=${postId}`);
   };
 
@@ -105,11 +105,11 @@ function TuiEditor({ content }) {
             <option value="애견">애견동반 카페</option>
             <option value="한옥">한옥 카페</option>
           </select>
-          <input type="text" name="title" id="title" onChange={e => changeValue(e)} />
+          <input type="text" name="title" id="title" value={post.title} onChange={e => changeValue(e)} />
         </div>
 
         <Editor
-          initialValue={content ?? ' '}
+          initialValue={post.content ?? ' '}
           initialEditType="wysiwyg"
           autofocus={false}
           ref={editorRef}
@@ -124,24 +124,27 @@ function TuiEditor({ content }) {
 
         <div className="cafeArea">
           <div>
-            <label htmlFor="cafeName">카페 이름</label>
+            <label htmlFor="cafe_name">카페 이름</label>
             <input
               type="text"
               name="cafe_name"
-              id="cafeName"
-              value={cafe.cafeName || ''}
-              onChange={e => changeCafeInfo(e)}
+              id="cafe_name"
+              value={post.cafe_name || ''}
+              onChange={e => changeValue(e)}
             />
           </div>
 
           <div>
-            <label htmlFor="cafeAddress">카페 주소</label>
+            <label htmlFor="cafe_address">카페 주소</label>
             <input
               type="text"
               name="cafe_address"
-              id="cafeAddress"
-              value={cafe.cafeAddress || ''}
-              onChange={e => changeCafeInfo(e)}
+              id="cafe_address"
+              value={post.cafe_address || ''}
+              onChange={e => {
+                changeValue(e);
+                changeCafeInfo(e);
+              }}
             />
           </div>
 

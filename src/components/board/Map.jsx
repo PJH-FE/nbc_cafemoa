@@ -18,8 +18,8 @@ const Map = ({ cafeData, post, setPost }) => {
     const geocoder = new kakao.maps.services.Geocoder();
 
     // 주소로 좌표를 검색합니다
-    if (!!cafeData.cafeAddress) {
-      geocoder.addressSearch(cafeData.cafeAddress, function (result, status) {
+    if (!!cafeData.cafe_address) {
+      geocoder.addressSearch(cafeData.cafe_address, function (result, status) {
         // 정상적으로 검색이 완료됐으면
         if (status === kakao.maps.services.Status.OK) {
           const coords = new kakao.maps.LatLng(result[0].y, result[0].x);

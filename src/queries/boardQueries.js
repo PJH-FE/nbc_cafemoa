@@ -25,7 +25,7 @@ export const useDeletePost = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: id => DATA_API.delete(`/results/${id}`),
+    mutationFn: id => DATA_API.delete(`/articles/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries(queryKeys.boardController.articles);
     },
