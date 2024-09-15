@@ -1,0 +1,54 @@
+{
+  "article": [
+    {
+      "id": "1",
+      "category": "모각코",
+      "title": "투썸",
+      "content": "분위기가 좋고 커피가 맛있는곳",
+      "author_id": "123",
+      "date": "2024-09-11",
+      "cafe_address": "서울특별시 강동구",
+      "region": "서울"
+    },
+    {
+      "id": "2",
+      "category": "뷰맛집",
+      "title": "카페 온도",
+      "content": "뷰가 예뻐요!",
+      "author_id": "456",
+      "date": "2024-09-11",
+      "cafe_address": "서울특별시 강남구",
+      "region": "서울"
+    },
+    {
+      "id": "3",
+      "category": "모각코",
+      "title": "스타벅스",
+      "content": "일하기 좋은곳~~",
+      "author_id": "789",
+      "date": "2024-09-13",
+      "cafe_address": "충청북도 대전광역시",
+      "region": "충청도"
+    },
+    {
+      "id": "4",
+      "category": "디저트맛집",
+      "title": "커피빈",
+      "content": "여기 베이글 존맛",
+      "author_id": "2356",
+      "date": "2024-09-14",
+      "cafe_address": "전라북도 익산시",
+      "region": "전라도"
+    },
+    {
+      "id": "5",
+      "category": "24시",
+      "title": "24시카페",
+      "content": "우아 24시에요~!!",
+      "author_id": "7645",
+      "date": "2024-09-15",
+      "cafe_address": "경기도 성남시",
+      "region": "경기도"
+    }
+  ]
+}

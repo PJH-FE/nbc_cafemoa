@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AlignJustify, X, Search } from 'lucide-react';
 import { useState } from 'react';
+import MainCategory from '../MainCategory';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
@@ -10,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <div className="border-b border-slate-300 sticky">
+    <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
       <header className="flex justify-between items-center gap-3 px-6 h-[74px]">
         <div className="flex gap-2">
           <div onClick={toggleMenu} className="cursor-pointer">
@@ -23,7 +24,9 @@ const Header = () => {
         <nav className="flex-1" style={{ height: 'inherit' }}>
           {/* 로그인상태에 따라 조건부스타일링 */}
           <ul className="flex gap-2 h-[100%]">
-            <li className="flex items-center h-[100%] cursor-pointer">피드보기</li>
+            <li className="flex items-center h-[100%] cursor-pointer">
+              <Link to={'/list'}>피드보기</Link>
+            </li>
             <li className="flex items-center h-[100%] cursor-pointer">내프로필</li>
             <li className="flex items-center h-[100%] cursor-pointer">북마크</li>
           </ul>
@@ -38,8 +41,8 @@ const Header = () => {
         </div>
       </header>
       {isMenuOpen ? (
-        <div className="absolute w-[100%]" style={{ backgroundColor: 'red' }}>
-          카테고리메뉴
+        <div className="absolute w-[100%]" style={{ backgroundColor: '#ccc' }}>
+          <MainCategory />
         </div>
       ) : null}
     </div>

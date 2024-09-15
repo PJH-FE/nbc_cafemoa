@@ -1,36 +1,46 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-// 추후 map으로 돌리기
+const category = ['모각코', '뷰맛집', '24시', '디저트맛집', '애견동반', '한옥', '분좋카'];
+
 const MainCategory = () => {
+  const [articleAllData, setArticleAllData] = useState([]);
+  const [cateInLists, setCateInLists] = useState([]);
+  const navigate = useNavigate();
+
+  //데이터 가져오기
+  useEffect(() => {
+    const getArticle = async () => {
+      const { data: articleData } = await axios.get('http://localhost:888/article');
+      setArticleAllData(articleData);
+    };
+    getArticle();
+  }, []);
+
+  //전체데이터에서 모각코 카테고리를 가진 포스트만 추려서 list에 나와야함.
+  const cateListHandle = cate => {
+    const filterCateInList = articleAllData.filter(list => list.category === cate);
+    setCateInLists(filterCateInList);
+    const cateInListsParam = encodeURIComponent(JSON.stringify(filterCateInList));
+    navigate(`/list-category?cate=${cate}&cateInLists=${cateInListsParam}`);
+  };
+
+  console.log('cateInLists', cateInLists);
+
   return (
     <div className="p-[20px] flex flex-col gap-[20px] max-w-[1500px] mx-auto">
       <h2>카테고리</h2>
       <ul className="flex gap-[10px] w-[100%] h-[300px]">
-        <li className="w-[20%]">
-          <span className="flex w-[200px] h-[200px] rounded-[50%] bg-slate-400 items-center justify-center">
-            모각코
-          </span>
-        </li>
-        <li className="w-[20%]">
-          <span className="flex w-[200px] h-[200px] rounded-[50%] bg-slate-400 items-center justify-center">
-            모각코
-          </span>
-        </li>
-        <li className="w-[20%]">
-          <span className="flex w-[200px] h-[200px] rounded-[50%] bg-slate-400 items-center justify-center">
-            모각코
-          </span>
-        </li>
-        <li className="w-[20%]">
-          <span className="flex w-[200px] h-[200px] rounded-[50%] bg-slate-400 items-center justify-center">
-            모각코
-          </span>
-        </li>
-        <li className="w-[20%]">
-          <span className="flex w-[200px] h-[200px] rounded-[50%] bg-slate-400 items-center justify-center">
-            모각코
-          </span>
-        </li>
+        {category.map((cate, index) => {
+          return (
+            <li key={index} className="w-[20%] cursor-pointer" onClick={() => cateListHandle(cate)}>
+              <span className="flex w-[200px] h-[200px] rounded-[50%] bg-slate-400 items-center justify-center">
+                {cate}
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
