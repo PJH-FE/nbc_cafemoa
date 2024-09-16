@@ -22,7 +22,7 @@ const Bookmark = () => {
   return (
     <div className="px-10">
       <h1 className="text-xl font-bold mt-2 mb-3">북마크한 게시물</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
         {bookmarks.map(bookmark => (
           <div key={bookmark.id} className="border rounded-lg overflow-hidden shadow-lg w-72">
             <img src={bookmark.thumbnail} alt={bookmark.title} className="w-full h-64 object-cover" />
