@@ -4,7 +4,7 @@ import useUserStore from '../zustand/bearStore';
 import { useNavigate } from 'react-router-dom';
 
 const AuthForm = ({ mode }) => {
-  const { formData, setData, setUserInfo } = useUserStore();
+  const { formData, setData, setUserInfo, removeUserInfo } = useUserStore();
 
   const navigate = useNavigate();
 
@@ -12,11 +12,7 @@ const AuthForm = ({ mode }) => {
     mutationFn: userData => (mode === 'signup' ? register(userData) : login(userData)),
     onSuccess: data => {
       if (mode === 'signup') {
-        setData({
-          id: '',
-          password: '',
-          nickname: '',
-        });
+        removeUserInfo();
         navigate('/login');
       } else {
         setUserInfo(data);
