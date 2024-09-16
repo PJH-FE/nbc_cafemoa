@@ -29,6 +29,14 @@ const useUserStore = create(
         }),
       );
     },
+    removeUserInfo: () => {
+      set(
+        produce(state => {
+          state.userInfo = null;
+          state.formData = { ...initialState.formData };
+        }),
+      );
+    },
   })),
 );
 

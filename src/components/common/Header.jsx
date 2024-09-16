@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AlignJustify, X, Search } from 'lucide-react';
 import { useState } from 'react';
 import useUserStore from '../../zustand/bearStore';
 
 const Header = () => {
-  const { userInfo } = useUserStore();
+  const { userInfo, removeUserInfo } = useUserStore();
+  const handleLogout = () => {
+    removeUserInfo();
+    navigate('/');
+  };
+
+  const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
 
@@ -41,7 +47,7 @@ const Header = () => {
               <Link to="/singup">SING UP</Link>
             </>
           ) : (
-            <button>LOGOUT</button>
+            <button onClick={handleLogout}>LOGOUT</button>
           )}
         </div>
       </header>
