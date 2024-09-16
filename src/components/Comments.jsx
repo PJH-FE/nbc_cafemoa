@@ -86,6 +86,7 @@ const Comments = () => {
 
   return (
     <>
+      {/* 댓글 입력 폼 */}
       <div className="flex justify-between px-10">
         <p>댓글</p>
       </div>
@@ -103,42 +104,66 @@ const Comments = () => {
           <button
             type="submit"
             onClick={handleAddComment}
-            className="flex justify-center align-end bg-[#2c2c2c] text-white w-20 rounded"
+            className="flex justify-center align-end bg-[#2c2c2c] text-white w-20 rounded mt-2"
           >
             댓글 추가
           </button>
         </div>
       </div>
-      <div className="px-10">
+      {/* 댓글목록 */}
+      <div className="px-10 w-[1300px]">
         {comments?.map(comment => {
           return (
-            <div key={comment.id}>
+            <div key={comment.id} className="flex justify-between items-center mb-4">
+              {/* 수정모드일 때 */}
               {editingCommentId === comment.id ? (
-                <>
-                  <p>{comment.text}</p>
-                  <textarea value={editContent} onChange={e => setEditContent(e.target.value)} />
-                  <button onClick={() => handleEditComment(comment)}>수정 완료</button>
-                  <button onClick={() => setEditingCommentId(null)}>취소</button>
-                </>
+                <div className="flex gap-4 w-full">
+                  <p className="w-[600px]">{comment.text}</p>
+                  <div className="flex gap-4">
+                    <textarea
+                      type="text"
+                      placeholder="수정할 댓글을 입력하세요.."
+                      value={editContent}
+                      onChange={e => setEditContent(e.target.value)}
+                      className="rounded border-2 border-gray-400 w-[600px] h-[40px] resize-none "
+                    />
+                    <div className="flex items-end gap-4">
+                      <button
+                        onClick={() => handleEditComment(comment)}
+                        className="w-20 rounded-full border-2 border-gray-400 hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                      >
+                        수정 완료
+                      </button>
+                      <button
+                        onClick={() => setEditingCommentId(null)}
+                        className="w-20 rounded-full border-2 border-gray-900  hover:bg-gray-900 hover:text-white"
+                      >
+                        취소
+                      </button>
+                    </div>
+                  </div>
+                </div>
               ) : (
-                <>
+                <div className="flex justify-between items-center w-full">
                   <p>{comment.text}</p>
-                  <button
-                    onClick={() => {
-                      setEditingCommentId(comment.id);
-                      setEditContent(comment.content); // 수정 모드로 전환
-                    }}
-                    className="w-14 rounded-full border-2 border-gray-400 hover:border-green-500"
-                  >
-                    수정
-                  </button>
-                  <button
-                    onClick={() => handleDeleteComment(comment.id)}
-                    className="w-14 rounded-full border-2 border-stone-600 hover:border-red-500"
-                  >
-                    삭제
-                  </button>
-                </>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        setEditingCommentId(comment.id);
+                        setEditContent(comment.content); // 수정 모드로 전환
+                      }}
+                      className="w-20 rounded-full border-2 border-gray-400 hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                    >
+                      수정
+                    </button>
+                    <button
+                      onClick={() => handleDeleteComment(comment.id)}
+                      className="w-20 rounded-full border-2 border-gray-900  hover:bg-gray-900 hover:text-white"
+                    >
+                      삭제
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
           );
