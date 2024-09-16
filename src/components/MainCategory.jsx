@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 const category = ['모각코', '뷰맛집', '24시', '디저트맛집', '애견동반', '한옥', '분좋카'];
 
 const MainCategory = () => {
-  const [articleAllData, setArticleAllData] = useState([]);
-  const [cateInLists, setCateInLists] = useState([]);
+  const [articleAllData, setArticleAllData] = useState([]); //article 전체데이터 상태저장
+  const [cateInLists, setCateInLists] = useState([]); //필터링된 리스트 상태저장
   const navigate = useNavigate();
 
-  //데이터 가져오기
+  //article 데이터 전체 가져오기
   useEffect(() => {
     const getArticle = async () => {
       const { data: articleData } = await axios.get('http://localhost:888/article');
@@ -18,7 +18,7 @@ const MainCategory = () => {
     getArticle();
   }, []);
 
-  //전체데이터에서 모각코 카테고리를 가진 포스트만 추려서 list에 나와야함.
+  //전체데이터에서 전달받은 카테고리를 가진 포스트만 추려서 list에 출력
   const cateListHandle = cate => {
     const filterCateInList = articleAllData.filter(list => list.category === cate);
     setCateInLists(filterCateInList);
