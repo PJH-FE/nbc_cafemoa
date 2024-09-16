@@ -6,7 +6,7 @@
       "title": "투썸",
       "content": "분위기가 좋고 커피가 맛있는곳",
       "author_id": "123",
-      "date": "2024-09-11",
+      "date": "2024-08-11",
       "cafe_address": "서울특별시 강동구",
       "region": "서울"
     },
@@ -26,7 +26,7 @@
       "title": "스타벅스",
       "content": "일하기 좋은곳~~",
       "author_id": "789",
-      "date": "2024-09-13",
+      "date": "2024-08-13",
       "cafe_address": "충청북도 대전광역시",
       "region": "충청도"
     },
@@ -48,6 +48,16 @@
       "author_id": "7645",
       "date": "2024-09-15",
       "cafe_address": "경기도 성남시",
+      "region": "경기도"
+    },
+    {
+      "id": "6",
+      "category": "분좋카",
+      "title": "분위기카페",
+      "content": "분위기가 너무 좋아요!!",
+      "author_id": "4544",
+      "date": "2024-09-13",
+      "cafe_address": "경기도 파주",
       "region": "경기도"
     }
   ]

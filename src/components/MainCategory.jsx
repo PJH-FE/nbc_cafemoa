@@ -26,13 +26,13 @@ const MainCategory = () => {
   };
 
   return (
-    <div className="p-[20px] flex flex-col gap-[20px] max-w-[1500px] mx-auto">
+    <div className="p-[20px] flex flex-col gap-[20px] max-w-[1500px] w-full mx-auto">
       <h2>카테고리</h2>
-      <ul className="flex gap-[10px] w-[100%] h-[300px]">
+      <ul className="flex gap-[10px] w-[100%] h-[300px] sm:grid sm:grid-cols-3 sm:grid-rows-3">
         {category.map((cate, index) => {
           return (
-            <li key={index} className="w-[20%] cursor-pointer" onClick={() => onClickfilter(cate)}>
-              <span className="flex w-[200px] h-[200px] rounded-[50%] bg-slate-400 items-center justify-center">
+            <li key={index} className="flex-1 cursor-pointer" onClick={() => onClickfilter(cate)}>
+              <span className="flex h-full max-h-[200px] rounded-[8px] bg-slate-400 items-center justify-center">
                 {cate}
               </span>
             </li>
