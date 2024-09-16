@@ -111,7 +111,7 @@ const Comments = () => {
         </div>
       </div>
       {/* 댓글목록 */}
-      <div className="px-10 w-[1300px]">
+      <div className="px-20 ">
         {comments?.map(comment => {
           return (
             <div key={comment.id} className="flex justify-between items-center mb-4">
@@ -121,11 +121,13 @@ const Comments = () => {
                   <p className="w-[600px]">{comment.text}</p>
                   <div className="flex gap-4">
                     <textarea
+                      rows={'10'}
+                      cols={'50'}
                       type="text"
                       placeholder="수정할 댓글을 입력하세요.."
                       value={editContent}
                       onChange={e => setEditContent(e.target.value)}
-                      className="rounded border-2 border-gray-400 w-[600px] h-[40px] resize-none "
+                      className="rounded border-2 border-gray-400 w-[600px] h-[40px] resize-none " // w, h 지우면 rows,cols가 의미가 없어짐
                     />
                     <div className="flex items-end gap-4">
                       <button
