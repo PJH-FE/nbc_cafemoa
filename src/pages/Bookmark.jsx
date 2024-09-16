@@ -20,20 +20,21 @@ const Bookmark = () => {
   if (isError) return <div>에러가 발생했습니다...</div>;
 
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div className="px-10">
+      <h1 className="text-xl font-bold mt-2 mb-3">북마크한 게시물</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7">
         {bookmarks.map(bookmark => (
-          <div key={bookmark.id} className="border rounded-lg overflow-hidden shadow-lg">
-            <img src={bookmark.image} alt={bookmark.title} className="w-full h-48 object-cover" />
+          <div key={bookmark.id} className="border rounded-lg overflow-hidden shadow-lg w-72">
+            <img src={bookmark.thumbnail} alt={bookmark.title} className="w-full h-64 object-cover" />
             <div className="p-4">
-              <h3 className="text-lg font-semibold">{bookmark.title}</h3>
               <p className="text-sm text-gray-500">{bookmark.region}</p>
-              <p className="text-sm text-blue-500">{bookmark.category}</p>
+              <h3 className="text-lg font-semibold">{bookmark.title}</h3>
+              <p className="text-sm text-blue-500">#{bookmark.category}</p>
             </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 export default Bookmark;
