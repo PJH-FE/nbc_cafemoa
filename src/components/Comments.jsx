@@ -24,7 +24,6 @@ const Comments = () => {
     enabled: !!selectedPostId,
   });
 
-  console.log('comments:', comments);
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
     mutationFn: async comment => {
