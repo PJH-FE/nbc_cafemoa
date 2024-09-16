@@ -12,6 +12,11 @@ const AuthForm = ({ mode }) => {
     mutationFn: userData => (mode === 'signup' ? register(userData) : login(userData)),
     onSuccess: data => {
       if (mode === 'signup') {
+        setData({
+          id: '',
+          password: '',
+          nickname: '',
+        });
         navigate('/login');
       } else {
         setUserInfo(data);
