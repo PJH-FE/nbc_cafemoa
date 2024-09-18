@@ -1,13 +1,10 @@
 import { useQuery, useMutation, useQueryClient, useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import SpotListItem from '../components/SpotListItem';
-// import { useLocation } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-// import { useInView } from 'react-intersection-observer';
 
 const List = () => {
   const [articles, setArticles] = useState([]); // 전체 데이터를 담을 상태
-  // const [visibleItems, setVisibleItems] = useState([]); // 화면에 보여줄 아이템 상태
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const [loading, setLoading] = useState(false); // 로딩 상태
   const [hasMore, setHasMore] = useState(true); // 더 불러올 데이터가 있는지 체크하는 상태
@@ -18,13 +15,12 @@ const List = () => {
     try {
       const { data } = await axios.get(`http://localhost:888/article?page=${page}&limit=${itemsPerPage}`);
 
-      const startIndex = page * itemsPerPage;
+      const startIndex = page * itemsPerPage; // page * 8
       const endIndex = startIndex + itemsPerPage;
       const sliceData = data.slice(startIndex, endIndex);
       console.log('data', sliceData);
 
       if (data.length < itemsPerPage) {
-        // : 8개보다 작을때
         // 마지막일때
         setHasMore(false); // 더 불러올 데이터가 없음상태로 변경
       }
@@ -38,6 +34,7 @@ const List = () => {
   // 스크롤 이벤트
   const handleScroll = () => {
     if (
+      // : 브라우저의 높이 + 스크롤된 높이 >= 문서의 높이 - 10 => 스크롤이 맨 아래에 도달했을 때
       window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 10 &&
       hasMore &&
       !loading
