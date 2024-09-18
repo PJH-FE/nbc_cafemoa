@@ -1,42 +1,71 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient, useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import SpotListItem from '../components/SpotListItem';
-import { useLocation } from 'react-router-dom';
-
-//데이터 가져오기
-const getArticle = async () => {
-  const { data } = await axios.get('http://localhost:888/article');
-  return data;
-};
+// import { useLocation } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+// import { useInView } from 'react-intersection-observer';
 
 const List = () => {
-  const location = useLocation(); // URL 파라미터 읽기
-  const queryParams = new URLSearchParams(location.search);
-  const cateInLists = JSON.parse(decodeURIComponent(queryParams.get('cateInLists')));
+  const [articles, setArticles] = useState([]); // 전체 데이터를 담을 상태
+  // const [visibleItems, setVisibleItems] = useState([]); // 화면에 보여줄 아이템 상태
+  const [page, setPage] = useState(1); // 현재 페이지 번호
+  const [loading, setLoading] = useState(false); // 로딩 상태
+  const [hasMore, setHasMore] = useState(true); // 더 불러올 데이터가 있는지 체크하는 상태
+  const itemsPerPage = 8; // 한 번에 보여줄 아이템 개수
 
-  //어떤 데이터 쓸건지 지정
-  const {
-    data: articleData,
-    isPending: articleIsPending,
-    isError: articleIsError,
-  } = useQuery({
-    queryKey: ['article'],
-    queryFn: getArticle,
-  });
+  const fetchArticles = async page => {
+    setLoading(true); //로딩상태 true로 변경
+    try {
+      const { data } = await axios.get(`http://localhost:888/article?page=${page}&limit=${itemsPerPage}`);
 
-  if (articleIsPending) return <div>loding,,</div>;
-  if (articleIsError) return <div>error,,</div>;
+      const startIndex = page * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const sliceData = data.slice(startIndex, endIndex);
+      console.log('data', sliceData);
 
-  //최신순 정렬
-  const newSpots = articleData.sort((a, b) => new Date(b.date) - new Date(a.date));
+      if (data.length < itemsPerPage) {
+        // : 8개보다 작을때
+        // 마지막일때
+        setHasMore(false); // 더 불러올 데이터가 없음상태로 변경
+      }
+      setArticles(prevData => [...prevData, ...sliceData]);
+    } catch (error) {
+      console.error('Error', error);
+    }
+    setLoading(false); // 로딩상태 false로 변경
+  };
+
+  // 스크롤 이벤트
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 10 &&
+      hasMore &&
+      !loading
+    ) {
+      setPage(prevPage => prevPage + 1); // 다음 페이지로 이동
+    }
+  };
+
+  // 컴포넌트가 처음 로드될 때 , 페이지가 바뀔때마다 실행
+  useEffect(() => {
+    fetchArticles(page); // 데이터 가져오기
+  }, [page]);
+
+  // 스크롤 이벤트 추가
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll); // 컴포넌트가 언마운트 될 때 이벤트 제거
+  }, [loading, hasMore]);
 
   return (
     <div>
-      <ul className="grid grid-cols-4">
-        {newSpots.map(data => {
-          return <SpotListItem key={data.id} data={data} />;
+      <ul className="grid grid-cols-4 sm:grid-cols-2">
+        {articles.map((article, index) => {
+          return <SpotListItem key={index} data={article} />;
         })}
       </ul>
+      {loading && <div>Loading...</div>}
+      {!hasMore && <div>No more Posts</div>} {/* 모든 데이터를 다 불러왔을 때 */}
     </div>
   );
 };

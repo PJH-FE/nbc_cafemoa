@@ -24,7 +24,7 @@ const Header = () => {
   ];
 
   const toggleMenu = () => {
-    setIsMenuOpen(prevState => !prevState);
+    setIsMenuOpen(!isMenuOpen);
   };
   const tabMenuClick = index => {
     setActiveTab(index);
@@ -79,12 +79,26 @@ const Header = () => {
             <button onClick={toggleMenu} className="hidden sm:block">
               <X />{' '}
             </button>
-            <Link className="hidden sm:block" to="/login">
+            <Link className="hidden sm:block" to="/login" onClick={toggleMenu}>
               LOGIN
             </Link>
-            <Link className="hidden sm:block" to="/singup">
+            <Link className="hidden sm:block" to="/singup" onClick={toggleMenu}>
               SING UP
             </Link>
+            <nav className="flex-1 lg:hidden">
+              {/* 로그인상태에 따라 조건부스타일링 */}
+              <ul className="flex gap-2 h-[100%]">
+                {tabMenu.map((tab, index) => {
+                  return (
+                    <li key={index} className="flex items-center" onClick={() => tabMenuClick(index)}>
+                      <Link to={tab.link} onClick={toggleMenu}>
+                        {tab.title}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
             <MainCategory />
           </div>
         </div>

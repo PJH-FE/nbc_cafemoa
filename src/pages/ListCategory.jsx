@@ -8,12 +8,12 @@ const ListCategory = () => {
   const cateInLists = JSON.parse(decodeURIComponent(queryParams.get('cateInLists')));
 
   //최신순 정렬
-  const LatestSpots = cateInLists.sort((a, b) => new Date(b.date) - new Date(a.date));
-
+  //   const LatestSpots = cateInLists.sort((a, b) => new Date(b.date) - new Date(a.date));
+  //   console.log('cateInLists', cateInLists);
   return (
     <div>
-      <ul className="grid grid-cols-4">
-        {LatestSpots.map(data => {
+      <ul className="grid grid-cols-4 sm:grid-cols-2">
+        {cateInLists.map(data => {
           return <SpotListItem key={data.id} data={data} />;
         })}
       </ul>

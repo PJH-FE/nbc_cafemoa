@@ -3,7 +3,43 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { cateListHandle } from '../utils/utils';
 
-const category = ['모각코', '뷰맛집', '24시', '디저트맛집', '애견동반', '한옥', '분좋카'];
+const category = [
+  '모각코',
+  '뷰맛집',
+  '24시',
+  '디저트맛집',
+  '애견동반',
+  '한옥',
+  '분좋카',
+  // {
+  //   title: '모각코',
+  //   icon: '💻',
+  // },
+  // {
+  //   title: '뷰맛집',
+  //   icon: '🌉',
+  // },
+  // {
+  //   title: '24시',
+  //   icon: '🕑',
+  // },
+  // {
+  //   title: '디저트맛집',
+  //   icon: '🍰',
+  // },
+  // {
+  //   title: '애견동반',
+  //   icon: '🐶🐱',
+  // },
+  // {
+  //   title: '한옥',
+  //   icon: '🏠',
+  // },
+  // {
+  //   title: '분좋카',
+  //   icon: '💕',
+  // },
+];
 
 const MainCategory = () => {
   const [articleAllData, setArticleAllData] = useState([]); //article 전체데이터 상태저장
@@ -32,8 +68,9 @@ const MainCategory = () => {
         {category.map((cate, index) => {
           return (
             <li key={index} className="flex-1 cursor-pointer" onClick={() => onClickfilter(cate)}>
-              <span className="flex h-full max-h-[200px] rounded-[8px] bg-slate-400 items-center justify-center">
+              <span className="flex flex-col gap-2 h-full max-h-[200px] rounded-[8px] bg-slate-400 items-center justify-center text-[30px]">
                 {cate}
+                {/* <p className="text-[20px]">{cate.title}</p> */}
               </span>
             </li>
           );
