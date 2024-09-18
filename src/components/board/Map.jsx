@@ -46,7 +46,7 @@ const Map = ({ cafeData, post, setPost }) => {
                 : '';
               detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 
-              const content = '<div class="bAddr">' + detailAddr + '</div>';
+              const content = '<div class="flex flex-col h-20 ">' + detailAddr + '</div>';
               if (!!setPost) {
                 setPost({
                   ...post,
@@ -80,6 +80,6 @@ const Map = ({ cafeData, post, setPost }) => {
     }
   }, [cafeData]);
 
-  return <div id="map" style={{ width: '500px', height: '500px' }}></div>;
+  return <div id="map" className="w-full h-[600px]"></div>;
 };
 export default Map;

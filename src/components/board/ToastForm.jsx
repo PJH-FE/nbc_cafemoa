@@ -8,11 +8,13 @@ import Map from './Map';
 import { DATA_API } from '../../api/api';
 import getNowDate from '../../utils/getNowDate';
 import { useUpdatePost } from '../../queries/boardQueries';
+import FormInput from './FormInput';
+import { categoryList } from '../../data/category';
 
 const toolbar = [['heading', 'bold', 'italic', 'strike'], ['hr', 'quote', 'ul', 'ol'], ['image']];
 
 const initialState = {
-  category: '24시',
+  category: categoryList[0],
   title: '',
   content: '',
   author_id: '',
@@ -56,7 +58,7 @@ function TuiEditor({ content, isEdit = false }) {
 
   // 카페 정보 관리
   const handleCafeData = useCallback(
-    _.debounce(info => setCafeData(info), 500),
+    _.debounce(info => setCafeData(info), 1000),
     [],
   );
   const changeCafeInfo = e => {
@@ -104,19 +106,28 @@ function TuiEditor({ content, isEdit = false }) {
           e.preventDefault();
           handleOnSubmit();
         }}
+        className="flex flex-col gap-6 max-w-screen-xl mx-auto"
       >
-        <div>
+        <div className="flex items-center gap-4">
           <label htmlFor="title">제목</label>
           <select name="category" id="category" value={post.category} onChange={e => changeValue(e)}>
-            <option value="24시 카페">24시 카페</option>
-            <option value="분좋카">분위기 좋은 카페</option>
-            <option value="모각코">조용한 모각코 카페</option>
-            <option value="디저트">디저트 카페</option>
-            <option value="뷰">뷰 좋은 카페</option>
-            <option value="애견">애견동반 카페</option>
-            <option value="한옥">한옥 카페</option>
+            {categoryList.map(category => {
+              return (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              );
+            })}
           </select>
-          <input type="text" name="title" id="title" value={post.title} onChange={e => changeValue(e)} />
+
+          <FormInput
+            type={'text'}
+            name={'title'}
+            value={post.title || ''}
+            onChange={e => {
+              changeValue(e);
+            }}
+          />
         </div>
 
         <Editor
@@ -133,24 +144,25 @@ function TuiEditor({ content, isEdit = false }) {
           onChange={handleEditorChange}
         />
 
-        <div className="cafeArea">
-          <div>
+        <div className="flex items-center flex-wrap gap-4">
+          <div className="flex items-center w-full md:w-[calc(50%-8px)] gap-4">
             <label htmlFor="cafe_name">카페 이름</label>
-            <input
-              type="text"
-              name="cafe_name"
-              id="cafe_name"
+
+            <FormInput
+              type={'text'}
+              name={'cafe_name'}
               value={post.cafe_name || ''}
-              onChange={e => changeValue(e)}
+              onChange={e => {
+                changeValue(e);
+              }}
             />
           </div>
 
-          <div>
+          <div className="flex items-center w-full md:w-[calc(50%-8px)] gap-4">
             <label htmlFor="cafe_address">카페 주소</label>
-            <input
-              type="text"
-              name="cafe_address"
-              id="cafe_address"
+            <FormInput
+              type={'text'}
+              name={'cafe_address'}
               value={post.cafe_address || ''}
               onChange={e => {
                 changeValue(e);

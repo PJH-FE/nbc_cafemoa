@@ -23,24 +23,32 @@ const Detail = () => {
   };
 
   return (
-    <div>
-      <div>{detailData.category}</div>
-      <div>{detailData.title}</div>
-      <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
-      <div>{detailData.date}</div>
-      <div>{detailData.cafe_name}</div>
+    <>
+      <div>
+        <div className="flex items-center font-bold text-3xl pb-4 border-b-2 border-black">
+          <span>[{detailData.category}]</span>
+          {detailData.title}
+        </div>
+        <div className="flex flex-col py-2 px-3">
+          <div className="ml-auto pb-2 text-gray-600">{detailData.date} / 작성자</div>
+          <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
+        </div>
 
-      <Map cafeData={cafeData} />
+        <div>{detailData.cafe_name}</div>
 
-      <Link to={`/edit?post_id=${nowPostId}`}>수정</Link>
-      <button
-        onClick={() => {
-          deletePostHandler();
-        }}
-      >
-        삭제
-      </button>
-    </div>
+        <Map cafeData={cafeData} />
+
+        <Link to={`/edit?post_id=${nowPostId}`}>수정</Link>
+
+        <button
+          onClick={() => {
+            deletePostHandler();
+          }}
+        >
+          삭제
+        </button>
+      </div>
+    </>
   );
 };
 export default Detail;
