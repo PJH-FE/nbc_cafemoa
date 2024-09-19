@@ -7,7 +7,7 @@ const SearchResults = () => {
   const searchKeyword = searchParams.get('keyword');
 
   const searchedArticles = async keyword => {
-    const { data } = await DATA_API.get(`/articles?search=${keyword}`);
+    const { data } = await DATA_API.get(`/articles?title_like=${keyword}`);
     return data;
   };
 
