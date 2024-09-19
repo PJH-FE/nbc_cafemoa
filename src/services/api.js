@@ -25,7 +25,7 @@ const getUserById = async userId => {
 };
 
 const updateUser = async (userId, data) => {
-  const response = await DATA_API.patch(`/user/${userId}`, data);
+  const response = await DATA_API.patch(`/users/${userId}`, data);
   return response.data;
 };
 
