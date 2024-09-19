@@ -1,7 +1,5 @@
-import { useQuery, useMutation, useQueryClient, useInfiniteQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import SpotListItem from '../components/SpotListItem';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DATA_API } from '../api/api';
 
 const List = () => {
