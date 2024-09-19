@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useSearchStore from '../zustand/searchStore';
 
 const SearchInput = () => {
-  const { searchKeyword, setSearchKeyword } = useSearchStore();
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const navigate = useNavigate();
 
