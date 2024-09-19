@@ -20,7 +20,7 @@ const AuthForm = ({ mode }) => {
     mutationFn: userData => (mode === 'signup' ? register(userData) : login(userData)),
     onSuccess: async data => {
       if (mode === 'signup') {
-        await createUser({ id: formData.id, nickname: formData.nickname });
+        await createUser({ user_id: formData.id, user_nickname: formData.nickname });
         removeUserInfo();
         navigate('/login');
       } else {
@@ -34,8 +34,17 @@ const AuthForm = ({ mode }) => {
   });
 
   //db.json 등록
-  const createUser = async ({ id, nickname }) => {
-    const { data } = await DATA_API.post('/users', { id, nickname });
+  const createUser = async ({ user_id, user_nickname }) => {
+    const { data } = await DATA_API.post('/users', {
+      user_id,
+      user_nickname,
+      profile_image: '',
+      description: '',
+      following: [],
+      follower: [],
+      written_articles: [],
+      bookmarked: [],
+    });
     return data;
   };
 
