@@ -1,9 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { DATA_API } from '../api/api';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Bookmark = () => {
+  const getBookmarks = async () => {
+    const result = await axios.get(`http://localhost:4000/users?user_id=asy13_embed=articles`);
+  };
+
   const fetchBookmarkedArticles = async () => {
     const res = await DATA_API.get('/articles?isBookmarked=true');
     return res.data;

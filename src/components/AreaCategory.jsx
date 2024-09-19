@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cateListHandle } from '../utils/utils';
-import axios from 'axios';
 import { DATA_API } from '../api/api';
 
 const areaCategory = ['서울', '경기도', '충청도', '전라도', '경상도', '강원도', '제주도'];
