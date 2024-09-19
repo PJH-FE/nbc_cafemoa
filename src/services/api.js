@@ -24,6 +24,11 @@ const getUserById = async userId => {
   return response.data;
 };
 
-const api = { getArticlesByAuthorId, getFollowers, getUserById };
+const updateNickname = async (userId, newNickname) => {
+  const response = await DATA_API.patch(`/user/${userId}`, { user_nickname: newNickname });
+  return response.data;
+};
+
+const api = { getArticlesByAuthorId, getFollowers, getUserById, updateNickname };
 
 export default api;
