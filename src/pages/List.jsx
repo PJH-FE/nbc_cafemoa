@@ -53,7 +53,6 @@ const List = () => {
 
   return (
     <div>
-      {/* 보수필요 먼가이상함  */}
       <button
         onClick={() => {
           let articleData = [...articles];
@@ -62,6 +61,15 @@ const List = () => {
         }}
       >
         가나다순
+      </button>
+      <button
+        onClick={() => {
+          let articleData = [...articles];
+          articleData.sort((a, b) => new Date(b.date) - new Date(a.date));
+          setArticles(articleData);
+        }}
+      >
+        최신순
       </button>
       <ul className="grid grid-cols-4 sm:grid-cols-2">
         {articles.map((article, index) => {
