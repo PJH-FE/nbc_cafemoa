@@ -19,6 +19,11 @@ const getFollowers = async userId => {
   return followers;
 };
 
-const api = { getArticlesByAuthorId, getFollowers };
+const getUserById = async userId => {
+  const response = await DATA_API.get(`/users/${userId}`);
+  return response.data;
+};
+
+const api = { getArticlesByAuthorId, getFollowers, getUserById };
 
 export default api;
