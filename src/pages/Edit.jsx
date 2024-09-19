@@ -4,7 +4,7 @@ import { useFetchDetail } from '../queries/boardQueries';
 
 const Edit = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const nowPostId = searchParams.get('post_id');
+  const nowPostId = searchParams.get('article_id');
   const { data, isPending, isError } = useFetchDetail(nowPostId);
 
   if (isPending) return;

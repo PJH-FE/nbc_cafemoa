@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AlignJustify, X, Search } from 'lucide-react';
-
+import { AlignJustify, X, Search, LayoutGrid, User, Bookmark } from 'lucide-react';
 import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
@@ -23,14 +22,17 @@ const Header = () => {
     {
       title: '피드보기',
       link: '/list',
+      icon: <LayoutGrid />,
     },
     {
       title: '내프로필',
       link: '/mypage',
+      icon: <User />,
     },
     {
       title: '북마크',
       link: '/bookmark',
+      icon: <Bookmark />,
     },
   ];
 
@@ -53,7 +55,6 @@ const Header = () => {
           </Link>
         </div>
         <nav className="flex-1 hidden lg:block" style={{ height: 'inherit' }}>
-          {/* 로그인상태에 따라 조건부스타일링 */}
           <ul className="flex gap-2 h-[100%]">
             {tabMenu.map((tab, index) => {
               return (
@@ -79,14 +80,16 @@ const Header = () => {
           {!userInfo ? (
             <>
               <Link className="hidden lg:block" to="/login">
-                LOGIN
+                로그인
               </Link>
               <Link className="hidden lg:block" to="/signup">
-                signup
+                회원가입
               </Link>
             </>
           ) : (
-            <button onClick={handleLogout}>LOGOUT</button>
+            <button className="hidden lg:block" onClick={handleLogout}>
+              로그아웃
+            </button>
           )}
         </div>
       </header>
@@ -96,21 +99,35 @@ const Header = () => {
             <button onClick={toggleMenu} className="hidden sm:block">
               <X />{' '}
             </button>
-            <div className="justify-between hidden sm:flex">
-              <Link to="/login" onClick={toggleMenu}>
-                <h2>로그인 해주세요!</h2>
-              </Link>
-              <Link to="/signup" onClick={toggleMenu}>
-                회원가입
-              </Link>
-            </div>
+            {!userInfo ? (
+              <div className="items-center justify-between hidden sm:flex">
+                <Link to="/login" onClick={toggleMenu}>
+                  <h2>로그인 해주세요!</h2>
+                </Link>
+                <Link to="/signup" onClick={toggleMenu}>
+                  회원가입
+                </Link>
+              </div>
+            ) : (
+              <div className="items-center justify-between hidden sm:flex">
+                <h2>
+                  <span>{userInfo.nickname}</span>님 안녕하세요!
+                </h2>
+                <button onClick={handleLogout}>로그아웃</button>
+              </div>
+            )}
+
             <nav className="lg:flex-1 lg:hidden">
-              {/* 로그인상태에 따라 조건부스타일링 */}
               <ul className="flex gap-2 h-[100%] sm:justify-around">
                 {tabMenu.map((tab, index) => {
                   return (
                     <li key={index} className="flex items-center" onClick={() => tabMenuClick(index)}>
-                      <Link to={tab.link} onClick={toggleMenu}>
+                      <Link
+                        to={tab.link}
+                        onClick={toggleMenu}
+                        className="flex flex-col gap-[10px] items-center"
+                      >
+                        {tab.icon}
                         {tab.title}
                       </Link>
                     </li>
