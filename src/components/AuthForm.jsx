@@ -2,16 +2,19 @@ import { useMutation } from '@tanstack/react-query';
 import { login, register } from '../api/AuthClient';
 import useUserStore from '../zustand/bearStore';
 import { useNavigate } from 'react-router-dom';
+import { DATA_API } from '../api/api';
 
 const AuthForm = ({ mode }) => {
   const { formData, setData, setUserInfo, removeUserInfo } = useUserStore();
 
   const navigate = useNavigate();
 
+  // 머니풀 회원가입
   const { mutate } = useMutation({
     mutationFn: userData => (mode === 'signup' ? register(userData) : login(userData)),
-    onSuccess: data => {
+    onSuccess: async data => {
       if (mode === 'signup') {
+        await createUser({ id: formData.id, nickname: formData.nickname });
         removeUserInfo();
         navigate('/login');
       } else {
@@ -23,6 +26,12 @@ const AuthForm = ({ mode }) => {
       console.error('회원가입 실패', error.message);
     },
   });
+
+  //db.json 등록
+  const createUser = async ({ id, nickname }) => {
+    const { data } = await DATA_API.post('/users', { id, nickname });
+    return data;
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
