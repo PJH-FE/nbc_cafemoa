@@ -2,15 +2,15 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '../services/api';
 import queryKey from '../queries/queryKey.keys';
 
-const useUpdateNicknameMutation = () => {
+const useUpdateUserMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (userId, newNickname) => api.updateNickname(userId, newNickname),
+    mutationFn: ({ userId, field, value }) => api.updateUser(userId, { [field]: value }),
     onSuccess: () => {
       queryClient.invalidateQueries(queryKey.default.userById);
     },
   });
 };
 
-export default useUpdateNicknameMutation;
+export default useUpdateUserMutation;
