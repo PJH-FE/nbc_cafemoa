@@ -4,6 +4,7 @@ import { DATA_API } from '../api/api';
 export const queryKeys = {
   boardController: {
     articles: () => ['articles'],
+    users: () => ['users'],
   },
 };
 
@@ -40,6 +41,58 @@ export const useUpdatePost = () => {
   return useMutation({
     mutationFn: async updateData => {
       await DATA_API.patch(`/articles/${updateData.id}`, updateData.post);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(queryKeys.boardController.articles);
+    },
+  });
+};
+
+// 유저 정보 불러오기
+const fetchUser = async ({ queryKey }) => {
+  const [_, id] = queryKey;
+  const response = await DATA_API.get(`/users/${id}`);
+  return response.data;
+};
+
+export const useFetchUser = id => {
+  return useQuery({
+    queryKey: [...queryKeys.boardController.users(), id],
+    queryFn: fetchUser,
+  });
+};
+
+// 북마크 등록
+export const useAddBookmark = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async userData => {
+      const response = await DATA_API.get(`/users/${userData.id}`);
+      const bookmarkList = response.data.bookmarked;
+
+      await DATA_API.patch(`/users/${userData.id}`, {
+        bookmarked: [...bookmarkList, userData.articleId],
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(queryKeys.boardController.users);
+    },
+  });
+};
+
+// 북마크 삭제
+export const useRemoveBookmark = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async userData => {
+      const response = await DATA_API.get(`/users/${userData.id}`);
+      const bookmarkList = response.data.bookmarked.filter(result => result !== userData.articleId);
+
+      await DATA_API.patch(`/users/${userData.id}`, {
+        bookmarked: [...bookmarkList],
+      });
     },
     onSuccess: () => {
       queryClient.invalidateQueries(queryKeys.boardController.articles);
