@@ -11,7 +11,7 @@ const ListCategory = () => {
 
   return (
     <div>
-      <ul className="grid grid-cols-4 sm:grid-cols-2">
+      <ul className="grid grid-cols-4 p-[20px] sm:grid-cols-2">
         {cateInLists.map(data => {
           return <SpotListItem key={data.id} data={data} />;
         })}

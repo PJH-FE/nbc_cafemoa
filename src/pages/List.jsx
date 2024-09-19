@@ -69,7 +69,7 @@ const List = () => {
     <div>
       <button onClick={alignmentBtn}>가나다순</button>
       <button onClick={latestBtn}>최신순</button>
-      <ul className="grid grid-cols-4 sm:grid-cols-2">
+      <ul className="grid gap-[20px] grid-cols-4 sm:grid-cols-2 sm:gap-[10px]">
         {articles.map((article, index) => {
           return <SpotListItem key={index} data={article} />;
         })}
