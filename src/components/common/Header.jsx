@@ -30,7 +30,9 @@ const Header = () => {
         </nav>
         <div className="flex gap-2">
           <div className="cursor-pointer">
-            <Search />
+            <form>
+              <input type="text" value={searchKeyword} onChange={handleChange} placeholder="검색" />
+            </form>
           </div>
           {/* 로그인상태에 따라 조건부스타일링 */}
           <Link to="/login">LOGIN</Link>
