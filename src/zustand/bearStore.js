@@ -4,11 +4,6 @@ import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
 const initialState = {
-  formData: {
-    id: '',
-    password: '',
-    nickname: '',
-  },
   userInfo: null,
 };
 
@@ -16,13 +11,6 @@ const useUserStore = create(
   persist(
     set => ({
       ...initialState,
-      setData: data => {
-        set(
-          produce(state => ({
-            formData: { ...state.formData, ...data },
-          })),
-        );
-      },
       setUserInfo: data => {
         set(
           produce(state => {
@@ -34,7 +22,6 @@ const useUserStore = create(
         set(
           produce(state => {
             state.userInfo = null;
-            state.formData = { ...initialState.formData };
           }),
         );
       },
