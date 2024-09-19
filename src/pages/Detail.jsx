@@ -1,12 +1,12 @@
-import { Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate, useParams } from 'react-router-dom';
 import { useDeletePost, useFetchDetail } from '../queries/boardQueries';
 import Map from '../components/board/Map';
 import Comments from '../components/Comments';
 
 const Detail = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const nowPostId = searchParams.get('post_id');
-  const { data: detailData, isPending, isError } = useFetchDetail(nowPostId);
+  const nowArticleId = searchParams.get('article_id');
+  const { data: detailData, isPending, isError } = useFetchDetail(nowArticleId);
   const delPost = useDeletePost();
   const navigate = useNavigate();
 
@@ -18,10 +18,12 @@ const Detail = () => {
   const deletePostHandler = () => {
     const confirmDelete = confirm('정말 삭제하시겠습니까?');
     if (confirmDelete) {
-      delPost.mutate(nowPostId);
+      delPost.mutate(nowArticleId);
       navigate('/');
     }
   };
+
+  console.log(detailData);
 
   return (
     <>
@@ -39,7 +41,7 @@ const Detail = () => {
 
         <Map cafeData={cafeData} />
 
-        <Link to={`/edit?post_id=${nowPostId}`}>수정</Link>
+        <Link to={`/edit?post_id=${nowArticleId}`}>수정</Link>
 
         <button
           onClick={() => {
