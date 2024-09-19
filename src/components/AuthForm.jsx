@@ -3,9 +3,15 @@ import { login, register } from '../api/AuthClient';
 import useUserStore from '../zustand/bearStore';
 import { useNavigate } from 'react-router-dom';
 import { DATA_API } from '../api/api';
+import { useState } from 'react';
 
 const AuthForm = ({ mode }) => {
-  const { formData, setData, setUserInfo, removeUserInfo } = useUserStore();
+  const [formData, setFormData] = useState({
+    id: '',
+    password: '',
+    nickname: '',
+  });
+  const { setUserInfo, removeUserInfo } = useUserStore();
 
   const navigate = useNavigate();
 
@@ -38,7 +44,7 @@ const AuthForm = ({ mode }) => {
     mutate(formData);
   };
   const handleChange = e => {
-    setData({ [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   return (
     <form onSubmit={handleSubmit}>
