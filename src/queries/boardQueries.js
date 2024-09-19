@@ -33,7 +33,7 @@ export const useDeletePost = () => {
   });
 };
 
-// 공개/비공개 전환
+// 게시글 수정
 export const useUpdatePost = () => {
   const queryClient = useQueryClient();
 
