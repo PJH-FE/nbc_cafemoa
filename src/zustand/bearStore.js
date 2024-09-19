@@ -9,7 +9,7 @@ const initialState = {
 
 const useUserStore = create(
   persist(
-    set => ({
+    (set, get) => ({
       ...initialState,
       setUserInfo: data => {
         set(
@@ -24,6 +24,9 @@ const useUserStore = create(
             state.userInfo = null;
           }),
         );
+      },
+      getUserInfo: () => {
+        return get().userInfo; // 현재 userInfo 반환
       },
     }),
     {
