@@ -50,7 +50,7 @@ const MainCategory = () => {
   //article 데이터 전체 가져오기
   useEffect(() => {
     const getArticle = async () => {
-      const { data: articleData } = await axios.get('http://localhost:888/article');
+      const { data: articleData } = await axios.get('http://localhost:5000/article');
       setArticleAllData(articleData);
     };
     getArticle();

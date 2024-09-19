@@ -13,7 +13,7 @@ const List = () => {
   const fetchArticles = async page => {
     setLoading(true); //로딩상태 true로 변경
     try {
-      const { data } = await axios.get(`http://localhost:888/article?page=${page}&limit=${itemsPerPage}`);
+      const { data } = await axios.get(`http://localhost:5000/article?page=${page}&limit=${itemsPerPage}`);
 
       const startIndex = page * itemsPerPage; // page * 8
       const endIndex = startIndex + itemsPerPage;
