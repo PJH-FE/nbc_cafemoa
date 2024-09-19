@@ -75,19 +75,21 @@ const Header = () => {
       </header>
       {isMenuOpen ? (
         <div className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40">
-          <div className="lg:absolute w-full sm:w-[70vw] sm:h-[100vh] bg-slate-100">
+          <div className="lg:absolute w-full sm:w-[70vw] sm:h-[100vh] sm:p-[20px] sm:flex sm:flex-col sm:gap-[20px] bg-white">
             <button onClick={toggleMenu} className="hidden sm:block">
               <X />{' '}
             </button>
-            <Link className="hidden sm:block" to="/login" onClick={toggleMenu}>
-              LOGIN
-            </Link>
-            <Link className="hidden sm:block" to="/singup" onClick={toggleMenu}>
-              SING UP
-            </Link>
-            <nav className="flex-1 lg:hidden">
+            <div className="justify-between hidden sm:flex">
+              <Link to="/login" onClick={toggleMenu}>
+                <h2>로그인 해주세요!</h2>
+              </Link>
+              <Link to="/singup" onClick={toggleMenu}>
+                회원가입
+              </Link>
+            </div>
+            <nav className="lg:flex-1 lg:hidden">
               {/* 로그인상태에 따라 조건부스타일링 */}
-              <ul className="flex gap-2 h-[100%]">
+              <ul className="flex gap-2 h-[100%] sm:justify-around">
                 {tabMenu.map((tab, index) => {
                   return (
                     <li key={index} className="flex items-center" onClick={() => tabMenuClick(index)}>
