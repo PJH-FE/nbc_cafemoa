@@ -6,10 +6,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { DATA_API } from '../api/api';
 
 //데이터 가져오기
 const getArticle = async () => {
-  const { data } = await axios.get('http://localhost:5000/article');
+  const { data } = await DATA_API.get('/articles');
   return data;
 };
 
@@ -23,7 +24,7 @@ const MainRecommend = () => {
     isPending: articleIsPending,
     isError: articleIsError,
   } = useQuery({
-    queryKey: ['article'],
+    queryKey: ['articles'],
     queryFn: getArticle,
   });
 

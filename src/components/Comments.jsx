@@ -1,6 +1,7 @@
 import { QueryClient, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react';
+import { DATA_API } from '../api/api';
 
 const Comments = () => {
   const queryClient = useQueryClient();
@@ -18,7 +19,7 @@ const Comments = () => {
   } = useQuery({
     queryKey: ['comments', selectedPostId],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/comments?postId=${selectedPostId}`);
+      const res = await DATA_API.get(`/comments?postId=${selectedPostId}`);
       return res.data;
     },
     enabled: !!selectedPostId,
@@ -27,7 +28,7 @@ const Comments = () => {
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
     mutationFn: async comment => {
-      const res = await axios.post('http://localhost:5000/comments', comment);
+      const res = await DATA_API.get('/comments', comment);
       return res.data;
     },
     onSuccess: () => {
@@ -38,7 +39,7 @@ const Comments = () => {
   // useMutation 훅을 사용하여 editComment 함수 정의
   const { mutate: editComment } = useMutation({
     mutationFn: async updatedComment => {
-      const res = await axios.patch(`http://localhost:5000/comments/${updatedComment.id}`, updatedComment);
+      const res = await DATA_API.get(`/comments/${updatedComment.id}`, updatedComment);
       return res.data;
     },
     onSuccess: () => {
@@ -50,7 +51,7 @@ const Comments = () => {
   // useMutation 훅을 사용하여 deleteComment 함수 정의
   const { mutate: deleteComment } = useMutation({
     mutationFn: async id => {
-      await axios.delete(`http://localhost:5000/comments/${id}`);
+      await DATA_API.delete(`/comments/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(['comments', selectedPostId]);
@@ -98,7 +99,7 @@ const Comments = () => {
             onChange={e => {
               setCommentTexts(e.target.value);
             }}
-            className="rounded border-2 border-gray-400 resize-none"
+            className="border-2 border-gray-400 rounded resize-none"
           ></textarea>
           <button
             type="submit"
@@ -113,10 +114,10 @@ const Comments = () => {
       <div className="px-20 ">
         {comments?.map(comment => {
           return (
-            <div key={comment.id} className="flex justify-between items-center mb-4">
+            <div key={comment.id} className="flex items-center justify-between mb-4">
               {/* 수정모드일 때 */}
               {editingCommentId === comment.id ? (
-                <div className="flex gap-4 w-full">
+                <div className="flex w-full gap-4">
                   <p className="w-[600px]">{comment.text}</p>
                   <div className="flex gap-4">
                     <textarea
@@ -131,13 +132,13 @@ const Comments = () => {
                     <div className="flex items-end gap-4">
                       <button
                         onClick={() => handleEditComment(comment)}
-                        className="w-20 rounded-full border-2 border-gray-400 hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                        className="w-20 border-2 border-gray-400 rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white"
                       >
                         수정 완료
                       </button>
                       <button
                         onClick={() => setEditingCommentId(null)}
-                        className="w-20 rounded-full border-2 border-gray-900  hover:bg-gray-900 hover:text-white"
+                        className="w-20 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white"
                       >
                         취소
                       </button>
@@ -145,7 +146,7 @@ const Comments = () => {
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-between items-center w-full">
+                <div className="flex items-center justify-between w-full">
                   <p>{comment.text}</p>
                   <div className="flex gap-2">
                     <button
@@ -153,13 +154,13 @@ const Comments = () => {
                         setEditingCommentId(comment.id);
                         setEditContent(comment.content); // 수정 모드로 전환
                       }}
-                      className="w-20 rounded-full border-2 border-gray-400 hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                      className="w-20 border-2 border-gray-400 rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white"
                     >
                       수정
                     </button>
                     <button
                       onClick={() => handleDeleteComment(comment.id)}
-                      className="w-20 rounded-full border-2 border-gray-900  hover:bg-gray-900 hover:text-white"
+                      className="w-20 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white"
                     >
                       삭제
                     </button>

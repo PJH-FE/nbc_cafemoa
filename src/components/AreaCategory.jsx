@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cateListHandle } from '../utils/utils';
 import axios from 'axios';
+import { DATA_API } from '../api/api';
 
 const areaCategory = ['서울', '경기도', '충청도', '전라도', '경상도', '강원도', '제주도'];
 
@@ -14,7 +15,7 @@ const AreaCategory = () => {
   //article 데이터 전체 가져오기
   useEffect(() => {
     const getArticle = async () => {
-      const { data: articleData } = await axios.get('http://localhost:5000/article');
+      const { data: articleData } = await DATA_API.get('/articles');
       setArticleAllData(articleData);
     };
     getArticle();
