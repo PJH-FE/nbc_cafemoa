@@ -13,31 +13,37 @@ const initialState = {
 };
 
 const useUserStore = create(
-  immer(set => ({
-    ...initialState,
-    setData: data => {
-      set(
-        produce(state => ({
-          formData: { ...state.formData, ...data },
-        })),
-      );
+  persist(
+    set => ({
+      ...initialState,
+      setData: data => {
+        set(
+          produce(state => ({
+            formData: { ...state.formData, ...data },
+          })),
+        );
+      },
+      setUserInfo: data => {
+        set(
+          produce(state => {
+            state.userInfo = data;
+          }),
+        );
+      },
+      removeUserInfo: () => {
+        set(
+          produce(state => {
+            state.userInfo = null;
+            state.formData = { ...initialState.formData };
+          }),
+        );
+      },
+    }),
+    {
+      name: 'user-storage',
+      storage: () => localStorage,
     },
-    setUserInfo: data => {
-      set(
-        produce(state => {
-          state.userInfo = data;
-        }),
-      );
-    },
-    removeUserInfo: () => {
-      set(
-        produce(state => {
-          state.userInfo = null;
-          state.formData = { ...initialState.formData };
-        }),
-      );
-    },
-  })),
+  ),
 );
 
 export default useUserStore;
