@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import useGetArticlesByAuthorIdQuery from '../queries/useGetArticlesByAuthorIdQuery';
+import useGetFollowersQuery from '../queries/useGetFollowersQuery';
 
 const USER_ID = '1';
 
 const MyPage = () => {
   const { data: articles } = useGetArticlesByAuthorIdQuery(USER_ID);
+  const { data: followers } = useGetFollowersQuery(USER_ID);
 
   return (
     <>
@@ -14,7 +16,18 @@ const MyPage = () => {
           <p>이미지 변경, 닉네임, 작성글(숫자), 팔로우(숫자)</p>
         </section>
         <section>
-          <h2>팔로우/팔로워</h2>
+          <h2>팔로우</h2>
+          {followers.map(follower => (
+            <div key={follower.id}>
+              {
+                <Link to={`/detail/${follower.id}`}>
+                  <img src={follower.profile_image} alt={follower.description} />
+                  <span>{follower.user_nickname}</span>
+                </Link>
+              }
+            </div>
+          ))}
+          <h2>팔로잉</h2>
         </section>
       </div>
       <section className="bg-slate-300">
