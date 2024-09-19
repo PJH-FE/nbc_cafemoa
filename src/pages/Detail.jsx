@@ -1,6 +1,7 @@
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useDeletePost, useFetchDetail } from '../queries/boardQueries';
 import Map from '../components/board/Map';
+import Comments from '../components/Comments';
 
 const Detail = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,6 +49,7 @@ const Detail = () => {
           삭제
         </button>
       </div>
+      <Comments />
     </>
   );
 };

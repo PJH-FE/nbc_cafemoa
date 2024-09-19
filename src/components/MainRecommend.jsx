@@ -9,7 +9,7 @@ import 'swiper/css';
 
 //데이터 가져오기
 const getArticle = async () => {
-  const { data } = await axios.get('http://localhost:888/article');
+  const { data } = await axios.get('http://localhost:5000/article');
   return data;
 };
 
