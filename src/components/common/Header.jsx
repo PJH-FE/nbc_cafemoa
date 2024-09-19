@@ -4,6 +4,7 @@ import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
 import classNames from 'classnames';
+import SearchInput from '../SearchInput';
 
 const Header = () => {
   const { userInfo, removeUserInfo } = useUserStore();
@@ -74,6 +75,7 @@ const Header = () => {
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
           <div className="cursor-pointer">
             <Search />
+            <SearchInput />
           </div>
           {!userInfo ? (
             <>
