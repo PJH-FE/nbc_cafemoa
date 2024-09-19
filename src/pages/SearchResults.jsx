@@ -8,12 +8,17 @@ const SearchResults = () => {
 
   const searchedArticles = async keyword => {
     const { data } = await DATA_API.get(`/articles?title_like=${keyword}`);
+    console.log('data', data);
     return data;
   };
 
-  const { data, isPending, error } = useQuery({
-    queryKey: [searchKeyword],
-    queryFn: searchedArticles(searchKeyword),
+  const {
+    data: searched,
+    isPending,
+    error,
+  } = useQuery({
+    queryKey: ['articles', searchKeyword],
+    queryFn: () => searchedArticles(searchKeyword),
   });
 
   if (isPending) return <p>로딩중</p>;
@@ -22,7 +27,7 @@ const SearchResults = () => {
   return (
     <div>
       <ul>
-        {data?.map(article => (
+        {searched?.map(article => (
           <li key={article.id}>{article.title}</li>
         ))}
       </ul>
