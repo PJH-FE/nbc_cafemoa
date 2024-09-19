@@ -4,6 +4,7 @@ import useUserStore from '../zustand/bearStore';
 import { useNavigate } from 'react-router-dom';
 import { DATA_API } from '../api/api';
 import { useState } from 'react';
+import { getUserByMoneyPullId } from '../services/userService';
 
 const AuthForm = ({ mode }) => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,15 @@ const AuthForm = ({ mode }) => {
         removeUserInfo();
         navigate('/login');
       } else {
-        setUserInfo(data);
+        const user = await getUserByMoneyPullId(data.userId);
+
+        if (!user) {
+          alert('사용자를 찾을 수 없습니다. 다시 회원가입 해주세요.');
+          navigate('/signup');
+          return;
+        }
+
+        setUserInfo(user);
         navigate('/');
       }
     },
