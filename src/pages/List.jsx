@@ -18,7 +18,6 @@ const List = () => {
       const startIndex = page * itemsPerPage; // page * 8
       const endIndex = startIndex + itemsPerPage;
       const sliceData = data.slice(startIndex, endIndex);
-      console.log('data', sliceData);
 
       if (data.length < itemsPerPage) {
         // 마지막일때
