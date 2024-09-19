@@ -43,7 +43,7 @@ const AuthForm = ({ mode }) => {
           required
         />
         <input
-          type="text"
+          type="password"
           name="password"
           placeholder="비밀번호"
           value={formData.password}
