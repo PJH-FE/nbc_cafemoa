@@ -11,10 +11,7 @@ const mainBannerCate = ['뷰맛집', '서울', '24시', '디저트맛집'];
 const MainBanner = () => {
   const [articleAllData, setArticleAllData] = useState([]); //article 전체데이터 상태저장
   const [cateInLists, setCateInLists] = useState([]); //필터링된 리스트 상태저장
-  const [filterText, setFilterText] = useState(() => {
-    const initialFilter = Math.random() > 0.5 ? 'region' : 'category';
-    return initialFilter;
-  }); //필터링된 리스트 상태저장
+  const [filterText, setFilterText] = useState('category'); //필터링된 리스트 상태저장
   const navigate = useNavigate();
 
   //article 데이터 전체 가져오기
