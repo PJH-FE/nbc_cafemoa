@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient, useInfiniteQuery } from '@tansta
 import axios from 'axios';
 import SpotListItem from '../components/SpotListItem';
 import { useState, useRef, useEffect } from 'react';
+import { DATA_API } from '../api/api';
 
 const List = () => {
   const [articles, setArticles] = useState([]); // 전체 데이터를 담을 상태
@@ -13,7 +14,7 @@ const List = () => {
   const fetchArticles = async page => {
     setLoading(true); //로딩상태 true로 변경
     try {
-      const { data } = await axios.get(`http://localhost:5000/article?page=${page}&limit=${itemsPerPage}`);
+      const { data } = await DATA_API.get(`/articles?page=${page}&limit=${itemsPerPage}`);
 
       const startIndex = page * itemsPerPage; // page * 8
       const endIndex = startIndex + itemsPerPage;

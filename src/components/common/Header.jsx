@@ -79,8 +79,8 @@ const Header = () => {
               <Link className="hidden lg:block" to="/login">
                 LOGIN
               </Link>
-              <Link className="hidden lg:block" to="/singup">
-                SING UP
+              <Link className="hidden lg:block" to="/signup">
+                signup
               </Link>
             </>
           ) : (
@@ -98,7 +98,7 @@ const Header = () => {
               <Link to="/login" onClick={toggleMenu}>
                 <h2>로그인 해주세요!</h2>
               </Link>
-              <Link to="/singup" onClick={toggleMenu}>
+              <Link to="/signup" onClick={toggleMenu}>
                 회원가입
               </Link>
             </div>

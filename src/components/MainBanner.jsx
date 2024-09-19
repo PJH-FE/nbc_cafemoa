@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { cateListHandle } from '../utils/utils';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { DATA_API } from '../api/api';
 
 const mainBannerCate = ['뷰맛집', '서울', '24시', '디저트맛집'];
 
@@ -19,7 +20,7 @@ const MainBanner = () => {
   //article 데이터 전체 가져오기
   useEffect(() => {
     const getArticle = async () => {
-      const { data: articleData } = await axios.get('http://localhost:5000/article');
+      const { data: articleData } = await DATA_API.get('/articles');
       setArticleAllData(articleData);
     };
     getArticle();
