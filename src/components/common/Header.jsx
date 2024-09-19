@@ -1,10 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AlignJustify, X, Search } from 'lucide-react';
+
+import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
 import classNames from 'classnames';
 
 const Header = () => {
+  const { userInfo, removeUserInfo } = useUserStore();
+  const handleLogout = () => {
+    removeUserInfo();
+    navigate('/');
+  };
+
+  const navigate = useNavigate();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
   const [activeTab, setActiveTab] = useState(null);
 
@@ -64,13 +74,18 @@ const Header = () => {
           <div className="cursor-pointer">
             <Search />
           </div>
-          {/* 로그인상태에 따라 조건부스타일링 */}
-          <Link className="hidden lg:block" to="/login">
-            LOGIN
-          </Link>
-          <Link className="hidden lg:block" to="/singup">
-            SING UP
-          </Link>
+          {!userInfo ? (
+            <>
+              <Link className="hidden lg:block" to="/login">
+                LOGIN
+              </Link>
+              <Link className="hidden lg:block" to="/singup">
+                SING UP
+              </Link>
+            </>
+          ) : (
+            <button onClick={handleLogout}>LOGOUT</button>
+          )}
         </div>
       </header>
       {isMenuOpen ? (
