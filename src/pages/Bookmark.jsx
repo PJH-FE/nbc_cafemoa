@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { DATA_API } from '../api/api';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 const Bookmark = () => {
   const getBookmarks = async () => {
@@ -23,7 +22,6 @@ const Bookmark = () => {
 
   const bookmarked = bookmarks[0].bookmarked;
   const arr = bookmarks[0].articles.filter(article => {
-    console.log('article.id', article.id);
     if (bookmarked.some(id => id === article.id)) {
       return true;
     } else {

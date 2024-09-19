@@ -11,5 +11,6 @@ export const register = async userData => {
 
 export const login = async userData => {
   const { data } = await authClinet.post('/login', userData);
+
   return data;
 };
