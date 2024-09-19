@@ -1,4 +1,3 @@
-import axios from 'axios';
 import SpotListItem from '../components/SpotListItem';
 import { useLocation } from 'react-router-dom';
 

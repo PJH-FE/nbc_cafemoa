@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import _ from 'lodash';
 import { Editor } from '@toast-ui/react-editor';
@@ -30,8 +30,13 @@ function TuiEditor({ content, isEdit = false }) {
   const navigate = useNavigate();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const nowPostId = searchParams.get('post_id');
+  const nowPostId = searchParams.get('article_id');
   const updatePost = useUpdatePost();
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('user-storage')).state;
+    setPost({ ...post, author_id: userData?.userInfo?.userId });
+  }, []);
 
   // 카테고리, 타이틀 관리
   const changeValue = e => {
@@ -86,12 +91,12 @@ function TuiEditor({ content, isEdit = false }) {
     }
     const createResult = async post => {
       await DATA_API.post('/articles', post);
-      navigate(`/detail?post_id=${postId}`);
+      navigate(`/detail?article_id=${postId}`);
     };
 
     const updateResult = () => {
       updatePost.mutate({ id: nowPostId, post: { ...post } });
-      navigate(`/detail?post_id=${nowPostId}`);
+      navigate(`/detail?article_id=${nowPostId}`);
     };
 
     {
