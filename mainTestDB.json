@@ -1,0 +1,334 @@
+{
+  "article": [
+    {
+      "id": "1",
+      "category": "모각코",
+      "title": "투썸",
+      "content": "분위기가 좋고 커피가 맛있는곳",
+      "author_id": "123",
+      "date": "2024-08-11",
+      "cafe_address": "서울특별시 강동구",
+      "region": "서울"
+    },
+    {
+      "id": "2",
+      "category": "뷰맛집",
+      "title": "카페 온도",
+      "content": "뷰가 예뻐요!",
+      "author_id": "456",
+      "date": "2024-09-11",
+      "cafe_address": "서울특별시 강남구",
+      "region": "서울"
+    },
+    {
+      "id": "3",
+      "category": "모각코",
+      "title": "스타벅스",
+      "content": "일하기 좋은곳~~",
+      "author_id": "789",
+      "date": "2024-08-13",
+      "cafe_address": "충청북도 대전광역시",
+      "region": "충청도"
+    },
+    {
+      "id": "4",
+      "category": "디저트맛집",
+      "title": "커피빈",
+      "content": "여기 베이글 존맛",
+      "author_id": "2356",
+      "date": "2024-09-14",
+      "cafe_address": "전라북도 익산시",
+      "region": "전라도"
+    },
+    {
+      "id": "5",
+      "category": "24시",
+      "title": "24시카페",
+      "content": "우아 24시에요~!!",
+      "author_id": "7645",
+      "date": "2024-09-15",
+      "cafe_address": "경기도 성남시",
+      "region": "경기도"
+    },
+    {
+      "id": "6",
+      "category": "분좋카",
+      "title": "분위기카페",
+      "content": "분위기가 너무 좋아요!!",
+      "author_id": "4544",
+      "date": "2024-09-13",
+      "cafe_address": "경기도 파주",
+      "region": "경기도"
+    },
+    {
+      "id": "7",
+      "category": "모각코",
+      "title": "투썸",
+      "content": "분위기가 좋고 커피가 맛있는곳",
+      "author_id": "123",
+      "date": "2024-08-11",
+      "cafe_address": "서울특별시 강동구",
+      "region": "서울"
+    },
+    {
+      "id": "8",
+      "category": "뷰맛집",
+      "title": "카페 온도",
+      "content": "뷰가 예뻐요!",
+      "author_id": "456",
+      "date": "2024-09-11",
+      "cafe_address": "서울특별시 강남구",
+      "region": "서울"
+    },
+    {
+      "id": "9",
+      "category": "모각코",
+      "title": "스타벅스",
+      "content": "일하기 좋은곳~~",
+      "author_id": "789",
+      "date": "2024-08-13",
+      "cafe_address": "충청북도 대전광역시",
+      "region": "충청도"
+    },
+    {
+      "id": "10",
+      "category": "디저트맛집",
+      "title": "커피빈",
+      "content": "여기 베이글 존맛",
+      "author_id": "2356",
+      "date": "2024-09-14",
+      "cafe_address": "전라북도 익산시",
+      "region": "전라도"
+    },
+    {
+      "id": "11",
+      "category": "24시",
+      "title": "24시카페",
+      "content": "우아 24시에요~!!",
+      "author_id": "7645",
+      "date": "2024-09-15",
+      "cafe_address": "경기도 성남시",
+      "region": "경기도"
+    },
+    {
+      "id": "12",
+      "category": "분좋카",
+      "title": "분위기카페",
+      "content": "분위기가 너무 좋아요!!",
+      "author_id": "4544",
+      "date": "2024-09-13",
+      "cafe_address": "경기도 파주",
+      "region": "경기도"
+    },
+    {
+      "id": "13",
+      "category": "모각코",
+      "title": "투썸",
+      "content": "분위기가 좋고 커피가 맛있는곳",
+      "author_id": "123",
+      "date": "2024-08-11",
+      "cafe_address": "서울특별시 강동구",
+      "region": "서울"
+    },
+    {
+      "id": "14",
+      "category": "뷰맛집",
+      "title": "카페 온도",
+      "content": "뷰가 예뻐요!",
+      "author_id": "456",
+      "date": "2024-09-11",
+      "cafe_address": "서울특별시 강남구",
+      "region": "서울"
+    },
+    {
+      "id": "15",
+      "category": "모각코",
+      "title": "스타벅스",
+      "content": "일하기 좋은곳~~",
+      "author_id": "789",
+      "date": "2024-08-13",
+      "cafe_address": "충청북도 대전광역시",
+      "region": "충청도"
+    },
+    {
+      "id": "16",
+      "category": "디저트맛집",
+      "title": "커피빈",
+      "content": "여기 베이글 존맛",
+      "author_id": "2356",
+      "date": "2024-09-14",
+      "cafe_address": "전라북도 익산시",
+      "region": "전라도"
+    },
+    {
+      "id": "17",
+      "category": "24시",
+      "title": "24시카페",
+      "content": "우아 24시에요~!!",
+      "author_id": "7645",
+      "date": "2024-09-15",
+      "cafe_address": "경기도 성남시",
+      "region": "경기도"
+    },
+    {
+      "id": "18",
+      "category": "분좋카",
+      "title": "분위기카페",
+      "content": "분위기가 너무 좋아요!!",
+      "author_id": "4544",
+      "date": "2024-09-13",
+      "cafe_address": "경기도 파주",
+      "region": "경기도"
+    },
+    {
+      "id": "19",
+      "category": "모각코",
+      "title": "투썸",
+      "content": "분위기가 좋고 커피가 맛있는곳",
+      "author_id": "123",
+      "date": "2024-08-11",
+      "cafe_address": "서울특별시 강동구",
+      "region": "서울"
+    },
+    {
+      "id": "20",
+      "category": "뷰맛집",
+      "title": "카페 온도",
+      "content": "뷰가 예뻐요!",
+      "author_id": "456",
+      "date": "2024-09-11",
+      "cafe_address": "서울특별시 강남구",
+      "region": "서울"
+    },
+    {
+      "id": "21",
+      "category": "모각코",
+      "title": "스타벅스",
+      "content": "일하기 좋은곳~~",
+      "author_id": "789",
+      "date": "2024-08-13",
+      "cafe_address": "충청북도 대전광역시",
+      "region": "충청도"
+    },
+    {
+      "id": "22",
+      "category": "디저트맛집",
+      "title": "커피빈",
+      "content": "여기 베이글 존맛",
+      "author_id": "2356",
+      "date": "2024-09-14",
+      "cafe_address": "전라북도 익산시",
+      "region": "전라도"
+    },
+    {
+      "id": "23",
+      "category": "24시",
+      "title": "24시카페",
+      "content": "우아 24시에요~!!",
+      "author_id": "7645",
+      "date": "2024-09-15",
+      "cafe_address": "경기도 성남시",
+      "region": "경기도"
+    },
+    {
+      "id": "24",
+      "category": "분좋카",
+      "title": "분위기카페",
+      "content": "분위기가 너무 좋아요!!",
+      "author_id": "4544",
+      "date": "2024-09-13",
+      "cafe_address": "경기도 파주",
+      "region": "경기도"
+    },
+    {
+      "id": "25",
+      "category": "분좋카",
+      "title": "분위기카페",
+      "content": "분위기가 너무 좋아요!!",
+      "author_id": "4543",
+      "date": "2024-09-13",
+      "cafe_address": "경기도 파주",
+      "region": "경기도"
+    },
+    {
+      "id": "26",
+      "category": "모각코",
+      "title": "카페~",
+      "content": "하기싫다",
+      "author_id": "3444",
+      "date": "2024-02-13",
+      "cafe_address": "경기도 안양",
+      "region": "경기도"
+    },
+    {
+      "id": "27",
+      "category": "모각코",
+      "title": "아아~",
+      "content": "우앙",
+      "author_id": "338",
+      "date": "2024-01-13",
+      "cafe_address": "서울 파주",
+      "region": "서울"
+    },
+    {
+      "id": "28",
+      "category": "모각코",
+      "title": "카페~",
+      "content": "하기싫다",
+      "author_id": "34449",
+      "date": "2024-02-13",
+      "cafe_address": "경기도 안양",
+      "region": "경기도"
+    },
+    {
+      "id": "29",
+      "category": "모각코",
+      "title": "아아~",
+      "content": "우앙",
+      "author_id": "3367",
+      "date": "2024-01-13",
+      "cafe_address": "서울 파주",
+      "region": "서울"
+    },
+    {
+      "id": "30",
+      "category": "모각코",
+      "title": "카페~",
+      "content": "하기싫다",
+      "author_id": "34441",
+      "date": "2024-02-13",
+      "cafe_address": "경기도 안양",
+      "region": "경기도"
+    },
+    {
+      "id": "31",
+      "category": "모각코",
+      "title": "아아~",
+      "content": "우앙",
+      "author_id": "33345",
+      "date": "2024-01-13",
+      "cafe_address": "서울 파주",
+      "region": "서울"
+    },
+    {
+      "id": "32",
+      "category": "모각코",
+      "title": "카페~",
+      "content": "하기싫다",
+      "author_id": "34442",
+      "date": "2024-02-13",
+      "cafe_address": "경기도 안양",
+      "region": "경기도"
+    },
+    {
+      "id": "33",
+      "category": "모각코",
+      "title": "아아~",
+      "content": "우앙",
+      "author_id": "331",
+      "date": "2024-01-13",
+      "cafe_address": "서울 파주",
+      "region": "서울"
+    }
+  ]
+}
