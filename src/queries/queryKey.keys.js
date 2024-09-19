@@ -1,7 +1,7 @@
 const queryKey = {
   default: {
     articlesByAuthor: authorId => ['articles', { authorId }],
-    followers: userId => ['followers', { userId }],
+    userRelations: userId => ['relations', { userId }],
     userById: userId => ['user', { userId }],
   },
 };

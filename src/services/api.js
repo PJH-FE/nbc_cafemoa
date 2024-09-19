@@ -5,7 +5,7 @@ const getArticlesByAuthorId = async authorId => {
   return response.data;
 };
 
-const getFollowers = async userId => {
+const getFollowersAndFollowing = async userId => {
   const response = await DATA_API.get(`/users/${userId}`);
   const user = response.data;
 
@@ -16,7 +16,14 @@ const getFollowers = async userId => {
     }),
   );
 
-  return followers;
+  const following = await Promise.all(
+    user.following.map(async followingId => {
+      const followingResponse = await DATA_API.get(`/users/${followingId}`);
+      return followingResponse.data;
+    }),
+  );
+
+  return { followers, following };
 };
 
 const getUserById = async userId => {
@@ -29,6 +36,6 @@ const updateUser = async (userId, data) => {
   return response.data;
 };
 
-const api = { getArticlesByAuthorId, getFollowers, getUserById, updateUser };
+const api = { getArticlesByAuthorId, getFollowersAndFollowing, getUserById, updateUser };
 
 export default api;
