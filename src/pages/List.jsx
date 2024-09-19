@@ -51,26 +51,24 @@ const List = () => {
   }, [loading, hasMore]);
   //추후 IntersectionObserver 로 변경하기,,
 
+  //가나다순 버튼
+  const alignmentBtn = () => {
+    let articleData = [...articles];
+    articleData.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1));
+    setArticles(articleData);
+  };
+
+  //최신순
+  const latestBtn = () => {
+    let articleData = [...articles];
+    articleData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    setArticles(articleData);
+  };
+
   return (
     <div>
-      <button
-        onClick={() => {
-          let articleData = [...articles];
-          articleData.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1));
-          setArticles(articleData);
-        }}
-      >
-        가나다순
-      </button>
-      <button
-        onClick={() => {
-          let articleData = [...articles];
-          articleData.sort((a, b) => new Date(b.date) - new Date(a.date));
-          setArticles(articleData);
-        }}
-      >
-        최신순
-      </button>
+      <button onClick={alignmentBtn}>가나다순</button>
+      <button onClick={latestBtn}>최신순</button>
       <ul className="grid grid-cols-4 sm:grid-cols-2">
         {articles.map((article, index) => {
           return <SpotListItem key={index} data={article} />;

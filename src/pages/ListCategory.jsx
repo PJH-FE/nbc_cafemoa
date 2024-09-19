@@ -7,7 +7,8 @@ const ListCategory = () => {
   const queryParams = new URLSearchParams(location.search);
   const cateInLists = JSON.parse(decodeURIComponent(queryParams.get('cateInLists')));
 
-  //최신순 정렬
+  console.log('cateInLists', cateInLists);
+
   return (
     <div>
       <ul className="grid grid-cols-4 sm:grid-cols-2">

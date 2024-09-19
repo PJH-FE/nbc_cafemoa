@@ -1,35 +1,33 @@
-import { useState, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import SpotListItem from './SpotListItem';
 import { ChevronRight } from 'lucide-react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { DATA_API } from '../api/api';
-
-//데이터 가져오기
-const getArticle = async () => {
-  const { data } = await DATA_API.get('/articles');
-  return data;
-};
+import { useDetailItemClick } from '../utils/goDetail';
 
 const MainRecommend = () => {
   const [cateInLists, setCateInLists] = useState([]); //필터링된 리스트 상태저장
+  const detailItemClick = useDetailItemClick();
   const navigate = useNavigate();
 
   //어떤 데이터 쓸건지 지정
   const {
     data: articleData,
-    isPending: articleIsPending,
-    isError: articleIsError,
+    isPending,
+    isError,
   } = useQuery({
     queryKey: ['articles'],
-    queryFn: getArticle,
+    queryFn: async () => {
+      const { data } = await DATA_API.get('/articles');
+      return data;
+    },
   });
 
-  if (articleIsPending) return <div>loding,,</div>;
-  if (articleIsError) return <div>error,,</div>;
+  if (isPending) return <div>loding,,</div>;
+  if (isError) return <div>error,,</div>;
 
   // 현재 날짜 가져오기
   const today = new Date();
@@ -74,7 +72,9 @@ const MainRecommend = () => {
               <SwiperSlide
                 key={index}
                 className="swiper-slide swiper-slide-next text-center text-[18px] bg-slate-50 w-[80%] flex justify-center items-center"
+                onClick={() => detailItemClick(data.id)}
               >
+                <div>{data.id}</div>
                 <div>{data.title}</div>
                 <div>{data.region}</div>
                 <div>{data.date}</div>

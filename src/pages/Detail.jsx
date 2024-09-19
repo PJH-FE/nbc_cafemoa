@@ -5,7 +5,7 @@ import Comments from '../components/Comments';
 
 const Detail = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const nowPostId = searchParams.get('post_id');
+  const nowPostId = searchParams.get('article_id');
   const { data: detailData, isPending, isError } = useFetchDetail(nowPostId);
   const delPost = useDeletePost();
   const navigate = useNavigate();
@@ -26,12 +26,12 @@ const Detail = () => {
   return (
     <>
       <div>
-        <div className="flex items-center font-bold text-3xl pb-4 border-b-2 border-black">
+        <div className="flex items-center pb-4 text-3xl font-bold border-b-2 border-black">
           <span>[{detailData.category}]</span>
           {detailData.title}
         </div>
-        <div className="flex flex-col py-2 px-3">
-          <div className="ml-auto pb-2 text-gray-600">{detailData.date} / 작성자</div>
+        <div className="flex flex-col px-3 py-2">
+          <div className="pb-2 ml-auto text-gray-600">{detailData.date} / 작성자</div>
           <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
         </div>
 
