@@ -5,6 +5,7 @@ import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
 import classNames from 'classnames';
+import SearchInput from '../SearchInput';
 
 const Header = () => {
   const { userInfo, removeUserInfo } = useUserStore();
@@ -72,9 +73,8 @@ const Header = () => {
         </nav>
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
           <div className="cursor-pointer">
-            <form>
-              <input type="text" value={searchKeyword} onChange={handleChange} placeholder="검색" />
-            </form>
+            <Search />
+            <SearchInput />
           </div>
           {!userInfo ? (
             <>
