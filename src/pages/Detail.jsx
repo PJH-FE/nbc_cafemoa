@@ -1,52 +1,68 @@
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
-import {
-  useAddBookmark,
-  useDeletePost,
-  useFetchDetail,
-  useFetchUser,
-  useRemoveBookmark,
-} from '../queries/boardQueries';
+import { useAddBookmark, useDeletePost, useFetchDetail, useRemoveBookmark } from '../queries/boardQueries';
 import Map from '../components/board/Map';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DATA_API } from '../api/api';
+import useUserStore from '../zustand/bearStore';
 
 const Detail = () => {
-  const userId = JSON.parse(localStorage.getItem('user-storage')).state.userInfo?.userId;
-  const [userNickname, setUserNickname] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
-  const nowPostId = searchParams.get('article_id');
-  const { data: detailData, isPending, isError } = useFetchDetail(nowPostId);
-  const { data: userData } = useFetchUser(userId);
-  const addBookmark = useAddBookmark();
-  const removeBookmark = useRemoveBookmark();
+  const [searchParams] = useSearchParams();
+  const nowArticleId = searchParams.get('article_id');
+  const { data: detailData, isPending, isError } = useFetchDetail(nowArticleId);
+
   const delPost = useDeletePost();
   const navigate = useNavigate();
 
+  const [WriterNickname, setWriterNickname] = useState('작성자');
+
+  // 로그인 한 유저 정보
+  const userInfo = useUserStore(state => state.getUserInfo());
+  const [loginUserData, setLoginUserData] = useState();
+
+  const addBookmark = useAddBookmark(setLoginUserData);
+  const removeBookmark = useRemoveBookmark(setLoginUserData);
+
+  useEffect(() => {
+    if (userInfo) {
+      const userId = userInfo.userId;
+      const getUserDataId = async () => {
+        const { data: userData, isError } = await DATA_API.get(`/users?user_id=${userId}`);
+        if (isError) return;
+        setLoginUserData({
+          user_id: userData[0].id,
+          isBookmarked: userData[0].bookmarked.includes(nowArticleId),
+        });
+      };
+      getUserDataId();
+    }
+  }, []);
+
   if (isPending) return;
   if (isError) return;
+
   const cafeData = { cafe_name: detailData?.cafe_name, cafe_address: detailData?.cafe_address };
 
-  const writerData = detailData?.author_id;
-
-  const getNickname = async () => {
-    const { data: userNickname, isError: userMissing } = await DATA_API.get(`/users/${writerData}`);
-
-    setUserNickname(userNickname.user_nickname);
+  // 작성자 ID 이용하여 닉네임 불러오기
+  const userData = detailData?.author_id;
+  const getWriterNickname = async () => {
+    const { data: userNickname, isError } = await DATA_API.get(`/users/${userData}`);
+    if (isError) return;
+    setWriterNickname(userNickname.user_nickname);
   };
-  getNickname();
-
-  const isBookmarked = userData.bookmarked.includes(nowPostId);
-  const clickBookmark = bookmarkEvent => {
-    bookmarkEvent.mutate({ id: userId, articleId: nowPostId });
-  };
+  getWriterNickname();
 
   // 결과 삭제
   const deletePostHandler = () => {
     const confirmDelete = confirm('정말 삭제하시겠습니까?');
     if (confirmDelete) {
-      delPost.mutate(nowPostId);
+      delPost.mutate(nowArticleId);
       navigate('/');
     }
+  };
+
+  // 북마크 저장/삭제
+  const clickBookmark = async bookmarkEvent => {
+    await bookmarkEvent.mutate({ id: loginUserData.user_id, articleId: nowArticleId });
   };
 
   return (
@@ -56,27 +72,31 @@ const Detail = () => {
           <span>[{detailData.category}]</span>
           {detailData.title}
 
-          {isBookmarked ? (
-            <button
-              onClick={() => {
-                clickBookmark(removeBookmark);
-              }}
-            >
-              북마크 함
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                clickBookmark(addBookmark);
-              }}
-            >
-              북마크 안 함
-            </button>
+          {userInfo && (
+            <>
+              {loginUserData?.isBookmarked ? (
+                <button
+                  onClick={() => {
+                    clickBookmark(removeBookmark);
+                  }}
+                >
+                  북마크 함
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    clickBookmark(addBookmark);
+                  }}
+                >
+                  북마크 안 함
+                </button>
+              )}
+            </>
           )}
         </div>
         <div className="flex flex-col py-2 px-3">
           <div className="ml-auto pb-2 text-gray-600">
-            {detailData.date} / {userNickname}
+            {detailData.date} / {WriterNickname}
           </div>
           <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
         </div>
@@ -85,7 +105,7 @@ const Detail = () => {
 
         <Map cafeData={cafeData} />
 
-        <Link to={`/edit?article_id=${nowPostId}`}>수정</Link>
+        <Link to={`/edit?article_id=${nowArticleId}`}>수정</Link>
 
         <button
           onClick={() => {
