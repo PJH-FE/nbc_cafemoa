@@ -10,6 +10,7 @@ import Home from '../pages/Home';
 import Bookmark from '../pages/Bookmark';
 import Edit from '../pages/Edit';
 import Layout from '../components/common/Layout';
+import ListCategory from '../pages/ListCategory';
 
 const Router = () => {
   return (
@@ -34,6 +35,7 @@ const Router = () => {
             <Route path="/signup" element={<SignUp />} />
 
             <Route path="/list" element={<List />} />
+            <Route path="/list-category" element={<ListCategory />} />
             <Route path="/search-results" element={<Search />} />
             <Route path="/detail" element={<Detail />} />
             <Route path="/" element={<Home />} />
