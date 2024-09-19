@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { cateListHandle } from '../utils/utils';
+import { DATA_API } from '../api/api';
 
 const category = [
   '모각코',
@@ -50,7 +51,7 @@ const MainCategory = () => {
   //article 데이터 전체 가져오기
   useEffect(() => {
     const getArticle = async () => {
-      const { data: articleData } = await axios.get('http://localhost:5000/article');
+      const { data: articleData } = await DATA_API.get('/articles');
       setArticleAllData(articleData);
     };
     getArticle();
