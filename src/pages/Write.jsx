@@ -1,4 +1,10 @@
+import ToastForm from '../components/board/ToastForm';
+
 const Write = () => {
-  return <div>Write</div>;
+  return (
+    <>
+      <ToastForm />
+    </>
+  );
 };
 export default Write;
