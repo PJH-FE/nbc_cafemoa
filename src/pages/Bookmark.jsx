@@ -1,33 +1,40 @@
 import { useQuery } from '@tanstack/react-query';
 import { DATA_API } from '../api/api';
 import { Link } from 'react-router-dom';
+import useUserStore from '../zustand/bearStore';
+import { useState } from 'react';
 
 const Bookmark = () => {
-  const getBookmarks = async () => {
-    const result = await DATA_API.get(`/users?user_id=asy13&_embed=articles`);
+  const [articles, setArticles] = useState([]);
+  const { getUserInfo } = useUserStore();
+  const { bookmarked } = getUserInfo();
+
+  const apiHost = async () => {
+    const result = await DATA_API.get(`/articles`);
+    setArticles(result.data);
     return result.data;
   };
 
   const {
-    data: bookmarks,
+    data: allArticles,
     isPending,
     isError,
   } = useQuery({
-    queryKey: ['bookmarkedArticles'],
-    queryFn: getBookmarks,
+    queryKey: ['articles'],
+    queryFn: apiHost,
   });
 
   if (isPending) return <div>로딩중입니다...</div>;
   if (isError) return <div>에러가 발생했습니다...</div>;
 
-  const bookmarked = bookmarks[0].bookmarked;
-  const arr = bookmarks[0].articles.filter(article => {
+  const arr = articles.filter(article => {
     if (bookmarked.some(id => id === article.id)) {
       return true;
     } else {
       return false;
     }
   });
+
   return (
     <div className="px-10">
       <h1 className="mt-2 mb-3 text-xl font-bold">북마크한 게시물</h1>

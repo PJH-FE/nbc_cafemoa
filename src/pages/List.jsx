@@ -8,9 +8,7 @@ const List = () => {
   const [hasMore, setHasMore] = useState(true);
   const itemsPerPage = 12;
 
-  const [endIndex, setEndIndex] = useState(12);
-
-  // console.log('articles', articles);
+  const [endIndex, setEndIndex] = useState(itemsPerPage);
 
   // 스크롤 이벤트
   const handleScroll = () => {

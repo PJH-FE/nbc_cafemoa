@@ -67,6 +67,7 @@ const MainCategory = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading articles</div>;
+
   // console.log('category', category);
   return (
     <div className="px-[20px] py-[50px] flex flex-col gap-[20px] max-w-[1500px] w-full mx-auto">
