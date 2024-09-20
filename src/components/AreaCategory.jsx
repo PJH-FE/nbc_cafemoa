@@ -64,22 +64,22 @@ const AreaCategory = () => {
 
   //article 데이터 전체 가져오기
   const {
-    data: articleData,
+    data: cafedbData,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ['articles'],
+    queryKey: ['cafedb'],
     queryFn: async () => {
-      const { data } = await DATA_API.get('/articles');
+      const { data } = await DATA_API.get('/cafedb');
       return data;
     },
   });
 
   useEffect(() => {
-    if (articleData) {
-      setArticleAllData(articleData);
+    if (cafedbData) {
+      setArticleAllData(cafedbData);
     }
-  }, [articleData]);
+  }, [cafedbData]);
 
   //util : 필터링 함수호출
   const onClickfilter = area => {

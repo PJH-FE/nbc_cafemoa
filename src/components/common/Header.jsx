@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AlignJustify, X, Search, LayoutGrid, User, Bookmark } from 'lucide-react';
+import { AlignJustify, X, Search, LayoutGrid, User, Bookmark, MessagesSquare } from 'lucide-react';
 import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
@@ -25,6 +25,11 @@ const Header = () => {
       icon: <LayoutGrid />,
     },
     {
+      title: '카페로그',
+      link: '/users-commutity',
+      icon: <MessagesSquare />,
+    },
+    {
       title: '내프로필',
       link: '/mypage',
       icon: <User />,
@@ -45,13 +50,13 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
-      <header className="flex lg:justify-between items-center lg:gap-3 px-6 h-[74px]">
-        <div className="flex gap-2 sm:flex-[.55] sm:justify-between">
+      <header className="flex lg:justify-between items-center lg:gap-[30px] px-6 h-[74px]">
+        <div className="flex gap-[20px] items-center sm:flex-[.55] sm:justify-between">
           <div onClick={toggleMenu} className="cursor-pointer">
             {isMenuOpen ? <X /> : <AlignJustify />}
           </div>
           <Link to="/">
-            <div className="">logo</div>
+            <div className="font-hakgyo text-[1.5rem]">CAFEMOA</div>
           </Link>
         </div>
         <nav className="flex-1 hidden lg:block" style={{ height: 'inherit' }}>

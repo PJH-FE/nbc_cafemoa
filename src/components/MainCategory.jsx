@@ -5,13 +5,6 @@ import { DATA_API } from '../api/api';
 import { useQuery } from '@tanstack/react-query';
 
 const category = [
-  // '모각코',
-  // '뷰맛집',
-  // '24시',
-  // '디저트',
-  // '애견동반',
-  // '한옥',
-  // '분좋카',
   {
     title: '모각코',
     icon: '💻',
@@ -50,22 +43,22 @@ const MainCategory = () => {
 
   //article 데이터 전체 가져오기
   const {
-    data: articleData,
+    data: cafedbData,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ['articles'],
+    queryKey: ['cafedb'],
     queryFn: async () => {
-      const { data } = await DATA_API.get('/articles');
+      const { data } = await DATA_API.get('/cafedb');
       return data;
     },
   });
 
   useEffect(() => {
-    if (articleData) {
-      setArticleAllData(articleData);
+    if (cafedbData) {
+      setArticleAllData(cafedbData);
     }
-  }, [articleData]);
+  }, [cafedbData]);
 
   //util : 필터링 함수호출
   const onClickfilter = category => {
@@ -75,6 +68,7 @@ const MainCategory = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading articles</div>;
 
+  // console.log('category', category);
   return (
     <div className="px-[20px] py-[50px] flex flex-col gap-[20px] max-w-[1500px] w-full mx-auto">
       {/* <h2>이런 카페 어때요</h2> */}
