@@ -56,7 +56,7 @@ const Header = () => {
             {isMenuOpen ? <X /> : <AlignJustify />}
           </div>
           <Link to="/">
-            <div className="font-hakgyo text-[1.5rem]">CAFEMOA</div>
+            <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
           </Link>
         </div>
         <nav className="flex-1 hidden lg:block" style={{ height: 'inherit' }}>
@@ -77,7 +77,7 @@ const Header = () => {
             })}
           </ul>
         </nav>
-        <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
+        <div className="flex gap-2 items-center sm:flex-[.45] sm:justify-end">
           <div className="cursor-pointer">
             <Search />
             <SearchInput />
