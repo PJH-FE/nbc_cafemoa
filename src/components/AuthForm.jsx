@@ -94,6 +94,7 @@ const AuthForm = ({ mode }) => {
           placeholder="아이디"
           value={formData.id}
           onChange={handleChange}
+          ref={idRef}
           required
         />
         <input
@@ -102,6 +103,7 @@ const AuthForm = ({ mode }) => {
           placeholder="비밀번호"
           value={formData.password}
           onChange={handleChange}
+          ref={passwordRef}
           required
         />
         {mode === 'signup' && (
@@ -111,6 +113,7 @@ const AuthForm = ({ mode }) => {
             placeholder="닉네임"
             value={formData.nickname}
             onChange={handleChange}
+            ref={nicknameRef}
             required
           />
         )}
