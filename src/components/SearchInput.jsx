@@ -19,8 +19,14 @@ const SearchInput = () => {
   };
 
   return (
-    <form onSubmit={handleSearchSubmit}>
-      <input type="text" value={searchKeyword} onChange={handleInputChange} placeholder="검색" />
+    <form onSubmit={handleSearchSubmit} className="flex">
+      <input
+        className="focus: outline-none"
+        type="text"
+        value={searchKeyword}
+        onChange={handleInputChange}
+        placeholder="검색"
+      />
       <button>
         <Search />
       </button>

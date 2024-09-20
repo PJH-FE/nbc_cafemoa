@@ -73,7 +73,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
-          <div className="cursor-pointer flex flex-row">
+          <div className="cursor-pointer flex flex-row border rounded px-3">
             <SearchInput />
           </div>
           {!userInfo ? (
