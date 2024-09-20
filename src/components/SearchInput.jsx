@@ -14,6 +14,8 @@ const SearchInput = () => {
     e.preventDefault();
     if (searchKeyword) {
       navigate(`/search-results?keyword=${searchKeyword}`);
+    } else {
+      alert('검색어를 입력해주세요.');
     }
     setSearchKeyword('');
   };
