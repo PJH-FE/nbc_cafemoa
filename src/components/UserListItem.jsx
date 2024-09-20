@@ -2,12 +2,12 @@ import React from 'react';
 import { useDetailItemClick } from '../utils/goDetail';
 import { Bookmark } from 'lucide-react';
 
-const SpotListItem = ({ data }) => {
-  const { cafeInfoItemClick } = useDetailItemClick();
+const UserListItem = ({ data }) => {
+  const { detailItemClick } = useDetailItemClick();
   return (
     <div
       className="flex flex-col gap-[10px] w-full h-full cursor-pointe "
-      onClick={() => cafeInfoItemClick(data.id)}
+      onClick={() => detailItemClick(data.id)}
     >
       <div className="relative w-full h-full max-h-[400px]">
         <img className="object-cover w-full h-full" src={data.thumbnail} alt={data.title} />
@@ -24,4 +24,4 @@ const SpotListItem = ({ data }) => {
   );
 };
 
-export default SpotListItem;
+export default UserListItem;

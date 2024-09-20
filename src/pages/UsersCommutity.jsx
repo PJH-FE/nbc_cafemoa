@@ -1,8 +1,9 @@
-import SpotListItem from '../components/SpotListItem';
 import { useState, useEffect } from 'react';
 import { DATA_API } from '../api/api';
+import UserListItem from '../components/UserListItem';
+import { useDetailItemClick } from '../utils/goDetail';
 
-const List = () => {
+const UsersCommutity = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -71,11 +72,11 @@ const List = () => {
       </div>
       <ul className="grid gap-[20px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
         {articles.map((article, index) => {
-          return <SpotListItem key={index} data={article} />;
+          return <UserListItem key={index} data={article} />;
         })}
       </ul>
       {loading && <div>Loading...</div>}
     </div>
   );
 };
-export default List;
+export default UsersCommutity;

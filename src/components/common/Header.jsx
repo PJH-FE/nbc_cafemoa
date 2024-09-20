@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AlignJustify, X, Search, LayoutGrid, User, Bookmark } from 'lucide-react';
+import { AlignJustify, X, Search, LayoutGrid, User, Bookmark, MessagesSquare } from 'lucide-react';
 import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
@@ -23,6 +23,11 @@ const Header = () => {
       title: '피드보기',
       link: '/list',
       icon: <LayoutGrid />,
+    },
+    {
+      title: '카페로그',
+      link: '/users-commutity',
+      icon: <MessagesSquare />,
     },
     {
       title: '내프로필',

@@ -1,4 +1,70 @@
 {
+  "cafedb": [
+    {
+      "id": "cafedb01",
+      "category": "애견동반",
+      "title": "진스바바",
+      "cafe_address": "서울 중랑구 중랑천로 64 1층",
+      "region": "서울",
+      "sns": "https://www.instagram.com/jins_barba",
+      "phone": "0507-2093-6487",
+      "openingHours": {
+        "월": "08:30 ~ 19:00",
+        "화": "08:30 ~ 19:00",
+        "수": "08:30 ~ 19:00",
+        "목": "08:30 ~ 22:00",
+        "금": "08:30 ~ 22:00",
+        "토": "12:00 ~ 19:00",
+        "일": "정기휴무 (매주 일요일)"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240113_115%2F17051301576590JLot_JPEG%2FIMG_1369.jpeg"
+    },
+    {
+      "id": "cafedb02",
+      "category": "디저트",
+      "title": "타타스베이글 진주점",
+      "cafe_address": "경남 진주시 월아산로 2066 1층, 2층",
+      "region": "경남",
+      "sns": "https://www.instagram.com/tatas_jinju",
+      "phone": "0507-1856-7843",
+      "openingHours": {
+        "월": "10:00 ~ 20:30",
+        "화": "10:00 ~ 20:30",
+        "수": "10:00 ~ 20:30",
+        "목": "10:00 ~ 20:30",
+        "금": "10:00 ~ 20:30",
+        "토": "09:00 ~ 20:30",
+        "일": "09:00 ~ 20:30"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240220_10%2F1708419989935Jq6h6_JPEG%2FIMG_4165.jpeg"
+    },
+    {
+      "id": "cafedb03",
+      "category": "뷰맛집",
+      "title": "웨이브온 커피",
+      "cafe_address": "부산 기장군 장안읍 해맞이로 286",
+      "region": "부산",
+      "sns": "https://www.instagram.com/waveoncoffee_official/",
+      "phone": "051-727-1660",
+      "openingHours": {
+        "매일": "10:00 ~ 24:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210202_56%2F1612276103424b8MdS_JPEG%2F56O1S-ngX6WmM6ppt11Q7Fy6.jpg"
+    },
+    {
+      "id": "cafedb04",
+      "category": "뷰맛집",
+      "title": "웨이브온 커피",
+      "cafe_address": "부산 기장군 장안읍 해맞이로 286",
+      "region": "부산",
+      "sns": "https://www.instagram.com/waveoncoffee_official/",
+      "phone": "051-727-1660",
+      "openingHours": {
+        "매일": "10:00 ~ 24:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210202_56%2F1612276103424b8MdS_JPEG%2F56O1S-ngX6WmM6ppt11Q7Fy6.jpg"
+    }
+  ],
   "articles": [
     {
       "id": "101",
