@@ -3,10 +3,14 @@ import { login, register } from '../api/AuthClient';
 import useUserStore from '../zustand/bearStore';
 import { useNavigate } from 'react-router-dom';
 import { DATA_API } from '../api/api';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { getUserByMoneyPullId } from '../services/userService';
 
 const AuthForm = ({ mode }) => {
+  const idRef = useRef(null);
+  const passwordRef = useRef(null);
+  const nicknameRef = useRef(null);
+
   const [formData, setFormData] = useState({
     id: '',
     password: '',
@@ -57,12 +61,29 @@ const AuthForm = ({ mode }) => {
     return data;
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    mutate(formData);
-  };
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (!formData.id || formData.id.length < 4) {
+      alert('아이디는 최소 4글자 이상이여야 합니다.');
+      idRef.current.focus();
+      return;
+    }
+    if (!formData.password || formData.password.length < 4) {
+      alert('비밀번호는 최소 4글자 이상이여야 합니다.');
+      passwordRef.current.focus();
+      return;
+    }
+    if (mode === 'signup' && (!formData.nickname || formData.nickname.length > 2)) {
+      alert('닉네임은 최소 2글자 이상이여야 합니다.');
+      nicknameRef.current.focus();
+      return;
+    }
+    mutate(formData);
   };
   return (
     <form onSubmit={handleSubmit}>
