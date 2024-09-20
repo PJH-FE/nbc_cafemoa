@@ -56,6 +56,7 @@ const CafeInfo = () => {
           </div>
           <Map cafeData={cafeData} />
         </div>
+        <Comments nowArticleId={nowCafeId} />
       </div>
     </>
   );
