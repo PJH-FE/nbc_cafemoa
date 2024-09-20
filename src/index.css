@@ -103,3 +103,12 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+@layer components {
+  .label-primary {
+    @apply text-gray-600 text-sm mb-2;
+  }
+  .input-primary {
+    @apply border rounded w-full py-2 px-3 mb-4;
+  }
+}
