@@ -11,13 +11,16 @@ const SearchResults = () => {
 
   if (isPending) return <p>로딩중</p>;
   if (error) return <p>에러: {error.message}</p>;
-
+  console.log('articles', articles);
   return (
     <div>
+      <p>{articles.length}개의 게시물이 있습니다.</p>
       <ul>
-        {articles.map(article => (
-          <li key={article.id}>{article.title}</li>
-        ))}
+        {articles.length === 0 ? (
+          <div>검색 결과가 없습니다.</div>
+        ) : (
+          articles.map(article => <li key={article.id}>{article.title}</li>)
+        )}
       </ul>
     </div>
   );
