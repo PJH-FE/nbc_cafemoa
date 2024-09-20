@@ -101,7 +101,9 @@ const Detail = () => {
           )}
         </div>
         <div className="flex flex-col px-3 py-2">
-          <div className="pb-2 ml-auto text-gray-600">{detailData.date} / 작성자</div>
+          <div className="pb-2 ml-auto text-gray-600">
+            {detailData.date} / {WriterNickname}
+          </div>
           <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
         </div>
         <div>{detailData.cafe_name}</div>

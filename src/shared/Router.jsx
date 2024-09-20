@@ -12,6 +12,7 @@ import Edit from '../pages/Edit';
 import Layout from '../components/common/Layout';
 import ListCategory from '../pages/ListCategory';
 import SearchResults from '../pages/SearchResults';
+import CafeInfo from '../pages/CafeInfo';
 
 const Router = () => {
   return (
@@ -39,6 +40,7 @@ const Router = () => {
             <Route path="/list-category" element={<ListCategory />} />
             <Route path="/search-results" element={<SearchResults />} />
             <Route path="/detail" element={<Detail />} />
+            <Route path="/cafeinfo" element={<CafeInfo />} />
             <Route path="/" element={<Home />} />
           </Route>
         </Routes>
