@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { DATA_API } from '../api/api';
 import { useDetailItemClick } from '../utils/goDetail';
+import { Bookmark } from 'lucide-react';
 
 const MainRecommend = () => {
   const [cateInLists, setCateInLists] = useState([]); //필터링된 리스트 상태저장
@@ -49,7 +50,7 @@ const MainRecommend = () => {
   };
 
   return (
-    <div className="flex flex-col gap-[20px] p-[20px] max-w-[1500px] w-full mx-auto">
+    <div className="flex flex-col gap-[40px] px-[20px] py-[100px] max-w-[1500px] w-full mx-auto ">
       <div className="flex items-center justify-between">
         <h2 className="text-[20px]">새로운 카페</h2>
         <span className="flex items-center gap-[5px] cursor-pointer" onClick={openListHandle}>
@@ -58,27 +59,39 @@ const MainRecommend = () => {
         </span>
       </div>
       {/* pc */}
-      <div className="hidden lg:flex w-[100%] gap-[20px]">
-        {top4LatestSpots.map(data => {
-          // 클릭시 해당디테일페이지로 이동
-          return <SpotListItem key={data.id} data={data} />;
-        })}
+      <div className="hidden lg:block">
+        <ul className="grid grid-cols-4 w-full gap-[20px]">
+          {top4LatestSpots.map(data => {
+            // 클릭시 해당디테일페이지로 이동
+            return <SpotListItem key={data.id} data={data} />;
+          })}
+        </ul>
       </div>
       {/* mo */}
-      <div className="pl-[12vw] overflow-hidden hidden sm:block">
-        <Swiper slidesPerView={'auto'} spaceBetween={20} className="mySwiper w-[100%] h-[800px]">
+      <div className="hidden overflow-hidden sm:block">
+        <Swiper slidesPerView={'auto'} spaceBetween={20} className="mySwiper w-[100%] h-[600px]">
           {top4LatestSpots.map((data, index) => {
             return (
               <SwiperSlide
                 key={index}
-                className="swiper-slide swiper-slide-next text-center text-[18px] bg-slate-50 w-[80%] flex justify-center items-center"
-                onClick={() => detailItemClick(data.id)}
+                className="swiper-slide swiper-slide-next text-center text-[18px] w-[80%] flex justify-center items-center"
               >
-                <div>{data.id}</div>
-                <div>{data.title}</div>
-                <div>{data.region}</div>
-                <div>{data.date}</div>
-                <div>{data.category}</div>
+                <div
+                  className="flex flex-col gap-[10px] w-full h-full cursor-pointe "
+                  onClick={() => detailItemClick(data.id)}
+                >
+                  <div className="relative w-full h-full max-h-[500px]">
+                    <img className="object-cover w-full h-full" src={data.thumbnail} alt={data.title} />
+                    <span className="absolute top-[10px] right-[10px]">
+                      <Bookmark />
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <h2 className="font-semibold">{data.title}</h2>
+                    <p className="font-normal text-slate-500 text-[13px]">{data.region}</p>
+                  </div>
+                  <span className="text-left">{data.category}</span>
+                </div>
               </SwiperSlide>
             );
           })}

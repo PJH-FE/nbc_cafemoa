@@ -42,15 +42,15 @@ const MainBanner = () => {
   if (isError) return <div>Error loading articles</div>;
 
   return (
-    <div className="py-[40px]">
-      <h2 className="pl-[12vw] py-[20px] text-xl">오늘의 추천</h2>
-      <div className="pl-[12vw] overflow-hidden">
+    <div className="py-[40px] bg-[#F4EFEB]">
+      <h2 className="lg:pl-[12vw] sm:pl-[20px] py-[40px] text-xl">오늘의 추천</h2>
+      <div className="lg:pl-[12vw] sm:pl-[20px] overflow-hidden">
         <Swiper slidesPerView={'auto'} spaceBetween={20} className="mySwiper w-[100%] h-[800px]">
           {mainBannerCate.map((cate, index) => {
             return (
               <SwiperSlide
                 key={index}
-                className="text-center text-[18px] bg-slate-50 w-[80%] flex justify-center items-center"
+                className="text-center text-[18px] bg-slate-50 lg:w-[80%] sm:w-[90%] flex justify-center items-center"
                 onClick={() => onClickfilter(cate)}
               >
                 {cate}

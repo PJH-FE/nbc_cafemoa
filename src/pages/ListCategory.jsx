@@ -6,11 +6,9 @@ const ListCategory = () => {
   const queryParams = new URLSearchParams(location.search);
   const cateInLists = JSON.parse(decodeURIComponent(queryParams.get('cateInLists')));
 
-  console.log('cateInLists', cateInLists);
-
   return (
-    <div>
-      <ul className="grid grid-cols-4 p-[20px] sm:grid-cols-2">
+    <div className="max-w-[1500px] my-0 mx-[auto]">
+      <ul className="grid gap-[20px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
         {cateInLists.map(data => {
           return <SpotListItem key={data.id} data={data} />;
         })}

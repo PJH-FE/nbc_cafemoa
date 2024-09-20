@@ -64,10 +64,12 @@ const List = () => {
   };
 
   return (
-    <div>
-      <button onClick={alignmentBtn}>가나다순</button>
-      <button onClick={latestBtn}>최신순</button>
-      <ul className="grid gap-[20px] grid-cols-4 sm:grid-cols-2 sm:gap-[10px]">
+    <div className="max-w-[1500px] my-0 mx-[auto]">
+      <div className="flex justify-end gap-5 p-5">
+        <button onClick={alignmentBtn}>가나다순</button>
+        <button onClick={latestBtn}>최신순</button>
+      </div>
+      <ul className="grid gap-[20px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
         {articles.map((article, index) => {
           return <SpotListItem key={index} data={article} />;
         })}
