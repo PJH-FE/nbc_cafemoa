@@ -10,8 +10,6 @@ const List = () => {
 
   const [endIndex, setEndIndex] = useState(8);
 
-  console.log('articles', articles);
-
   // 스크롤 이벤트
   const handleScroll = () => {
     if (

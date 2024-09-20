@@ -1,14 +1,29 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DATA_API } from '../api/api';
+import useUserStore from '../zustand/bearStore';
 
-const Comments = () => {
+const Comments = ({ nowArticleId }) => {
   const queryClient = useQueryClient();
 
   const [commentTexts, setCommentTexts] = useState(''); // 새로운 댓글 내용
-  const [selectedPostId, setSelectedPostId] = useState('ceda');
   const [editingCommentId, setEditingCommentId] = useState(null); // 수정 중인 댓글 ID
   const [editContent, setEditContent] = useState(''); // 수정할 댓글 내용
+
+  // 로그인 한 유저 정보
+  const userInfo = useUserStore(state => state.getUserInfo());
+  const [userId, setUserId] = useState();
+  useEffect(() => {
+    if (userInfo) {
+      const userId = userInfo.user_id;
+      const getUserDataId = async () => {
+        const { data: userData, isError } = await DATA_API.get(`/users?user_id=${userId}`);
+        if (isError) return;
+        setUserId(userData[0].id);
+      };
+      getUserDataId();
+    }
+  }, []);
 
   // useQuery 훅을 사용하여 comments 데이터 가져오기
   const {
@@ -16,18 +31,18 @@ const Comments = () => {
     isPending: isCommentsPending,
     isError: isCommentsError,
   } = useQuery({
-    queryKey: ['comments', selectedPostId],
+    queryKey: ['comments', nowArticleId],
     queryFn: async () => {
-      const res = await DATA_API.get(`/comments?postId=${selectedPostId}`);
+      const res = await DATA_API.get(`/comments?postId=${nowArticleId}`);
       return res.data;
     },
-    enabled: !!selectedPostId,
+    enabled: !!nowArticleId,
   });
 
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
     mutationFn: async comment => {
-      const res = await DATA_API.get('/comments', comment);
+      const res = await DATA_API.post('/comments', comment);
       return res.data;
     },
     onSuccess: () => {
@@ -38,11 +53,11 @@ const Comments = () => {
   // useMutation 훅을 사용하여 editComment 함수 정의
   const { mutate: editComment } = useMutation({
     mutationFn: async updatedComment => {
-      const res = await DATA_API.get(`/comments/${updatedComment.id}`, updatedComment);
+      const res = await DATA_API.patch(`/comments/${updatedComment.id}`, updatedComment);
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['comments', selectedPostId]);
+      queryClient.invalidateQueries(['comments', nowArticleId]);
       setEditingCommentId(null);
     },
   });
@@ -53,14 +68,17 @@ const Comments = () => {
       await DATA_API.delete(`/comments/${id}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['comments', selectedPostId]);
+      queryClient.invalidateQueries(['comments', nowArticleId]);
     },
   });
 
   // 댓글 추가 처리
   const handleAddComment = () => {
-    if (!commentTexts) return; // 빈 내용 방지
-    addComment({ text: commentTexts, postId: 'ceda' });
+    if (!commentTexts) {
+      alert('댓글을 입력해주세요');
+      return;
+    } // 빈 내용 방지
+    addComment({ text: commentTexts, author_id: userId, postId: nowArticleId });
     setCommentTexts(''); // 입력 필드 초기화
   };
 
