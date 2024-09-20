@@ -28,7 +28,7 @@ const List = () => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const { data } = await DATA_API.get(`/articles?_limit=${endIndex}`);
+        const { data } = await DATA_API.get(`/cafedb?_limit=${endIndex}`);
         if (itemsPerPage < data.length) {
           setHasMore(false);
         }

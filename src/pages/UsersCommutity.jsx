@@ -70,7 +70,7 @@ const UsersCommutity = () => {
         <button onClick={alignmentBtn}>가나다순</button>
         <button onClick={latestBtn}>최신순</button>
       </div>
-      <ul className="grid gap-[20px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
+      <ul className="grid gap-[20px] grid-cols-1 p-5 pt-[3%]">
         {articles.map((article, index) => {
           return <UserListItem key={index} data={article} />;
         })}

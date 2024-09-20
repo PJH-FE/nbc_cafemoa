@@ -5,7 +5,6 @@ export const useDetailItemClick = () => {
 
   //커뮤니티 아이템클릭시 카페소개페이지 이동
   const detailItemClick = id => {
-    console.log('Article clicked:');
     navigate(`/detail?article_id=${id}`);
   };
 
