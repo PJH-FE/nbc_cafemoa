@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AlignJustify, X, Search, LayoutGrid, User, Bookmark, MessagesSquare } from 'lucide-react';
+import { AlignJustify, X, LayoutGrid, User, Bookmark, MessagesSquare } from 'lucide-react';
 import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
@@ -77,9 +77,8 @@ const Header = () => {
             })}
           </ul>
         </nav>
-        <div className="flex gap-2 items-center sm:flex-[.45] sm:justify-end">
-          <div className="cursor-pointer">
-            <Search />
+        <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
+          <div className="flex flex-row px-3 border rounded cursor-pointer">
             <SearchInput />
           </div>
           {!userInfo ? (
