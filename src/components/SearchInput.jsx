@@ -1,3 +1,4 @@
+import { Search } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +21,9 @@ const SearchInput = () => {
   return (
     <form onSubmit={handleSearchSubmit}>
       <input type="text" value={searchKeyword} onChange={handleInputChange} placeholder="검색" />
-      <button>검색</button>
+      <button>
+        <Search />
+      </button>
     </form>
   );
 };
