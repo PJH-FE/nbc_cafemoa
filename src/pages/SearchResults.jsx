@@ -12,7 +12,11 @@ const SearchResults = () => {
 
   return (
     <div>
-      <p>{articles.length}개의 게시물이 있습니다.</p>
+      <div>
+        <span>{searchKeyword}</span>에 대한
+        <span> {articles.length}</span>개의 게시물이 있습니다.
+      </div>
+
       <ul>
         {articles.length === 0 ? (
           <div>검색 결과가 없습니다.</div>
