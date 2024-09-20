@@ -4,6 +4,7 @@ import useUserStore from '../zustand/bearStore';
 import { useNavigate } from 'react-router-dom';
 import { DATA_API } from '../api/api';
 import { useState } from 'react';
+import { getUserByMoneyPullId } from '../services/userService';
 
 const AuthForm = ({ mode }) => {
   const [formData, setFormData] = useState({
@@ -20,11 +21,19 @@ const AuthForm = ({ mode }) => {
     mutationFn: userData => (mode === 'signup' ? register(userData) : login(userData)),
     onSuccess: async data => {
       if (mode === 'signup') {
-        await createUser({ id: formData.id, nickname: formData.nickname });
+        await createUser({ user_id: formData.id, user_nickname: formData.nickname });
         removeUserInfo();
         navigate('/login');
       } else {
-        setUserInfo(data);
+        const user = await getUserByMoneyPullId(data.userId);
+
+        if (!user) {
+          alert('사용자를 찾을 수 없습니다. 다시 회원가입 해주세요.');
+          navigate('/signup');
+          return;
+        }
+
+        setUserInfo(user);
         navigate('/');
       }
     },
@@ -34,8 +43,17 @@ const AuthForm = ({ mode }) => {
   });
 
   //db.json 등록
-  const createUser = async ({ id, nickname }) => {
-    const { data } = await DATA_API.post('/users', { id, nickname });
+  const createUser = async ({ user_id, user_nickname }) => {
+    const { data } = await DATA_API.post('/users', {
+      user_id,
+      user_nickname,
+      profile_image: '',
+      description: '',
+      following: [],
+      follower: [],
+      written_articles: [],
+      bookmarked: [],
+    });
     return data;
   };
 
