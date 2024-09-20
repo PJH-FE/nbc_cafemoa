@@ -28,7 +28,7 @@ const useUserStore = create(
     }),
     {
       name: 'user-storage',
-      getStorage: () => torage,
+      getStorage: () => localStorage,
     },
   ),
 );
