@@ -12,6 +12,7 @@ const Comments = ({ nowArticleId }) => {
 
   // 로그인 한 유저 정보
   const userInfo = useUserStore(state => state.getUserInfo());
+  console.log('userInfo', userInfo);
   const [userId, setUserId] = useState();
   useEffect(() => {
     if (userInfo) {
@@ -38,6 +39,7 @@ const Comments = ({ nowArticleId }) => {
     },
     enabled: !!nowArticleId,
   });
+  console.log('comments', comments);
 
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
@@ -165,23 +167,25 @@ const Comments = ({ nowArticleId }) => {
               ) : (
                 <div className="flex items-center justify-between w-full">
                   <p>{comment.text}</p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => {
-                        setEditingCommentId(comment.id);
-                        setEditContent(comment.content); // 수정 모드로 전환
-                      }}
-                      className="w-20 border-2 border-gray-400 rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white"
-                    >
-                      수정
-                    </button>
-                    <button
-                      onClick={() => handleDeleteComment(comment.id)}
-                      className="w-20 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white"
-                    >
-                      삭제
-                    </button>
-                  </div>
+                  {userInfo.id === comment.author_id && (
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          setEditingCommentId(comment.id);
+                          setEditContent(comment.content); // 수정 모드로 전환
+                        }}
+                        className="w-20 border-2 border-gray-400 rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                      >
+                        수정
+                      </button>
+                      <button
+                        onClick={() => handleDeleteComment(comment.id)}
+                        className="w-20 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white"
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

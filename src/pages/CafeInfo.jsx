@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useFetchCafeInfo } from '../queries/boardQueries';
 import Map from '../components/board/Map';
+import Comments from '../components/Comments';
 
 const CafeInfo = () => {
   const [searchParams] = useSearchParams();
