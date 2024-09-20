@@ -63,26 +63,34 @@ export const useFetchUser = id => {
 };
 
 // 북마크 등록
-export const useAddBookmark = () => {
+export const useAddBookmark = setLoginUserData => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async userData => {
       const response = await DATA_API.get(`/users/${userData.id}`);
-      const bookmarkList = response.data.bookmarked;
+      const bookmarkList = response.data?.bookmarked;
 
-      await DATA_API.patch(`/users/${userData.id}`, {
-        bookmarked: [...bookmarkList, userData.articleId],
-      });
+      !bookmarkList
+        ? await DATA_API.patch(`/users/${userData.id}`, {
+            bookmarked: [userData.articleId],
+          })
+        : await DATA_API.patch(`/users/${userData.id}`, {
+            bookmarked: [...bookmarkList, userData.articleId],
+          });
     },
     onSuccess: () => {
+      setLoginUserData(prevData => ({
+        ...prevData,
+        isBookmarked: true,
+      }));
       queryClient.invalidateQueries(queryKeys.boardController.users);
     },
   });
 };
 
 // 북마크 삭제
-export const useRemoveBookmark = () => {
+export const useRemoveBookmark = setLoginUserData => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -95,6 +103,10 @@ export const useRemoveBookmark = () => {
       });
     },
     onSuccess: () => {
+      setLoginUserData(prevData => ({
+        ...prevData,
+        isBookmarked: false,
+      }));
       queryClient.invalidateQueries(queryKeys.boardController.articles);
     },
   });
