@@ -11,7 +11,9 @@ const SearchInput = () => {
   };
   const handleSearchSubmit = e => {
     e.preventDefault();
-    navigate(`/search-results?keyword=${searchKeyword}`);
+    if (searchKeyword) {
+      navigate(`/search-results?keyword=${searchKeyword}`);
+    }
   };
 
   return (
