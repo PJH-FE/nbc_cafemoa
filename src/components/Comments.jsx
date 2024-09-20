@@ -137,7 +137,6 @@ const Comments = ({ nowArticleId }) => {
               {/* 수정모드일 때 */}
               {editingCommentId === comment.id ? (
                 <div className="flex w-full gap-4">
-                  <p className="w-[600px]">{comment.text}</p>
                   <div className="flex gap-4">
                     <textarea
                       rows={'10'}
@@ -172,7 +171,7 @@ const Comments = ({ nowArticleId }) => {
                       <button
                         onClick={() => {
                           setEditingCommentId(comment.id);
-                          setEditContent(comment.content); // 수정 모드로 전환
+                          setEditContent(comment.text); // 수정 모드로 전환
                         }}
                         className="w-20 border-2 border-gray-400 rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white"
                       >
