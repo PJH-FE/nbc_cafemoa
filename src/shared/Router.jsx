@@ -11,6 +11,7 @@ import Bookmark from '../pages/Bookmark';
 import Edit from '../pages/Edit';
 import Layout from '../components/common/Layout';
 import ListCategory from '../pages/ListCategory';
+import UsersCommutity from '../pages/UsersCommutity';
 import SearchResults from '../pages/SearchResults';
 import CafeInfo from '../pages/CafeInfo';
 
@@ -38,6 +39,8 @@ const Router = () => {
 
             <Route path="/list" element={<List />} />
             <Route path="/list-category" element={<ListCategory />} />
+            <Route path="/users-commutity" element={<UsersCommutity />} />
+
             <Route path="/search-results" element={<SearchResults />} />
             <Route path="/detail" element={<Detail />} />
             <Route path="/cafeinfo" element={<CafeInfo />} />

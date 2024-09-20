@@ -6,7 +6,7 @@ import { useAddBookmark, useRemoveBookmark } from '../queries/boardQueries';
 import { DATA_API } from '../api/api';
 
 const SpotListItem = ({ data }) => {
-  const detailItemClick = useDetailItemClick();
+  const { cafeInfoItemClick } = useDetailItemClick();
 
   // 로그인 한 유저 정보
   const userInfo = useUserStore(state => state.getUserInfo());
@@ -38,7 +38,7 @@ const SpotListItem = ({ data }) => {
   return (
     <div
       className="flex flex-col gap-[10px] w-full h-full cursor-pointe "
-      onClick={() => detailItemClick(data.id)}
+      onClick={() => cafeInfoItemClick(data.id)}
     >
       <div className="relative w-full h-full max-h-[400px]">
         <img className="object-cover w-full h-full" src={data.thumbnail} alt={data.title} />
@@ -72,7 +72,7 @@ const SpotListItem = ({ data }) => {
         <h2 className="font-semibold">{data.title}</h2>
         <p className="font-normal text-slate-500 text-[13px]">{data.region}</p>
       </div>
-      <span># {data.category}</span>
+      <span className="text-left"># {data.category}</span>
     </div>
   );
 };
