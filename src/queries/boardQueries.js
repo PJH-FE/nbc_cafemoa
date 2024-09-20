@@ -11,8 +11,8 @@ export const queryKeys = {
 // 게시글 상세 불러오기
 const fetchDetail = async ({ queryKey }) => {
   const [_, id] = queryKey;
-  const response = await DATA_API.get(`/articles/${id}`);
-  return response.data;
+  const response = await DATA_API.get(`/articles?id=${id}`);
+  return response.data[0];
 };
 
 export const useFetchDetail = id => {
