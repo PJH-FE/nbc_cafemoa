@@ -32,7 +32,7 @@ const AuthForm = ({ mode }) => {
         const user = await getUserByMoneyPullId(data.userId);
 
         if (!user) {
-          alert('사용자를 찾을 수 없습니다. 다시 회원가입 해주세요.');
+          alert('해당 사용자를 찾을 수 없습니다.');
           navigate('/signup');
           return;
         }
