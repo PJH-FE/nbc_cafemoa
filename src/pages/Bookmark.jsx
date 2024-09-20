@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { DATA_API } from '../api/api';
 import { Link } from 'react-router-dom';
 import useUserStore from '../zustand/bearStore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Bookmark = () => {
   // const test = useUserStore();
@@ -17,24 +17,28 @@ const Bookmark = () => {
   const { getUserInfo } = useUserStore();
   const { bookmarked } = getUserInfo();
 
-  useEffect(() => {
-    const apiHost = async () => {
-      const result = await DATA_API.get(`/articles`);
-      setArticles(result.data);
-      return result.data;
-    };
+  const apiHost = async () => {
+    const result = await DATA_API.get(`/articles`);
+    setArticles(result.data);
+    return result.data;
+  };
 
-    apiHost();
-  }, []);
-
-  console.log('book', bookmarked);
+  const {
+    data: allArticles,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ['articles'],
+    queryFn: apiHost,
+  });
+  console.log('allArticles', allArticles);
 
   const arr = articles.filter(article => {
     if (
       bookmarked.some(id => {
-        console.log(id);
-        console.log(article.id);
-        console.log('-------------');
+        // console.log(id);
+        // console.log(article.id);
+        // console.log('-------------');
         return id === article.id;
       })
     ) {
@@ -60,8 +64,8 @@ const Bookmark = () => {
 
   // console.log('bookmarks', bookmarks);
 
-  // if (isPending) return <div>로딩중입니다...</div>;
-  // if (isError) return <div>에러가 발생했습니다...</div>;
+  if (isPending) return <div>로딩중입니다...</div>;
+  if (isError) return <div>에러가 발생했습니다...</div>;
 
   // const bookmarked = bookmarks[0].bookmarked;
   // const arr = bookmarks[0].articles.filter(article => {
