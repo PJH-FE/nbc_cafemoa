@@ -56,7 +56,9 @@ const CafeInfo = () => {
           </div>
           <Map cafeData={cafeData} />
         </div>
-        <Comments nowArticleId={nowCafeId} />
+        <div className="mt-8">
+          <Comments nowArticleId={nowCafeId} />
+        </div>
       </div>
     </>
   );
