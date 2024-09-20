@@ -25,27 +25,27 @@ const member = [
 
 const Footer = () => {
   return (
-    <div className="min-h-[200px]">
-      <div className="pt-[100px] absolute bottom-0 w-full">
-        <div className="flex items-center justify-between py-[50px] max-w-[1500px] w-full mx-[auto] my-0 border-[#61443A] border-t-[1px] sm:px-[20px]">
+    <div className="min-h-[200px] sm:min-h-[300px]">
+      <div className="absolute bottom-0 w-full">
+        <div className="flex sm:flex-col sm:gap-[20px] sm:items-start items-center justify-between px-[20px] py-[50px] max-w-[1500px] w-full mx-[auto] my-0 border-[#61443A] border-t-[1px] sm:px-[20px]">
           <Link to="/">
             <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
           </Link>
           <div>
-            <ul className="flex gap-[10px]">
+            <ul className="flex gap-[10px] sm:gap-[0px] sm:justify-between">
               {member.map((member, index) => {
                 return (
                   <li
                     key={index}
-                    className="py-[10px] px-[15px] border border-[#c9c9c9] border-[1px] rounded-full"
+                    className="py-[10px] lg:px-[15px] sm:pr-[15px] lg:border lg:border-[#c9c9c9] lg:border-[1px] rounded-full"
                   >
                     <Link
                       to={member.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex g-[10px]"
+                      className="flex g-[10px] sm:flex-col sm:items-center"
                     >
-                      <Github />
+                      <Github className="sm:hidden" />
                       <span>{member.name}</span>
                     </Link>
                   </li>
