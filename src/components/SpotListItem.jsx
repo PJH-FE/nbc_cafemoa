@@ -19,7 +19,7 @@ const SpotListItem = ({ data }) => {
         <h2 className="font-semibold">{data.title}</h2>
         <p className="font-normal text-slate-500 text-[13px]">{data.region}</p>
       </div>
-      <span># {data.category}</span>
+      <span className="text-left"># {data.category}</span>
     </div>
   );
 };

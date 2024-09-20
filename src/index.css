@@ -8,6 +8,13 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'HakgyoansimAllimjangTTF-B';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
 
 /* box-sizing 규칙을 명시합니다. */
 *,
