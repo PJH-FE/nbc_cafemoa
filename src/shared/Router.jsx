@@ -13,6 +13,7 @@ import Layout from '../components/common/Layout';
 import ListCategory from '../pages/ListCategory';
 import UsersCommutity from '../pages/UsersCommutity';
 import SearchResults from '../pages/SearchResults';
+import CafeInfo from '../pages/CafeInfo';
 
 const Router = () => {
   return (
@@ -42,6 +43,7 @@ const Router = () => {
 
             <Route path="/search-results" element={<SearchResults />} />
             <Route path="/detail" element={<Detail />} />
+            <Route path="/cafeinfo" element={<CafeInfo />} />
             <Route path="/" element={<Home />} />
           </Route>
         </Routes>
