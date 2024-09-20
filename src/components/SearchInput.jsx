@@ -1,3 +1,4 @@
+import { Search } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,12 +15,21 @@ const SearchInput = () => {
     if (searchKeyword) {
       navigate(`/search-results?keyword=${searchKeyword}`);
     }
+    setSearchKeyword('');
   };
 
   return (
-    <form onSubmit={handleSearchSubmit}>
-      <input type="text" value={searchKeyword} onChange={handleInputChange} placeholder="검색" />
-      <button>검색</button>
+    <form onSubmit={handleSearchSubmit} className="flex">
+      <input
+        className="focus: outline-none"
+        type="text"
+        value={searchKeyword}
+        onChange={handleInputChange}
+        placeholder="검색"
+      />
+      <button>
+        <Search />
+      </button>
     </form>
   );
 };
