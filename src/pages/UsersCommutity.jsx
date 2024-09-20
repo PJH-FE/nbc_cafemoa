@@ -1,14 +1,17 @@
-import SpotListItem from '../components/SpotListItem';
 import { useState, useEffect } from 'react';
 import { DATA_API } from '../api/api';
+import UserListItem from '../components/UserListItem';
+import { useDetailItemClick } from '../utils/goDetail';
 
-const List = () => {
+const UsersCommutity = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const itemsPerPage = 12;
 
-  const [endIndex, setEndIndex] = useState(itemsPerPage);
+  const [endIndex, setEndIndex] = useState(12);
+
+  // console.log('articles', articles);
 
   // 스크롤 이벤트
   const handleScroll = () => {
@@ -26,7 +29,7 @@ const List = () => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const { data } = await DATA_API.get(`/cafedb?_limit=${endIndex}`);
+        const { data } = await DATA_API.get(`/articles?_limit=${endIndex}`);
         if (itemsPerPage < data.length) {
           setHasMore(false);
         }
@@ -67,13 +70,13 @@ const List = () => {
         <button onClick={alignmentBtn}>가나다순</button>
         <button onClick={latestBtn}>최신순</button>
       </div>
-      <ul className="grid gap-[20px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
+      <ul className="grid gap-[20px] grid-cols-1 p-5 pt-[3%]">
         {articles.map((article, index) => {
-          return <SpotListItem key={index} data={article} />;
+          return <UserListItem key={index} data={article} />;
         })}
       </ul>
       {loading && <div>Loading...</div>}
     </div>
   );
 };
-export default List;
+export default UsersCommutity;

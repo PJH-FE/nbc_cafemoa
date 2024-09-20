@@ -14,7 +14,6 @@ const Home = () => {
       </div>
       <div className="flex flex-col item-center gap-[80px]">
         <MainRecommend />
-        {/* <MainRecommend /> */}
       </div>
       <span className="bg-[#F4EFEB] w-full h-[10px]"></span>
       <AreaCategory />

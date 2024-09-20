@@ -10,6 +10,7 @@ import getNowDate from '../../utils/getNowDate';
 import { useUpdatePost } from '../../queries/boardQueries';
 import FormInput from './FormInput';
 import { categoryList } from '../../data/category';
+import useUserStore from '../../zustand/bearStore';
 
 const toolbar = [['heading', 'bold', 'italic', 'strike'], ['hr', 'quote', 'ul', 'ol'], ['image']];
 
@@ -33,9 +34,19 @@ function TuiEditor({ content, isEdit = false }) {
   const nowPostId = searchParams.get('article_id');
   const updatePost = useUpdatePost();
 
+  // 로그인 한 유저 정보
+  const userInfo = useUserStore(state => state.getUserInfo());
+  const [userId, setUserId] = useState();
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('user-storage')).state;
-    setPost({ ...post, author_id: userData?.userInfo?.userId });
+    if (userInfo) {
+      const userId = userInfo.user_id;
+      const getUserDataId = async () => {
+        const { data: userData, isError } = await DATA_API.get(`/users?user_id=${userId}`);
+        if (isError) return;
+        setUserId(userData[0].id);
+      };
+      getUserDataId();
+    }
   }, []);
 
   // 카테고리, 타이틀 관리
@@ -100,7 +111,9 @@ function TuiEditor({ content, isEdit = false }) {
     };
 
     {
-      isEdit ? updateResult({ post }) : createResult({ ...post, id: postId, date: getNowDate() });
+      isEdit
+        ? updateResult({ post })
+        : createResult({ ...post, author_id: userId, id: postId, date: getNowDate() });
     }
   };
 

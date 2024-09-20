@@ -6,23 +6,20 @@ import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { DATA_API } from '../api/api';
-import { useDetailItemClick } from '../utils/goDetail';
-import { Bookmark } from 'lucide-react';
 
 const MainRecommend = () => {
   const [cateInLists, setCateInLists] = useState([]); //필터링된 리스트 상태저장
-  const detailItemClick = useDetailItemClick();
   const navigate = useNavigate();
 
   //어떤 데이터 쓸건지 지정
   const {
-    data: articleData,
+    data: cafeDbData,
     isPending,
     isError,
   } = useQuery({
-    queryKey: ['articles'],
+    queryKey: ['cafedb'],
     queryFn: async () => {
-      const { data } = await DATA_API.get('/articles');
+      const { data } = await DATA_API.get('/cafedb');
       return data;
     },
   });
@@ -33,7 +30,7 @@ const MainRecommend = () => {
   // 현재 날짜 가져오기
   const today = new Date();
   // 7일 이내 신규글 확인
-  const filterCateInList = articleData.filter(list => {
+  const filterCateInList = cafeDbData.filter(list => {
     const articleDate = new Date(list.date);
     const diffTime = Math.abs(today - articleDate);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -76,22 +73,7 @@ const MainRecommend = () => {
                 key={index}
                 className="swiper-slide swiper-slide-next text-center text-[18px] w-[80%] flex justify-center items-center"
               >
-                <div
-                  className="flex flex-col gap-[10px] w-full h-full cursor-pointe "
-                  onClick={() => detailItemClick(data.id)}
-                >
-                  <div className="relative w-full h-full max-h-[500px]">
-                    <img className="object-cover w-full h-full" src={data.thumbnail} alt={data.title} />
-                    <span className="absolute top-[10px] right-[10px]">
-                      <Bookmark />
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="font-semibold">{data.title}</h2>
-                    <p className="font-normal text-slate-500 text-[13px]">{data.region}</p>
-                  </div>
-                  <span className="text-left">{data.category}</span>
-                </div>
+                <SpotListItem data={data} />
               </SwiperSlide>
             );
           })}
