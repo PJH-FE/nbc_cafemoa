@@ -2,17 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { DATA_API } from '../api/api';
 import { Link } from 'react-router-dom';
 import useUserStore from '../zustand/bearStore';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Bookmark = () => {
-  // const test = useUserStore();
-  // // console.log('test', test);
-  // const result = test.getUserInfo();
-  // console.log('result', result);
-
-  // const bookmarked = result.bookmarked;
-  // console.log('bookmarked', bookmarked);
-
   const [articles, setArticles] = useState([]);
   const { getUserInfo } = useUserStore();
   const { bookmarked } = getUserInfo();
@@ -31,50 +23,17 @@ const Bookmark = () => {
     queryKey: ['articles'],
     queryFn: apiHost,
   });
-  console.log('allArticles', allArticles);
+
+  if (isPending) return <div>로딩중입니다...</div>;
+  if (isError) return <div>에러가 발생했습니다...</div>;
 
   const arr = articles.filter(article => {
-    if (
-      bookmarked.some(id => {
-        // console.log(id);
-        // console.log(article.id);
-        // console.log('-------------');
-        return id === article.id;
-      })
-    ) {
+    if (bookmarked.some(id => id === article.id)) {
       return true;
     } else {
       return false;
     }
   });
-
-  // const getBookmarks = async () => {
-  //   const result = await DATA_API.get(`/users?user_id=asy13&_embed=articles`);
-  //   return result.data;
-  // };
-
-  // const {
-  //   data: bookmarks,
-  //   isPending,
-  //   isError,
-  // } = useQuery({
-  //   queryKey: ['bookmarkedArticles'],
-  //   queryFn: getBookmarks,
-  // });
-
-  // console.log('bookmarks', bookmarks);
-
-  if (isPending) return <div>로딩중입니다...</div>;
-  if (isError) return <div>에러가 발생했습니다...</div>;
-
-  // const bookmarked = bookmarks[0].bookmarked;
-  // const arr = bookmarks[0].articles.filter(article => {
-  //   if (bookmarked.some(id => id === article.id)) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // });
 
   return (
     <div className="px-10">
