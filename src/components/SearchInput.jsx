@@ -14,6 +14,7 @@ const SearchInput = () => {
     if (searchKeyword) {
       navigate(`/search-results?keyword=${searchKeyword}`);
     }
+    setSearchKeyword('');
   };
 
   return (
