@@ -126,12 +126,16 @@ function TuiEditor({ content, isEdit = false }) {
         }}
         className="flex flex-col max-w-screen-xl gap-6 mx-auto max-w-[1500px] py-[60px] sm:px-[16px] sm:py-[48px]"
       >
-        <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-[30px]">
-          {/* <label htmlFor="title">제목</label> */}
+        <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-[30px] py-6">
+          {/* <label htmlFor="title" className="text-2xl min-w-24">
+            제목
+          </label> */}
+
           <select
             className="border border-[#61443A] px-[20px] py-[10px] rounded-[6px]"
             name="category"
             id="category"
+            className="border-[1px] h-9 px-2 border-black outline-none rounded-[4px]"
             value={post.category}
             onChange={e => changeValue(e)}
           >

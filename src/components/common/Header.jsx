@@ -67,6 +67,7 @@ const Header = () => {
   }, [location.pathname, closeMenu, removeTab]);
 
   return (
+
     <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
       <header className="flex justify-between items-center lg:gap-[30px] px-6 h-[74px]">
         <div className="flex gap-[20px] items-center  sm:justify-between">

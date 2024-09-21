@@ -3,7 +3,10 @@ import ToastForm from '../components/board/ToastForm';
 const Write = () => {
   return (
     <>
-      <ToastForm />
+      <div className="content">
+        <div className="title">글쓰기</div>
+        <ToastForm />
+      </div>
     </>
   );
 };
