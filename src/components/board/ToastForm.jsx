@@ -31,7 +31,7 @@ function TuiEditor({ content, isEdit = false }) {
   const [cafeData, setCafeData] = useState({ cafe_address: content?.cafe_address || '' });
   const navigate = useNavigate();
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const nowPostId = searchParams.get('article_id');
   const updatePost = useUpdatePost();
 

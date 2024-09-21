@@ -80,58 +80,69 @@ const Detail = () => {
     <>
       <div className="content">
         <div>
-          <div className="flex items-center pb-4 text-3xl font-bold border-b-2 border-black">
+          <div className="flex items-center gap-2 px-3 pb-4 text-3xl font-bold border-b-2 border-primary01">
             <span>[{detailData.category}]</span>
             {detailData.title}
           </div>
-          <div className="flex flex-col px-3 py-2">
-            <div className="pb-2 ml-auto text-gray-600">
-              {detailData.date} / {WriterNickname}
+          <div className="flex flex-col px-4 pb-4 border-b-2 border-primary01">
+            <div className="py-4 ml-auto text-[#5c5c5c]">
+              {WriterNickname} / {detailData.date}
             </div>
             <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
-          </div>
-          <div>{detailData.cafe_name}</div>
-
-          <Map cafeData={cafeData} />
-
-          <div className="button-area">
-            {userInfo && (
-              <>
-                {loginUserData?.isBookmarked ? (
-                  <button
-                    onClick={() => {
-                      clickBookmark(removeBookmark, 'remove');
-                    }}
-                  >
-                    <BookmarkCheck />
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => {
-                      clickBookmark(addBookmark, 'add');
-                    }}
-                  >
-                    <Bookmark />
-                  </button>
-                )}
-
-                {userData === loginUserData?.user_id && (
-                  <>
-                    <Link to={`/edit?article_id=${nowArticleId}`}>수정</Link>
-
+            <div className="flex items-center justify-end gap-4 mt-20">
+              {userInfo && (
+                <>
+                  {loginUserData?.isBookmarked ? (
                     <button
                       onClick={() => {
-                        deletePostHandler();
+                        clickBookmark(removeBookmark, 'remove');
                       }}
                     >
-                      삭제
+                      <BookmarkCheck size={42} strokeWidth={1} />
                     </button>
-                  </>
-                )}
-              </>
-            )}
+                  ) : (
+                    <button
+                      onClick={() => {
+                        clickBookmark(addBookmark, 'add');
+                      }}
+                    >
+                      <Bookmark size={42} strokeWidth={1} />
+                    </button>
+                  )}
+
+                  {userData === loginUserData?.user_id && (
+                    <>
+                      <Link
+                        to={`/edit?article_id=${nowArticleId}`}
+                        className="block py-1 px-6 w-fit font-bold text-lg text-primary01 border-2 border-primary01 rounded-lg"
+                      >
+                        수정
+                      </Link>
+
+                      <button
+                        onClick={() => {
+                          deletePostHandler();
+                        }}
+                        className="block py-1 px-6 w-fit font-bold text-lg text-white border-2 border-primary01 rounded-lg bg-primary01"
+                      >
+                        삭제
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="cafe-map mt-[120px]">
+            <div className="address mb-10">
+              <div className="text-4xl font-bold">&apos;{detailData.cafe_name}&apos; 찾아오시는 길</div>
+              <span className="block text-xl mt-3">{detailData.cafe_address}</span>
+            </div>
+            <Map cafeData={cafeData} />
           </div>
         </div>
+
         <div className="mt-8">
           <Comments nowArticleId={nowArticleId} />
         </div>
