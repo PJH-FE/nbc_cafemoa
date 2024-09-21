@@ -37,7 +37,7 @@ const category = [
 ];
 
 const MainCategory = () => {
-  const { isMenuOpen, toggleMenu } = useUserStore();
+  const { closeMenu } = useUserStore();
   const [articleAllData, setArticleAllData] = useState([]); //article 전체데이터 상태저장
   const setCateInLists = []; //필터링된 리스트 저장
   const filterText = 'category'; //필터링된 리스트 저장
@@ -65,7 +65,7 @@ const MainCategory = () => {
   //util : 필터링 함수호출
   const onClickfilter = category => {
     cateListHandle(category, articleAllData, setCateInLists, navigate, filterText);
-    toggleMenu();
+    closeMenu();
   };
 
   if (isLoading) return <div>Loading...</div>;

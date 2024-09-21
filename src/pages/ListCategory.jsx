@@ -8,11 +8,17 @@ const ListCategory = () => {
 
   return (
     <div className="max-w-[1500px] my-0 mx-[auto]">
-      <ul className="grid gap-[20px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
-        {cateInLists.map(data => {
-          return <SpotListItem key={data.id} data={data} />;
-        })}
-      </ul>
+      {cateInLists.length === 0 ? (
+        <p className="flex items-center justify-center h-[100vh] text-center text-gray-500">
+          게시물이 없습니다
+        </p>
+      ) : (
+        <ul className="grid gap-y-[50px] gap-x-[10px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
+          {cateInLists.map(data => {
+            return <SpotListItem key={data.id} data={data} />;
+          })}
+        </ul>
+      )}
     </div>
   );
 };
