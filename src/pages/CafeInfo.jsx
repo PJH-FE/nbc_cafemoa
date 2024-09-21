@@ -1,11 +1,42 @@
 import { Link, useSearchParams } from 'react-router-dom';
-import { useFetchCafeInfo } from '../queries/boardQueries';
+import { useAddBookmark, useFetchCafeInfo, useRemoveBookmark } from '../queries/boardQueries';
 import Map from '../components/board/Map';
+import useUserStore from '../zustand/bearStore';
+import { useEffect, useState } from 'react';
+import { DATA_API } from '../api/api';
+import { Bookmark, BookmarkCheck } from 'lucide-react';
 
 const CafeInfo = () => {
   const [searchParams] = useSearchParams();
   const nowCafeId = searchParams.get('id');
   const { data: cafeInfo, isPending, isError } = useFetchCafeInfo(nowCafeId);
+
+  // 로그인 한 유저 정보
+  const userInfo = useUserStore(state => state.getUserInfo());
+  const [loginUserData, setLoginUserData] = useState();
+
+  const addBookmark = useAddBookmark(setLoginUserData);
+  const removeBookmark = useRemoveBookmark(setLoginUserData);
+
+  useEffect(() => {
+    if (userInfo) {
+      const userId = userInfo.user_id;
+      const getUserDataId = async () => {
+        const { data: userData, isError } = await DATA_API.get(`/users?user_id=${userId}`);
+        if (isError) return;
+        setLoginUserData({
+          user_id: userData[0].id,
+          isBookmarked: userData[0].bookmarked.includes(nowCafeId),
+        });
+      };
+      getUserDataId();
+    }
+  }, []);
+
+  // 북마크 저장/삭제
+  const clickBookmark = async bookmarkEvent => {
+    await bookmarkEvent.mutate({ id: loginUserData?.user_id, articleId: nowCafeId });
+  };
 
   if (isPending) return;
   if (isError) return;
@@ -22,6 +53,31 @@ const CafeInfo = () => {
 
           <div className="info-box flex flex-col w-1/2 py-6">
             <div className="mb-2 text-base">{cafeInfo.category}</div>
+            <div>
+              {userInfo && (
+                <>
+                  {loginUserData?.isBookmarked ? (
+                    <button
+                      onClick={e => {
+                        e.stopPropagation();
+                        clickBookmark(removeBookmark);
+                      }}
+                    >
+                      <BookmarkCheck />
+                    </button>
+                  ) : (
+                    <button
+                      onClick={e => {
+                        e.stopPropagation();
+                        clickBookmark(addBookmark);
+                      }}
+                    >
+                      <Bookmark />
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
             <div className="text-2xl font-bold">{cafeInfo.title}</div>
             {cafeInfo.sns && (
               <div className="flex mt-3">
