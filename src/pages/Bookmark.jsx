@@ -8,22 +8,16 @@ const Bookmark = () => {
   const [articles, setArticles] = useState([]);
   const { getUserInfo } = useUserStore();
   const { bookmarked } = getUserInfo();
-  // console.log('bookmarked', bookmarked);
 
   const apiHost = async () => {
     // articles, cafedb 내용 둘 다 호출
     const articleResult = await DATA_API.get(`/articles`);
     const adminResult = await DATA_API.get(`/cafedb`);
-    // console.log(articleResult);
-    // console.log(adminResult);
 
     // 두 호출 합침
     const result = [...articleResult.data, ...adminResult.data];
-    // console.log('result', result);
 
     const arr = result.filter(article => {
-      console.log('article', article);
-      console.log('bookmarked', bookmarked);
       if (bookmarked.some(id => id === article.id)) {
         return true;
       } else {
@@ -43,7 +37,6 @@ const Bookmark = () => {
     queryKey: ['articles'],
     queryFn: apiHost,
   });
-  console.log('bookmarkedArticles', bookmarkedArticles);
 
   if (isPending) return <div>로딩중입니다...</div>;
   if (isError) return <div>에러가 발생했습니다...</div>;

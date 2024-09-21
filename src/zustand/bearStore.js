@@ -16,7 +16,7 @@ const useUserStore = create(
       setUserInfo: data => {
         set(
           produce(state => {
-            state.userInfo = data;
+            state.userInfo = { ...state.userInfo, ...data };
           }),
         );
       },
