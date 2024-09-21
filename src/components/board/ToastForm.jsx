@@ -124,11 +124,21 @@ function TuiEditor({ content, isEdit = false }) {
           e.preventDefault();
           handleOnSubmit();
         }}
-        className="flex flex-col gap-6 max-w-screen-xl mx-auto"
+        className="flex flex-col max-w-screen-xl gap-6 mx-auto max-w-[1500px] py-[60px] sm:px-[16px] sm:py-[48px]"
       >
-        <div className="flex items-center gap-4">
-          <label htmlFor="title">제목</label>
-          <select name="category" id="category" value={post.category} onChange={e => changeValue(e)}>
+        <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-[30px] py-6">
+          {/* <label htmlFor="title" className="text-2xl min-w-24">
+            제목
+          </label> */}
+
+          <select
+            className="border border-[#61443A] px-[20px] py-[10px] rounded-[6px]"
+            name="category"
+            id="category"
+            className="border-[1px] h-9 px-2 border-black outline-none rounded-[4px]"
+            value={post.category}
+            onChange={e => changeValue(e)}
+          >
             {categoryList.map(category => {
               return (
                 <option key={category} value={category}>
@@ -141,6 +151,7 @@ function TuiEditor({ content, isEdit = false }) {
           <FormInput
             type={'text'}
             name={'title'}
+            placeholder="제목을 입력하세요"
             value={post.title || ''}
             onChange={e => {
               changeValue(e);
@@ -162,13 +173,16 @@ function TuiEditor({ content, isEdit = false }) {
           onChange={handleEditorChange}
         />
 
-        <div className="flex items-center flex-wrap gap-4">
-          <div className="flex items-center w-full md:w-[calc(50%-8px)] gap-4">
-            <label htmlFor="cafe_name">카페 이름</label>
+        <div className="flex flex-wrap items-center gap-[30px] pt-[60px]">
+          <div className="flex flex-col items-start w-full md:w-[calc(50%-8px)] gap-4">
+            <label htmlFor="cafe_name" className="text-[18px] text-[#61443A]">
+              카페 이름
+            </label>
 
             <FormInput
               type={'text'}
               name={'cafe_name'}
+              placeholder="카페 이름을 입력하세요"
               value={post.cafe_name || ''}
               onChange={e => {
                 changeValue(e);
@@ -176,11 +190,14 @@ function TuiEditor({ content, isEdit = false }) {
             />
           </div>
 
-          <div className="flex items-center w-full md:w-[calc(50%-8px)] gap-4">
-            <label htmlFor="cafe_address">카페 주소</label>
+          <div className="flex flex-col items-start w-full md:w-[calc(50%-8px)] gap-4">
+            <label htmlFor="cafe_address" className="text-[18px] text-[#61443A]">
+              카페 주소
+            </label>
             <FormInput
               type={'text'}
               name={'cafe_address'}
+              placeholder="카페 주소를 입력하세요"
               value={post.cafe_address || ''}
               onChange={e => {
                 changeValue(e);
@@ -192,7 +209,9 @@ function TuiEditor({ content, isEdit = false }) {
           <Map cafeData={cafeData} post={post} setPost={setPost} />
         </div>
 
-        <button type="submit">{isEdit ? '수정' : '등록'}</button>
+        <button type="submit" className="bg-[#61443A] text-[#fff] py-[16px] rounded-[6px]">
+          {isEdit ? '수정' : '등록'}
+        </button>
       </form>
     </>
   );

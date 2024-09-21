@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import SearchInput from '../SearchInput';
 
 const Header = () => {
-  const { userInfo, removeUserInfo, closeMenu, toggleMenu, isMenuOpen, activeTab, setActiveTab } =
+  const { userInfo, removeUserInfo, closeMenu, toggleMenu, isMenuOpen, activeTab, setActiveTab, removeTab } =
     useUserStore();
   const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -35,7 +35,7 @@ const Header = () => {
       icon: <MessagesSquare />,
     },
     {
-      title: '내프로필',
+      title: '마이페이지',
       link: '/mypage',
       icon: <User />,
     },
@@ -60,12 +60,14 @@ const Header = () => {
   }, [setActiveTab]);
 
   useEffect(() => {
-    if (location.pathname === '/login' || location.pathname === '/signup') {
+    if (location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/') {
       closeMenu();
+      removeTab();
     }
-  }, [location.pathname, closeMenu]);
+  }, [location.pathname, closeMenu, removeTab]);
 
   return (
+
     <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
       <header className="flex justify-between items-center lg:gap-[30px] px-6 h-[74px]">
         <div className="flex gap-[20px] items-center  sm:justify-between">
@@ -85,6 +87,7 @@ const Header = () => {
                   className={classNames('flex items-center h-[100%] cursor-pointer relative', {
                     'before:content-[""] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5 before:bg-black':
                       activeTab === index,
+                    hidden: index === 2,
                   })}
                   onClick={() => tabMenuClick(index)}
                 >
@@ -97,7 +100,7 @@ const Header = () => {
         <Link to="/" className="hidden sm:block">
           <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
         </Link>
-        <div className="flex gap-2 sm:justify-end">
+        <div className="flex gap-[10px] sm:justify-end">
           <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
 
           {!userInfo ? (
@@ -110,9 +113,14 @@ const Header = () => {
               </Link>
             </>
           ) : (
-            <button className="hidden lg:block" onClick={handleLogout}>
-              로그아웃
-            </button>
+            <>
+              <button className="hidden lg:block" onClick={handleLogout}>
+                Logout
+              </button>
+              <Link className="hidden lg:block" to="/mypage">
+                Mypage
+              </Link>
+            </>
           )}
         </div>
       </header>
@@ -121,7 +129,7 @@ const Header = () => {
           className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40"
           onClick={closeMenu}
         >
-          <div className="lg:absolute w-full sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
+          <div className="lg:absolute w-full h-[300px] sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
             <div className="sm:px-[50px] sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
               <button onClick={toggleMenu} className="justify-end hidden sm:flex">
                 <X className="text-[#fff]" />
@@ -141,10 +149,13 @@ const Header = () => {
                 </div>
               ) : (
                 <div className="items-center justify-between hidden sm:flex">
-                  <h2>
-                    <span className="text-[#fff] text-[24px]">{userInfo.nickname}</span>님 안녕하세요!
+                  <h2 className="text-[#fff] text-[24px]">
+                    <span className="text-[#fff] text-[24px]">{userInfo.user_nickname}</span>님 안녕하세요!
                   </h2>
-                  <button onClick={handleLogout} className="text-[#fff]">
+                  <button
+                    onClick={handleLogout}
+                    className="text-[#fff] text-[13px] py-[5px] px-[8px] border border-white rounded-[18px]"
+                  >
                     로그아웃
                   </button>
                 </div>

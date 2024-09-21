@@ -12,7 +12,7 @@ const Comments = ({ nowArticleId }) => {
 
   // 로그인 한 유저 정보
   const userInfo = useUserStore(state => state.getUserInfo());
-  console.log('userInfo', userInfo);
+
   const [userId, setUserId] = useState();
   useEffect(() => {
     if (userInfo) {
@@ -39,7 +39,6 @@ const Comments = ({ nowArticleId }) => {
     },
     enabled: !!nowArticleId,
   });
-  console.log('comments', comments);
 
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
@@ -80,7 +79,13 @@ const Comments = ({ nowArticleId }) => {
       alert('댓글을 입력해주세요');
       return;
     } // 빈 내용 방지
-    addComment({ text: commentTexts, author_id: userId, postId: nowArticleId });
+    addComment({
+      text: commentTexts,
+      author_id: userId,
+      postId: nowArticleId,
+      user_nickname: userInfo.user_nickname,
+      date: new Date().toISOString(),
+    });
     setCommentTexts(''); // 입력 필드 초기화
   };
 
@@ -152,7 +157,7 @@ const Comments = ({ nowArticleId }) => {
                         onClick={() => handleEditComment(comment)}
                         className="w-20 border-2 border-[#A57454] rounded-full hover:border-[#A57454] hover:bg-[#A57454] hover:text-white"
                       >
-                        수정 완료
+                        완료
                       </button>
                       <button
                         onClick={() => setEditingCommentId(null)}
@@ -165,8 +170,11 @@ const Comments = ({ nowArticleId }) => {
                 </div>
               ) : (
                 <div className="flex items-center justify-between w-full">
-                  <p>{comment.text}</p>
-                  {userInfo.id === comment.author_id && (
+                  <div>
+                    <span>{comment.text}</span> /{' '}
+                    <span className="text-gray-600">{comment.user_nickname}</span>
+                  </div>
+                  {userInfo?.id === comment.author_id && (
                     <div className="flex gap-2">
                       <button
                         onClick={() => {

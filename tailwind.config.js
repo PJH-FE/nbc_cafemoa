@@ -7,9 +7,9 @@ export default {
         hakgyo: ['HakgyoansimAllimjangTTF-B', 'sans-serif'],
       },
       colors: {
-        customHardBorder: '#61443A',
-        customLightBorder: '#F4EFEB',
-        customBackground: '#F4EFEB',
+        primary01: '#61443A',
+        primary02: '#A57454',
+        primary03: '#F4EFEB',
       },
     },
     screens: {

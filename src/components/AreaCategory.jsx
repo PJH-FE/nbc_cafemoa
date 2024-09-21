@@ -105,10 +105,11 @@ const AreaCategory = () => {
               style={{ backgroundImage: `url(${area.img})` }}
               aria-label={area.title}
             >
-              <div className="w-full h-ful">
-                <p className="w-[80px] h-[80px] flex items-center justify-center text-[#fff] text-[20px] opacity-1 ">
+              <div className="relative w-full h-ful">
+                <p className=" w-[80px] h-[80px] flex items-center justify-center text-[#fff] text-[20px] opacity-1 ">
                   {area.title}
                 </p>
+                <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-black/70 to-transparent"></div>
               </div>
             </li>
           );
