@@ -137,7 +137,7 @@ const AuthForm = ({ mode }) => {
           </button>
         </form>
         {mode === 'login' && (
-          <div className="text-center mt-4 text-[#61443A] underline">
+          <div className="w-fit mx-auto text-center mt-4 text-[#61443A] pb-1 border-b-[1px] border-b-primary01">
             <Link to="/signup">CREATE AN ACCOUNT</Link>
           </div>
         )}

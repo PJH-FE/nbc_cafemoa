@@ -63,7 +63,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-50 bg-white border-b border-slate-300">
-      <header className="flex lg:justify-between items-center lg:gap-[30px] px-6 h-[74px]">
+      <header className="flex justify-between items-center lg:gap-[30px] px-6 h-[74px]">
         <div className="flex gap-[20px] items-center sm:flex-[.55] sm:justify-between">
           <div onClick={toggleMenu} className="cursor-pointer">
             {isMenuOpen ? <X /> : <AlignJustify />}
