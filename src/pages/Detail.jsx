@@ -116,8 +116,9 @@ const Detail = () => {
           삭제
         </button>
       </div>
-
-      <Comments nowArticleId={nowArticleId} />
+      <div className="mt-8">
+        <Comments nowArticleId={nowArticleId} />
+      </div>
     </>
   );
 };

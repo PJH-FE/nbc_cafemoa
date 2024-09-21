@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useFetchCafeInfo } from '../queries/boardQueries';
 import Map from '../components/board/Map';
+import Comments from '../components/Comments';
 
 const CafeInfo = () => {
   const [searchParams] = useSearchParams();
@@ -54,6 +55,9 @@ const CafeInfo = () => {
             <span className="block text-xl mt-4">{cafeInfo.cafe_address}</span>
           </div>
           <Map cafeData={cafeData} />
+        </div>
+        <div className="mt-8">
+          <Comments nowArticleId={nowCafeId} />
         </div>
       </div>
     </>
