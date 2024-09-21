@@ -91,7 +91,9 @@ const Header = () => {
                   })}
                   onClick={() => tabMenuClick(index)}
                 >
-                  <Link to={tab.link}>{tab.title}</Link>
+                  <Link className="flex items-center h-full" to={tab.link}>
+                    {tab.title}
+                  </Link>
                 </li>
               );
             })}
