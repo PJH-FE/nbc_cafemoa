@@ -12,6 +12,7 @@ const Comments = ({ nowArticleId }) => {
 
   // 로그인 한 유저 정보
   const userInfo = useUserStore(state => state.getUserInfo());
+  console.log('userInfo', userInfo);
   const [userId, setUserId] = useState();
   useEffect(() => {
     if (userInfo) {
@@ -38,6 +39,7 @@ const Comments = ({ nowArticleId }) => {
     },
     enabled: !!nowArticleId,
   });
+  console.log('comments', comments);
 
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
@@ -116,12 +118,12 @@ const Comments = ({ nowArticleId }) => {
             onChange={e => {
               setCommentTexts(e.target.value);
             }}
-            className="border-2 border-gray-400 rounded resize-none"
+            className="border-2 border-[#A57454] rounded resize-none"
           ></textarea>
           <button
             type="submit"
             onClick={handleAddComment}
-            className="flex justify-center align-end bg-[#2c2c2c] text-white w-20 rounded mt-2"
+            className="self-end bg-[#61443A] text-white w-24 h-8 rounded mt-2 hover:shadow-xl transition-shadow"
           >
             댓글 추가
           </button>
@@ -135,7 +137,6 @@ const Comments = ({ nowArticleId }) => {
               {/* 수정모드일 때 */}
               {editingCommentId === comment.id ? (
                 <div className="flex w-full gap-4">
-                  <p className="w-[600px]">{comment.text}</p>
                   <div className="flex gap-4">
                     <textarea
                       rows={'10'}
@@ -144,18 +145,18 @@ const Comments = ({ nowArticleId }) => {
                       placeholder="수정할 댓글을 입력하세요.."
                       value={editContent}
                       onChange={e => setEditContent(e.target.value)}
-                      className="rounded border-2 border-gray-400 w-[600px] h-[40px] resize-none " // w, h 지우면 rows,cols가 의미가 없어짐
+                      className="rounded border-2 border-[#A57454] w-[600px] h-[40px] resize-none " // w, h 지우면 rows,cols가 의미가 없어짐
                     />
                     <div className="flex items-end gap-4">
                       <button
                         onClick={() => handleEditComment(comment)}
-                        className="w-20 border-2 border-gray-400 rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                        className="w-20 border-2 border-[#A57454] rounded-full hover:border-[#A57454] hover:bg-[#A57454] hover:text-white"
                       >
                         수정 완료
                       </button>
                       <button
                         onClick={() => setEditingCommentId(null)}
-                        className="w-20 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white"
+                        className="w-20 border-2 border-[#61443A] rounded-full hover:bg-[#61443A] hover:text-white"
                       >
                         취소
                       </button>
@@ -165,23 +166,25 @@ const Comments = ({ nowArticleId }) => {
               ) : (
                 <div className="flex items-center justify-between w-full">
                   <p>{comment.text}</p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => {
-                        setEditingCommentId(comment.id);
-                        setEditContent(comment.content); // 수정 모드로 전환
-                      }}
-                      className="w-20 border-2 border-gray-400 rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white"
-                    >
-                      수정
-                    </button>
-                    <button
-                      onClick={() => handleDeleteComment(comment.id)}
-                      className="w-20 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white"
-                    >
-                      삭제
-                    </button>
-                  </div>
+                  {userInfo.id === comment.author_id && (
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          setEditingCommentId(comment.id);
+                          setEditContent(comment.text); // 수정 모드로 전환
+                        }}
+                        className="w-20 border-2 border-[#A57454] rounded-full hover:border-[#A57454] hover:bg-[#A57454] hover:text-white"
+                      >
+                        수정
+                      </button>
+                      <button
+                        onClick={() => handleDeleteComment(comment.id)}
+                        className="w-20 border-2 border-[#61443A] rounded-full hover:bg-[#61443A] hover:text-white"
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

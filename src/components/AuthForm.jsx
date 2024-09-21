@@ -79,7 +79,7 @@ const AuthForm = ({ mode }) => {
       passwordRef.current.focus();
       return;
     }
-    if (mode === 'signup' && (!formData.nickname || formData.nickname.length > 2)) {
+    if (mode === 'signup' && (!formData.nickname || formData.nickname.length < 2)) {
       alert('닉네임은 최소 2글자 이상이여야 합니다.');
       nicknameRef.current.focus();
       return;
