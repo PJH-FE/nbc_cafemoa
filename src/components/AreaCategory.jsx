@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cateListHandle } from '../utils/cateListHandle';
-import axios from 'axios';
 import { DATA_API } from '../api/api';
 import { useQuery } from '@tanstack/react-query';
+import useUserStore from '../zustand/bearStore';
 
 const areaCategory = [
   {
@@ -57,6 +57,7 @@ const areaCategory = [
 ];
 
 const AreaCategory = () => {
+  const { isMenuOpen, toggleMenu } = useUserStore();
   const [articleAllData, setArticleAllData] = useState([]); //article 전체데이터 상태저장
   const setCateInLists = []; //필터링된 리스트 저장
   const filterText = 'region'; //필터링된 리스트 저장
@@ -84,6 +85,7 @@ const AreaCategory = () => {
   //util : 필터링 함수호출
   const onClickfilter = area => {
     cateListHandle(area, articleAllData, setCateInLists, navigate, filterText);
+    toggleMenu();
   };
 
   if (isLoading) return <div>Loading...</div>;

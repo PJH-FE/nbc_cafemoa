@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AlignJustify, X, LayoutGrid, User, Bookmark, MessagesSquare } from 'lucide-react';
+import { AlignJustify, X, LayoutGrid, User, Bookmark, MessagesSquare, Search } from 'lucide-react';
 import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
@@ -7,16 +7,18 @@ import classNames from 'classnames';
 import SearchInput from '../SearchInput';
 
 const Header = () => {
-  const { userInfo, removeUserInfo } = useUserStore();
+  const { userInfo, removeUserInfo, closeMenu, toggleMenu, isMenuOpen, activeTab, setActiveTab } =
+    useUserStore();
+
   const handleLogout = () => {
     removeUserInfo();
     navigate('/');
+    closeMenu();
   };
 
   const navigate = useNavigate();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
-  const [activeTab, setActiveTab] = useState(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const tabMenu = [
     {
@@ -41,25 +43,36 @@ const Header = () => {
     },
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const tabMenuClick = index => {
     setActiveTab(index);
+    closeMenu();
   };
 
+  useEffect(() => {
+    const handleClickOutside = event => {
+      const tabMenuElement = document.querySelector('.tab-menu');
+      if (tabMenuElement && !tabMenuElement.contains(event.target)) {
+        setActiveTab(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [setActiveTab]);
+
   return (
-    <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
+    <div className="sticky top-0 z-50 bg-white border-b border-slate-300">
       <header className="flex lg:justify-between items-center lg:gap-[30px] px-6 h-[74px]">
         <div className="flex gap-[20px] items-center sm:flex-[.55] sm:justify-between">
           <div onClick={toggleMenu} className="cursor-pointer">
             {isMenuOpen ? <X /> : <AlignJustify />}
           </div>
           <Link to="/">
-            <div className="font-hakgyo text-[1.5rem]">CAFEMOA</div>
+            <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
           </Link>
         </div>
-        <nav className="flex-1 hidden lg:block" style={{ height: 'inherit' }}>
+        <nav className="flex-1 hidden lg:block tab-menu" style={{ height: 'inherit' }}>
           <ul className="flex gap-2 h-[100%]">
             {tabMenu.map((tab, index) => {
               return (
@@ -78,16 +91,15 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
-          <div className="cursor-pointer flex flex-row border rounded px-3">
-            <SearchInput />
-          </div>
+          <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
+
           {!userInfo ? (
             <>
               <Link className="hidden lg:block" to="/login">
-                로그인
+                Login
               </Link>
               <Link className="hidden lg:block" to="/signup">
-                회원가입
+                Sign Up
               </Link>
             </>
           ) : (
@@ -99,7 +111,7 @@ const Header = () => {
       </header>
       {isMenuOpen ? (
         <div className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40">
-          <div className="lg:absolute w-full sm:w-[70vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
+          <div className="lg:absolute w-full sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
             <div className="sm:px-[50px] sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
               <button onClick={toggleMenu} className="justify-end hidden sm:flex">
                 <X className="text-[#fff]" />

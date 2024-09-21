@@ -3,7 +3,6 @@ import MainBanner from '../components/MainBanner';
 import MainRecommend from '../components/MainRecommend';
 import MainCategory from '../components/MainCategory';
 import AreaCategory from '../components/AreaCategory';
-import WritingFixBtn from '../components/WritingFixBtn';
 
 const Home = () => {
   return (
@@ -17,7 +16,6 @@ const Home = () => {
       </div>
       <span className="bg-[#F4EFEB] w-full h-[10px]"></span>
       <AreaCategory />
-      <WritingFixBtn />
     </div>
   );
 };

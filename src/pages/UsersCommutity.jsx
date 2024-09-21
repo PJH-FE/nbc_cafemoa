@@ -11,8 +11,6 @@ const UsersCommutity = () => {
 
   const [endIndex, setEndIndex] = useState(12);
 
-  // console.log('articles', articles);
-
   // 스크롤 이벤트
   const handleScroll = () => {
     if (
@@ -65,8 +63,12 @@ const UsersCommutity = () => {
   };
 
   return (
-    <div className="max-w-[1500px] my-0 mx-[auto]">
-      <div className="flex justify-end gap-5 p-5">
+    <div className="max-w-[1500px] my-0 mx-[auto] pb-[100px] sm:pb-[50px]">
+      <div className="pt-[60px] pb-[40px] sm:px-[20px]">
+        <h2 className="text-[24px] font-bold mb-[10px]">카페로그</h2>
+        <h2 className="text-[18px] text-[#858585]">카페에서의 일상과 경험을 기록해보세요.</h2>
+      </div>
+      <div className="flex justify-end gap-5 p-5 text-[#61443A]">
         <button onClick={alignmentBtn}>가나다순</button>
         <button onClick={latestBtn}>최신순</button>
       </div>

@@ -20,10 +20,11 @@ const Detail = () => {
 
   // 로그인 한 유저 정보
   const userInfo = useUserStore(state => state.getUserInfo());
+  const { setUserInfo } = useUserStore();
   const [loginUserData, setLoginUserData] = useState();
 
-  const addBookmark = useAddBookmark(setLoginUserData);
-  const removeBookmark = useRemoveBookmark(setLoginUserData);
+  const addBookmark = useAddBookmark(setLoginUserData, setUserInfo);
+  const removeBookmark = useRemoveBookmark(setLoginUserData, setUserInfo);
 
   useEffect(() => {
     if (userInfo) {
@@ -64,60 +65,77 @@ const Detail = () => {
   };
 
   // 북마크 저장/삭제
-  const clickBookmark = async bookmarkEvent => {
+  const clickBookmark = async (bookmarkEvent, type) => {
     await bookmarkEvent.mutate({ id: loginUserData?.user_id, articleId: nowArticleId });
+
+    if (type === 'add') {
+      setUserInfo({ bookmarked: [...userInfo.bookmarked, nowArticleId] });
+    } else {
+      const nowBookmarked = userInfo.bookmarked.filter(item => item !== nowArticleId);
+      setUserInfo({ bookmarked: [...nowBookmarked] });
+    }
   };
 
   return (
     <>
-      <div>
-        <div className="flex items-center pb-4 text-3xl font-bold border-b-2 border-black">
-          <span>[{detailData.category}]</span>
-          {detailData.title}
-
-          {userInfo && (
-            <>
-              {loginUserData?.isBookmarked ? (
-                <button
-                  onClick={() => {
-                    clickBookmark(removeBookmark);
-                  }}
-                >
-                  <BookmarkCheck />
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    clickBookmark(addBookmark);
-                  }}
-                >
-                  <Bookmark />
-                </button>
-              )}
-            </>
-          )}
-        </div>
-        <div className="flex flex-col px-3 py-2">
-          <div className="pb-2 ml-auto text-gray-600">
-            {detailData.date} / {WriterNickname}
+      <div className="content">
+        <div>
+          <div className="flex items-center pb-4 text-3xl font-bold border-b-2 border-black">
+            <span>[{detailData.category}]</span>
+            {detailData.title}
           </div>
-          <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
+          <div className="flex flex-col px-3 py-2">
+            <div className="pb-2 ml-auto text-gray-600">
+              {detailData.date} / {WriterNickname}
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
+          </div>
+          <div>{detailData.cafe_name}</div>
+
+          <Map cafeData={cafeData} />
+
+          <div className="button-area">
+            {userInfo && (
+              <>
+                {loginUserData?.isBookmarked ? (
+                  <button
+                    onClick={() => {
+                      clickBookmark(removeBookmark, 'remove');
+                    }}
+                  >
+                    <BookmarkCheck />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      clickBookmark(addBookmark, 'add');
+                    }}
+                  >
+                    <Bookmark />
+                  </button>
+                )}
+
+                {userData === loginUserData?.user_id && (
+                  <>
+                    <Link to={`/edit?article_id=${nowArticleId}`}>수정</Link>
+
+                    <button
+                      onClick={() => {
+                        deletePostHandler();
+                      }}
+                    >
+                      삭제
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </div>
         </div>
-        <div>{detailData.cafe_name}</div>
-        <Map cafeData={cafeData} />
-
-        <Link to={`/edit?article_id=${nowArticleId}`}>수정</Link>
-
-        <button
-          onClick={() => {
-            deletePostHandler();
-          }}
-        >
-          삭제
-        </button>
+        <div className="mt-8">
+          <Comments nowArticleId={nowArticleId} />
+        </div>
       </div>
-
-      <Comments nowArticleId={nowArticleId} />
     </>
   );
 };

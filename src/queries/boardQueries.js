@@ -64,7 +64,7 @@ export const useFetchUser = id => {
 };
 
 // 북마크 등록
-export const useAddBookmark = setLoginUserData => {
+export const useAddBookmark = (setLoginUserData, setUserInfo) => {
   const queryClient = useQueryClient();
 
   return useMutation({
