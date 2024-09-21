@@ -1,45 +1,51 @@
 import { useState } from 'react';
 
-export default function NicknameEditor({ changeNickname, userNickname }) {
+export default function NicknameEditor({ changeNickname: onNicknameChange, userNickname: currentNickname }) {
   const [nickname, setNickname] = useState('');
-  const [isUpdateNickname, setIsUpdateNickName] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleNicknameChange = e => {
     setNickname(e.target.value);
   };
 
-  const handleClick = e => {
-    changeNickname(nickname);
+  const handleSubmit = e => {
+    const cleanedNickname = nickname.trim();
+    if (cleanedNickname === '') {
+      alert('변경할 닉네임을 입력해주세요');
+      return;
+    }
+
+    onNicknameChange(cleanedNickname);
     alert('변경이 완료되었습니다');
-    setIsUpdateNickName(prev => !prev);
+    setIsEditing(false);
     setNickname('');
   };
 
   return (
     <>
       <div className="flex flex-col">
-        {isUpdateNickname ? (
+        {isEditing ? (
           <div>
             <input
               onChange={handleNicknameChange}
               value={nickname}
-              placeholder={userNickname}
-              className="focus:outline-[#3B3030] p-1 mr-2"
+              placeholder={currentNickname}
+              className="border rounded-md p-1 focus:outline-none focus:ring-1 focus:ring-[#3B3030] border-customHardBorder text-sm mr-2"
             />
             <button
-              className="text-white border bg-customHardBorder rounded-md px-3 py-1 mt-2 hover:bg-[#3B3030] transition"
-              onClick={handleClick}
+              className="text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs"
+              onClick={handleSubmit}
             >
               수정
             </button>
           </div>
         ) : (
           <div>
-            <span className="text-xl font-bold mr-1">{userNickname}</span>
+            <span className="text-xl font-bold mr-1">{currentNickname}</span>
             <span>님</span>
             <button
-              className="ml-2 mt-2 bg-customHardBorder text-white bg-custom rounded-md px-3 py-1 hover:bg-[#3B3030] transition"
-              onClick={() => setIsUpdateNickName(prev => !prev)}
+              className="ml-2 mt-2 text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs"
+              onClick={() => setIsEditing(true)}
             >
               수정
             </button>

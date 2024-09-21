@@ -1,28 +1,29 @@
 import ProfileImageUploader from '../../components/ProfileImageUploader';
 import NicknameEditor from '../../components/NicknameEditor';
 import useUser from '../../hooks/useUser';
-import FollowerList from './FollowerList';
+import DescriptionEditor from '../DescriptionEditor';
+import FollowList from './FollowList';
 
 export default function ProfileSection({ followers, following, id }) {
-  const { user, changeNickname, changeProfileImage } = useUser(id);
-  const { description, written_articles } = user || {};
+  const { user, changeNickname, changeProfileImage, changeDescription } = useUser(id);
+  const { description, written_articles } = user;
 
   return (
-    <div className="flex flex-col">
-      <section className="bg-slate-100">
-        <h2 className="text-xl">프로필 </h2>
-        <NicknameEditor changeNickname={changeNickname} userNickname={user.user_nickname} />
-        <ProfileImageUploader profileURL={user.profile_image} changeProfileImage={changeProfileImage} />
-
-        <p>게시글 : {written_articles.length}개</p>
-        <p>팔로우 : {followers.length}명</p>
-        <p>한줄 소개 : {description || '없음'}</p>
+    <div className="bg-white flex flex-col w-5/12 ">
+      <section className="h-1/4 w-full flex items-center">
+        <div className="p-4 ">
+          <ProfileImageUploader profileURL={user.profile_image} changeProfileImage={changeProfileImage} />
+        </div>
+        <div className="w-full pr-4">
+          <NicknameEditor changeNickname={changeNickname} userNickname={user.user_nickname} />
+          <div className="flex gap-4 ">
+            <span>게시글 : {written_articles.length}개</span>
+            <span>팔로우 : {followers.length}명</span>
+          </div>
+          <DescriptionEditor description={description} changeDescription={changeDescription} />
+        </div>
       </section>
-
-      <section className="bg-slate-500">
-        <FollowerList followers={followers} title="팔로우 목록" />
-        <FollowerList followers={following} title="팔로잉 목록" />
-      </section>
+      <FollowList followers={followers} following={following} />
     </div>
   );
 }
