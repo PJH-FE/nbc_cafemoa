@@ -4,16 +4,16 @@ import useUser from '../hooks/useUser';
 import ProfileImageUploader from '../components/ProfileImageUploader';
 import NicknameEditor from '../components/NicknameEditor';
 import useGetUserRelationsQuery from '../queries/useGetUserRelationsQuery';
-
-// Context로 user_id를 통해서 받아오기
-const USER_ID = '1';
+import useUserStore from '../zustand/bearStore';
 
 const MyPage = () => {
-  const { data: articles } = useGetArticlesByAuthorIdQuery(USER_ID);
+  const { getUserInfo } = useUserStore();
+  const { id } = getUserInfo();
+  const { data: articles } = useGetArticlesByAuthorIdQuery(id);
   const {
     data: { followers, following },
-  } = useGetUserRelationsQuery(USER_ID);
-  const { user, changeNickname, changeProfileImage } = useUser(USER_ID);
+  } = useGetUserRelationsQuery(id);
+  const { user, changeNickname, changeProfileImage } = useUser(id);
 
   const { description, written_articles, follower } = user || {};
 
