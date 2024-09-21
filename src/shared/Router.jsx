@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MyPage from '../pages/MyPage';
+import ProfilePage from '../pages/ProfilePage';
 import Write from '../pages/Write';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
@@ -29,7 +29,6 @@ const Router = () => {
             <Route path="/login" element={<PublicRouter page={<Login />} />} />
             <Route path="/signup" element={<PublicRouter page={<SignUp />} />} /> */}
 
-            <Route path="/mypage" element={<MyPage />} />
             <Route path="/bookmark" element={<Bookmark />} />
             <Route path="/write" element={<Write />} />
             <Route path="/edit" element={<Edit />} />
@@ -38,6 +37,7 @@ const Router = () => {
             <Route path="/signup" element={<SignUp />} />
 
             <Route path="/list" element={<List />} />
+            <Route path="/profile/:profile_id" element={<ProfilePage />} />
             <Route path="/list-category" element={<ListCategory />} />
             <Route path="/users-commutity" element={<UsersCommutity />} />
 

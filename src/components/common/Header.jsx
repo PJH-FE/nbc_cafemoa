@@ -36,7 +36,7 @@ const Header = () => {
     },
     {
       title: '마이페이지',
-      link: '/mypage',
+      link: `/profile/${userInfo.id}`,
       icon: <User />,
     },
     {
@@ -116,7 +116,7 @@ const Header = () => {
               <button className="hidden lg:block" onClick={handleLogout}>
                 Logout
               </button>
-              <Link className="hidden lg:block" to="/mypage">
+              <Link className="hidden lg:block" to={`/profile/${userInfo.id}`}>
                 Mypage
               </Link>
             </>

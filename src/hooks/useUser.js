@@ -16,7 +16,8 @@ const useUser = userId => {
   return {
     user,
     changeNickname: newNickname => updateUserInfo('user_nickname', newNickname),
-    changeProfileImage: newNickname => updateUserInfo('profile_image', newNickname),
+    changeProfileImage: newProfileImage => updateUserInfo('profile_image', newProfileImage),
+    changeDescription: newDescription => updateUserInfo('description', newDescription),
 
     totalWrittenArticles,
     totalFollowers,
