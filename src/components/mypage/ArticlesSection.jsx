@@ -1,17 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ArticlesSection({ articles }) {
+  const navigate = useNavigate();
+
   return (
-    <section className="bg-slate-300">
-      <h1 className="text-xl">작성글</h1>
+    <section className="w-6/12 bg-white">
+      <h1 className="text-xl bg-customHardBorder text-white h-16 flex justify-center items-center font-semibold">
+        작성글
+      </h1>
       {articles?.length ? (
         articles.map(article => (
-          <article key={article.id} className="">
-            {
-              <Link to={`/detail/${article.id}`}>
-                <span>{article.title}</span> - <span>{article.date}</span>
-              </Link>
-            }
+          <article
+            key={article.id}
+            className="h-14 flex items-center justify-between cursor-pointer p-2 border-customHardBorder border-b-2"
+            onClick={() => navigate(`/detail/${article.id}`)}
+          >
+            <span>{article.title}</span>
+            <span>{article.date}</span>
           </article>
         ))
       ) : (
