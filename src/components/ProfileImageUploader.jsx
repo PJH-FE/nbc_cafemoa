@@ -1,11 +1,12 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { supabase } from '../supabase/supabase';
 
-export default function ProfileImageUploader({ profileURL, changeProfileImage }) {
-  const [image, setImage] = useState(profileURL);
+export default function ProfileImageUploader({ profileURL, changeProfileImage, isMyProfile }) {
+  const [image, setImage] = useState(() => profileURL);
   const fileInputRef = useRef(null);
 
   const handleFileInputChange = async e => {
+    if (!isMyProfile) return;
     const [file] = e.target.files;
     if (!file) return;
 
@@ -21,17 +22,33 @@ export default function ProfileImageUploader({ profileURL, changeProfileImage })
     }
   };
 
+  useEffect(() => {
+    setImage(profileURL);
+  }, [profileURL]);
+
   return (
     <>
-      <input type="file" className="hidden" onChange={handleFileInputChange} ref={fileInputRef} />
+      <input
+        type="file"
+        className="hidden"
+        onChange={handleFileInputChange}
+        ref={fileInputRef}
+        disabled={!isMyProfile}
+      />
       <div
-        className="w-36 h-36 rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-center bg-gray-900 relative cursor-pointer"
+        className={`w-36 h-36 rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-center bg-gray-900 relative ${
+          isMyProfile && 'cursor-pointer'
+        }`}
         onClick={() => fileInputRef.current.click()}
       >
         {image && (
-          <img src={image} alt="Uploaded" className="w-full h-full object-cover opacity-35 object-center" />
+          <img
+            src={image}
+            alt="Uploaded"
+            className={`w-full h-full object-cover ${isMyProfile && 'opacity-35'} object-center`}
+          />
         )}
-        <div className="absolute text-white text-sm">이미지 변경</div>
+        {isMyProfile && <div className="absolute text-white text-sm">이미지 변경</div>}
       </div>
     </>
   );

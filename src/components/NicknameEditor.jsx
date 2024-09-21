@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-export default function NicknameEditor({ changeNickname: onNicknameChange, userNickname: currentNickname }) {
+export default function NicknameEditor({
+  changeNickname: onNicknameChange,
+  userNickname: currentNickname,
+  isMyProfile,
+}) {
   const [nickname, setNickname] = useState('');
   const [isEditing, setIsEditing] = useState(false);
 
@@ -44,7 +48,9 @@ export default function NicknameEditor({ changeNickname: onNicknameChange, userN
             <span className="text-xl font-bold mr-1">{currentNickname}</span>
             <span>님</span>
             <button
-              className="ml-2 mt-2 text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs"
+              className={`ml-2 mt-2 text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs ${
+                !isMyProfile && 'hidden'
+              }`}
               onClick={() => setIsEditing(true)}
             >
               수정

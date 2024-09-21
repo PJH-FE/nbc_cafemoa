@@ -36,7 +36,7 @@ const Header = () => {
     },
     {
       title: '마이페이지',
-      link: '/mypage',
+      link: `/profile/${userInfo.id}`,
       icon: <User />,
     },
     {
@@ -67,7 +67,6 @@ const Header = () => {
   }, [location.pathname, closeMenu, removeTab]);
 
   return (
-
     <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
       <header className="flex justify-between items-center lg:gap-[30px] px-6 h-[74px]">
         <div className="flex gap-[20px] items-center  sm:justify-between">
@@ -117,7 +116,7 @@ const Header = () => {
               <button className="hidden lg:block" onClick={handleLogout}>
                 Logout
               </button>
-              <Link className="hidden lg:block" to="/mypage">
+              <Link className="hidden lg:block" to={`/profile/${userInfo.id}`}>
                 Mypage
               </Link>
             </>
