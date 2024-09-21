@@ -12,7 +12,6 @@ const Edit = () => {
 
   return (
     <>
-      <div>Edit</div>
       <ToastForm content={data} isEdit={true} />
     </>
   );

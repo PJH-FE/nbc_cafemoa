@@ -16,7 +16,7 @@ const useUserStore = create(
       setUserInfo: data => {
         set(
           produce(state => {
-            state.userInfo = data;
+            state.userInfo = { ...state.userInfo, ...data };
           }),
         );
       },
@@ -37,6 +37,7 @@ const useUserStore = create(
       },
       closeMenu: () => set({ isMenuOpen: false }),
       setActiveTab: index => set({ activeTab: index }),
+      removeTab: () => set({ activeTab: false }),
     }),
     {
       name: 'user-storage',

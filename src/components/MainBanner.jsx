@@ -8,23 +8,42 @@ import { useQuery } from '@tanstack/react-query';
 import useUserStore from '../zustand/bearStore';
 
 const mainBannerCate = [
-  // '뷰맛집', '24시', '디저트맛집'
-  {
-    title: '뷰맛집',
-    img: 'https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240110_241%2F17048555638842aqBy_JPEG%2FKakaoTalk_20240110_113102383_18.jpg',
-  },
   {
     title: '디저트',
-    img: 'https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240220_10%2F1708419989935Jq6h6_JPEG%2FIMG_4165.jpeg',
+    content: (
+      <>
+        디저트 한 입,
+        <br />
+        여유로운 순간 두 배
+      </>
+    ),
+    img: 'https://img.siksinhot.com/article/1683508975935196.jpeg',
+  },
+  {
+    title: '뷰맛집',
+    content: (
+      <>
+        풍경과 커피가 만나는 곳<br />
+        완벽한 힐링을 경험하세요
+      </>
+    ),
+    img: 'https://mblogthumb-phinf.pstatic.net/MjAyMzAzMDNfMjMx/MDAxNjc3ODQzNDM1Njc1.z3uKTaV1d3gAko99ixA6mIykuJensQITwUkJvapyjk8g.PlBdAifU_FMQWp2qkUDv0tRTJKGN0523yI-sAMnmIWQg.PNG.starvlhy/image.png?type=w800',
   },
   {
     title: '모각코',
-    img: 'https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210224_260%2F1614171847308CURkC_JPEG%2Fqt7Zf1J99crdR_VGE-RZ7n6i.jpeg.jpg',
+    content: (
+      <>
+        함께 모여 각자 코딩,
+        <br />
+        함께하는 모각코 타임
+      </>
+    ),
+    img: 'https://mblogthumb-phinf.pstatic.net/MjAyMTA5MTRfODMg/MDAxNjMxNjI5NzU1OTY2.iaV5yr8W_qdgP3O--UULQCKTP-yq5Y3OS3G_gehrZ5Eg.B4OctodwjN89J2QSX6to5PivPeZLDW3FaL8UUL5FsR4g.JPEG.fragrance94/682C3442-87C1-49FC-B2DF-F7A18C688181.jpg?type=w800',
   },
 ];
 
 const MainBanner = () => {
-  const { isMenuOpen, toggleMenu } = useUserStore();
+  const { closeMenu } = useUserStore();
   const [articleAllData, setArticleAllData] = useState([]); //article 전체데이터 상태저장
   const setCateInLists = []; //필터링된 리스트 저장
   const filterText = 'category'; //필터링된 리스트 저장
@@ -52,7 +71,7 @@ const MainBanner = () => {
   //util : 필터링 함수호출
   const onClickfilter = category => {
     cateListHandle(category, articleAllData, setCateInLists, navigate, filterText);
-    toggleMenu();
+    closeMenu();
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -67,7 +86,7 @@ const MainBanner = () => {
             return (
               <SwiperSlide
                 key={index}
-                className="text-center text-[18px] bg-slate-50 lg:w-[80%] sm:w-[90%] flex justify-center items-center"
+                className="text-center text-[18px] bg-slate-50 lg:w-[80%] sm:w-[90%] flex justify-start items-end"
                 onClick={() => onClickfilter(cate.title)}
                 style={{
                   backgroundImage: `url(${cate.img})`,
@@ -76,7 +95,10 @@ const MainBanner = () => {
                   backgroundPosition: 'center',
                 }}
               >
-                {/* {cate.title} */}
+                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <h1 className="absolute text-[42px] sm:text-[24px] text-[#fff] text-left mb-[40px] ml-[40px] leading-[1.5] sm:mb-[20px] sm:ml-[20px]">
+                  {cate.content}
+                </h1>
               </SwiperSlide>
             );
           })}

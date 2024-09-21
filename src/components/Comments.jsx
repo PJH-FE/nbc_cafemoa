@@ -12,7 +12,7 @@ const Comments = ({ nowArticleId }) => {
 
   // 로그인 한 유저 정보
   const userInfo = useUserStore(state => state.getUserInfo());
-  console.log('userInfo', userInfo);
+
   const [userId, setUserId] = useState();
   useEffect(() => {
     if (userInfo) {
@@ -39,7 +39,6 @@ const Comments = ({ nowArticleId }) => {
     },
     enabled: !!nowArticleId,
   });
-  console.log('comments', comments);
 
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
