@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { login, register } from '../api/AuthClient';
 import useUserStore from '../zustand/bearStore';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DATA_API } from '../api/api';
 import { useRef, useState } from 'react';
 import { getUserByMoneyPullId } from '../services/userService';
@@ -87,12 +87,14 @@ const AuthForm = ({ mode }) => {
     mutate(formData);
   };
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="p-10 rounded-lg shadow-md min-h-[550px] w-full max-w-md">
-        <h1 className="text-2xl mb-8">{mode === 'signup' ? '회원가입' : '로그인'}</h1>
+    <div className="flex justify-center items-center min-h-screen bg-[#F4EFEB]">
+      <div className="p-10 min-h-[550px] w-full max-w-md">
+        <h1 className="text-2xl mb-8 font-bold text-center text-[#61443A]">
+          {mode === 'signup' ? 'SignUp' : 'Login'}
+        </h1>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col">
-            <label className="label-primary">아이디</label>
+            <label className="label-primary">ID</label>
             <input
               className="input-primary"
               type="text"
@@ -103,7 +105,7 @@ const AuthForm = ({ mode }) => {
               ref={idRef}
               required
             />
-            <label className="label-primary">비밀번호</label>
+            <label className="label-primary">PASSWORD</label>
             <input
               className="input-primary"
               type="password"
@@ -116,7 +118,7 @@ const AuthForm = ({ mode }) => {
             />
             {mode === 'signup' && (
               <>
-                <label className="label-primary">닉네임</label>
+                <label className="label-primary">NICKNAME</label>
                 <input
                   className="input-primary"
                   type="text"
@@ -130,10 +132,15 @@ const AuthForm = ({ mode }) => {
               </>
             )}
           </div>
-          <button className="bg-black text-white font-bold rounded w-full py-2 px-4 hover:opacity-50">
-            {mode === 'signup' ? '회원가입' : '로그인'}
+          <button className="bg-[#61443A] text-white font-bold rounded w-full py-2 px-4 hover:opacity-50">
+            {mode === 'signup' ? 'Sign Up' : 'Login'}
           </button>
         </form>
+        {mode === 'login' && (
+          <div className="text-center mt-4 text-[#61443A] underline">
+            <Link to="/signup">CREATE AN ACCOUNT</Link>
+          </div>
+        )}
       </div>
     </div>
   );
