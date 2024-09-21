@@ -8,6 +8,7 @@ const Bookmark = () => {
   const [articles, setArticles] = useState([]);
   const { getUserInfo } = useUserStore();
   const { bookmarked } = getUserInfo();
+  // console.log('bookmarked', bookmarked);
 
   const apiHost = async () => {
     const result = await DATA_API.get(`/articles`);
@@ -27,7 +28,7 @@ const Bookmark = () => {
   if (isPending) return <div>로딩중입니다...</div>;
   if (isError) return <div>에러가 발생했습니다...</div>;
 
-  const arr = articles.filter(article => {
+  const arr = allArticles.filter(article => {
     if (bookmarked.some(id => id === article.id)) {
       return true;
     } else {
