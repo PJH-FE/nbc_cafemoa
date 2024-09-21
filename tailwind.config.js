@@ -6,6 +6,11 @@ export default {
       fontFamily: {
         hakgyo: ['HakgyoansimAllimjangTTF-B', 'sans-serif'],
       },
+      colors: {
+        customHardBorder: '#61443A',
+        customLightBorder: '#F4EFEB',
+        customBackground: '#F4EFEB',
+      },
     },
     screens: {
       sm: { min: '390px', max: '1023px' },
