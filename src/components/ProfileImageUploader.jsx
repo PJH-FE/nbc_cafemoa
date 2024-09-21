@@ -1,11 +1,12 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { supabase } from '../supabase/supabase';
 
-export default function ProfileImageUploader({ profileURL, changeProfileImage }) {
-  const [image, setImage] = useState(profileURL);
+export default function ProfileImageUploader({ profileURL, changeProfileImage, isMyProfile }) {
+  const [image, setImage] = useState(() => profileURL);
   const fileInputRef = useRef(null);
 
   const handleFileInputChange = async e => {
+    if (!isMyProfile) return;
     const [file] = e.target.files;
     if (!file) return;
 
@@ -21,21 +22,33 @@ export default function ProfileImageUploader({ profileURL, changeProfileImage })
     }
   };
 
+  useEffect(() => {
+    setImage(profileURL);
+  }, [profileURL]);
+
   return (
     <>
-      <div className="max-w-sm mx-auto p-2 border border-white rounded-lg shadow-md">
-        <input type="file" className="hidden" onChange={handleFileInputChange} ref={fileInputRef} />
-        <div className="w-full h-64 flex items-center justify-center mb-4">
-          <div className="w-36 h-36 rounded-full border-4 border-gray-800 overflow-hidden flex items-center justify-center bg-gray-900">
-            {image && <img src={image} alt="Uploaded" className="w-full h-full object-cover" />}
-          </div>
-        </div>
-        <button
-          className="w-full py-2 text-white rounded-lg mb-2 bg-gray-800 hover:bg-gray-700"
-          onClick={() => fileInputRef.current.click()}
-        >
-          프로필 이미지 변경
-        </button>
+      <input
+        type="file"
+        className="hidden"
+        onChange={handleFileInputChange}
+        ref={fileInputRef}
+        disabled={!isMyProfile}
+      />
+      <div
+        className={`w-36 h-36 rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-center bg-gray-900 relative ${
+          isMyProfile && 'cursor-pointer'
+        }`}
+        onClick={() => fileInputRef.current.click()}
+      >
+        {image && (
+          <img
+            src={image}
+            alt="Uploaded"
+            className={`w-full h-full object-cover ${isMyProfile && 'opacity-35'} object-center`}
+          />
+        )}
+        {isMyProfile && <div className="absolute text-white text-sm">이미지 변경</div>}
       </div>
     </>
   );
