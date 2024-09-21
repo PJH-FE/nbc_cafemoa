@@ -3,6 +3,7 @@ import { DATA_API } from '../api/api';
 import { Link } from 'react-router-dom';
 import useUserStore from '../zustand/bearStore';
 import { useState } from 'react';
+import defaultUrl from '../assets/noimage.png';
 
 const Bookmark = () => {
   const [articles, setArticles] = useState([]);
@@ -55,7 +56,11 @@ const Bookmark = () => {
         {bookmarkedArticles.map(bookmark => (
           <Link to={`/detail?article_id=${bookmark.id}`} key={bookmark.id}>
             <div key={bookmark.id} className="overflow-hidden border rounded-lg shadow-lg w-72">
-              <img src={bookmark.thumbnail} alt={bookmark.title} className="object-cover w-full h-64" />
+              <img
+                src={bookmark.thumbnail ?? defaultUrl}
+                alt={bookmark.title}
+                className="object-cover w-full h-64"
+              />
               <div className="p-4">
                 <p className="text-sm text-gray-500">{bookmark.region}</p>
                 <h3 className="text-lg font-semibold">{bookmark.title}</h3>
