@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDetailItemClick } from '../utils/goDetail';
-import { Bookmark } from 'lucide-react';
 
 const UserListItem = ({ data }) => {
   const { detailItemClick } = useDetailItemClick();
@@ -9,8 +8,8 @@ const UserListItem = ({ data }) => {
       className="flex justify-between  gap-[10px] w-full h-full cursor-pointe border-black border-t-[1px] pt-[20px]"
       onClick={() => detailItemClick(data.id)}
     >
-      <div>
-        <h2 className="font-semibold">{data.title}</h2>
+      <div className="flex flex-col gap-[20px]">
+        <h2 className="font-bold text-[20px]">{data.title}</h2>
         <span># {data.category}</span>
       </div>
 

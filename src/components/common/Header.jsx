@@ -7,16 +7,17 @@ import classNames from 'classnames';
 import SearchInput from '../SearchInput';
 
 const Header = () => {
-  const { userInfo, removeUserInfo } = useUserStore();
+  const { userInfo, removeUserInfo, closeMenu, toggleMenu, isMenuOpen, activeTab, setActiveTab } =
+    useUserStore();
+
   const handleLogout = () => {
     removeUserInfo();
     navigate('/');
+    closeMenu();
   };
 
   const navigate = useNavigate();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
-  const [activeTab, setActiveTab] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const tabMenu = [
@@ -42,12 +43,23 @@ const Header = () => {
     },
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const tabMenuClick = index => {
     setActiveTab(index);
+    closeMenu();
   };
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      const tabMenuElement = document.querySelector('.tab-menu');
+      if (tabMenuElement && !tabMenuElement.contains(event.target)) {
+        setActiveTab(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [setActiveTab]);
 
   return (
     <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
@@ -57,10 +69,10 @@ const Header = () => {
             {isMenuOpen ? <X /> : <AlignJustify />}
           </div>
           <Link to="/">
-            <div className="font-hakgyo text-[1.5rem]">CAFEMOA</div>
+            <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
           </Link>
         </div>
-        <nav className="flex-1 hidden lg:block" style={{ height: 'inherit' }}>
+        <nav className="flex-1 hidden lg:block tab-menu" style={{ height: 'inherit' }}>
           <ul className="flex gap-2 h-[100%]">
             {tabMenu.map((tab, index) => {
               return (
@@ -104,7 +116,7 @@ const Header = () => {
       </header>
       {isMenuOpen ? (
         <div className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40">
-          <div className="lg:absolute w-full sm:w-[70vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
+          <div className="lg:absolute w-full sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
             <div className="sm:px-[50px] sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
               <button onClick={toggleMenu} className="justify-end hidden sm:flex">
                 <X className="text-[#fff]" />
