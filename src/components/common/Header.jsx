@@ -91,20 +91,16 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
-          <div className="hidden lg:flex cursor-pointer flex-row border rounded px-3"></div>
+          {/* <div className="flex cursor-pointer flex-row border rounded px-3"></div> */}
           <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
-          <div className="hidden sm:flex">
-            <button onClick={() => setIsSearchOpen(true)}>
-              <Search />
-            </button>
-          </div>
+
           {!userInfo ? (
             <>
               <Link className="hidden lg:block" to="/login">
-                로그인
+                Login
               </Link>
               <Link className="hidden lg:block" to="/signup">
-                회원가입
+                Sign Up
               </Link>
             </>
           ) : (
