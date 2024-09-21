@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function DescrtiptionEditor({
   changeDescription,
@@ -14,7 +15,7 @@ export default function DescrtiptionEditor({
   const handleSubmit = e => {
     e.preventDefault();
     changeDescription(updatedDescription);
-    alert('변경이 완료되었습니다');
+    toast.error('변경이 완료되었습니다');
   };
 
   useEffect(() => {

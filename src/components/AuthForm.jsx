@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { DATA_API } from '../api/api';
 import { useRef, useState } from 'react';
 import { getUserByMoneyPullId } from '../services/userService';
+import { toast } from 'react-toastify';
 
 const AuthForm = ({ mode }) => {
   const idRef = useRef(null);
@@ -32,7 +33,7 @@ const AuthForm = ({ mode }) => {
         const user = await getUserByMoneyPullId(data.userId);
 
         if (!user) {
-          alert('해당 사용자를 찾을 수 없습니다. 회원가입 해주세요.');
+          toast.error('해당 사용자를 찾을 수 없습니다. 회원가입 해주세요.');
           navigate('/signup');
           return;
         }
@@ -42,7 +43,7 @@ const AuthForm = ({ mode }) => {
       }
     },
     onError: error => {
-      alert('아이디 또는 비밀번호를 확인해주세요.');
+      toast.error('아이디 또는 비밀번호를 확인해주세요.');
       console.error('요청 실패', error.message);
     },
   });
@@ -70,17 +71,17 @@ const AuthForm = ({ mode }) => {
     e.preventDefault();
 
     if (!formData.id || formData.id.length < 4) {
-      alert('아이디는 최소 4글자 이상이여야 합니다.');
+      toast.error('아이디는 최소 4글자 이상이여야 합니다.');
       idRef.current.focus();
       return;
     }
     if (!formData.password || formData.password.length < 4) {
-      alert('비밀번호는 최소 4글자 이상이여야 합니다.');
+      toast.error('비밀번호는 최소 4글자 이상이여야 합니다.');
       passwordRef.current.focus();
       return;
     }
     if (mode === 'signup' && (!formData.nickname || formData.nickname.length < 2)) {
-      alert('닉네임은 최소 2글자 이상이여야 합니다.');
+      toast.error('닉네임은 최소 2글자 이상이여야 합니다.');
       nicknameRef.current.focus();
       return;
     }

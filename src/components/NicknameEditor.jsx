@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function NicknameEditor({
   changeNickname: onNicknameChange,
@@ -15,12 +16,12 @@ export default function NicknameEditor({
   const handleSubmit = e => {
     const cleanedNickname = nickname.trim();
     if (cleanedNickname === '') {
-      alert('변경할 닉네임을 입력해주세요');
+      toast.error('변경할 닉네임을 입력해주세요');
       return;
     }
 
     onNicknameChange(cleanedNickname);
-    alert('변경이 완료되었습니다');
+    toast.error('변경이 완료되었습니다');
     setIsEditing(false);
     setNickname('');
   };
