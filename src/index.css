@@ -117,6 +117,6 @@ textarea:not([rows]) {
     @apply text-gray-600 text-sm mb-2;
   }
   .input-primary {
-    @apply border rounded w-full py-2 px-3 mb-4;
+    @apply border-b border-[#61443A] text-[#61443A] bg-[#F4EFEB] focus:outline-none rounded w-full py-2 px-3 mb-4;
   }
 }
