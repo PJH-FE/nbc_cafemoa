@@ -9,6 +9,8 @@ import SearchInput from '../SearchInput';
 const Header = () => {
   const { userInfo, removeUserInfo, closeMenu, toggleMenu, isMenuOpen, activeTab, setActiveTab } =
     useUserStore();
+  const navigate = useNavigate();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const handleLogout = () => {
     removeUserInfo();
@@ -16,9 +18,10 @@ const Header = () => {
     closeMenu();
   };
 
-  const navigate = useNavigate();
-
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const tabMenuClick = index => {
+    setActiveTab(index);
+    closeMenu();
+  };
 
   const tabMenu = [
     {
@@ -43,11 +46,6 @@ const Header = () => {
     },
   ];
 
-  const tabMenuClick = index => {
-    setActiveTab(index);
-    closeMenu();
-  };
-
   useEffect(() => {
     const handleClickOutside = event => {
       const tabMenuElement = document.querySelector('.tab-menu');
@@ -61,18 +59,25 @@ const Header = () => {
     };
   }, [setActiveTab]);
 
+  useEffect(() => {
+    if (location.pathname === '/login' || location.pathname === '/signup') {
+      closeMenu();
+    }
+  }, [location.pathname, closeMenu]);
+
   return (
-    <div className="sticky top-0 z-50 bg-white border-b border-slate-300">
-      <header className="flex lg:justify-between items-center lg:gap-[30px] px-6 h-[74px]">
-        <div className="flex gap-[20px] items-center sm:flex-[.55] sm:justify-between">
+
+    <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
+      <header className="flex justify-between items-center lg:gap-[30px] px-6 h-[74px]">
+        <div className="flex gap-[20px] items-center  sm:justify-between">
           <div onClick={toggleMenu} className="cursor-pointer">
             {isMenuOpen ? <X /> : <AlignJustify />}
           </div>
+        </div>
+        <nav className="items-center flex-1 hidden lg:flex gap-[30px] tab-menu" style={{ height: 'inherit' }}>
           <Link to="/">
             <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
           </Link>
-        </div>
-        <nav className="flex-1 hidden lg:block tab-menu" style={{ height: 'inherit' }}>
           <ul className="flex gap-2 h-[100%]">
             {tabMenu.map((tab, index) => {
               return (
@@ -90,7 +95,10 @@ const Header = () => {
             })}
           </ul>
         </nav>
-        <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
+        <Link to="/" className="hidden sm:block">
+          <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
+        </Link>
+        <div className="flex gap-2 sm:justify-end">
           <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
 
           {!userInfo ? (
@@ -110,7 +118,10 @@ const Header = () => {
         </div>
       </header>
       {isMenuOpen ? (
-        <div className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40">
+        <div
+          className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40"
+          onClick={closeMenu}
+        >
           <div className="lg:absolute w-full sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
             <div className="sm:px-[50px] sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
               <button onClick={toggleMenu} className="justify-end hidden sm:flex">

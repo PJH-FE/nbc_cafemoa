@@ -57,7 +57,7 @@ const areaCategory = [
 ];
 
 const AreaCategory = () => {
-  const { isMenuOpen, toggleMenu } = useUserStore();
+  const { closeMenu } = useUserStore();
   const [articleAllData, setArticleAllData] = useState([]); //article 전체데이터 상태저장
   const setCateInLists = []; //필터링된 리스트 저장
   const filterText = 'region'; //필터링된 리스트 저장
@@ -85,7 +85,7 @@ const AreaCategory = () => {
   //util : 필터링 함수호출
   const onClickfilter = area => {
     cateListHandle(area, articleAllData, setCateInLists, navigate, filterText);
-    toggleMenu();
+    closeMenu();
   };
 
   if (isLoading) return <div>Loading...</div>;

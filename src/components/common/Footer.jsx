@@ -57,7 +57,7 @@ const Footer = () => {
         <span className="bg-[#F4EFEB] w-full block p-[5px] sm:px-[20px]">
           <div className="max-w-[1500px] w-full mx-[auto] my-0 flex justify-between text-[#61443A] text-[13px] py-[3px]">
             <p>ⓒ 2024. CAFEMOA. All rights reserved.</p>
-            <p>SPASTA. 7</p>
+            <p>SPARTA. 7</p>
           </div>
         </span>
       </div>
