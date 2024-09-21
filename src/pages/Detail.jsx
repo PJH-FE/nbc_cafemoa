@@ -3,6 +3,9 @@ import { useAddBookmark, useDeletePost, useFetchDetail, useRemoveBookmark } from
 import Map from '../components/board/Map';
 import { useEffect, useState } from 'react';
 import { DATA_API } from '../api/api';
+import Comments from '../components/Comments';
+import { Bookmark, BookmarkCheck } from 'lucide-react';
+
 import useUserStore from '../zustand/bearStore';
 
 const Detail = () => {
@@ -24,7 +27,7 @@ const Detail = () => {
 
   useEffect(() => {
     if (userInfo) {
-      const userId = userInfo.userId;
+      const userId = userInfo.user_id;
       const getUserDataId = async () => {
         const { data: userData, isError } = await DATA_API.get(`/users?user_id=${userId}`);
         if (isError) return;
@@ -62,13 +65,13 @@ const Detail = () => {
 
   // 북마크 저장/삭제
   const clickBookmark = async bookmarkEvent => {
-    await bookmarkEvent.mutate({ id: loginUserData.user_id, articleId: nowArticleId });
+    await bookmarkEvent.mutate({ id: loginUserData?.user_id, articleId: nowArticleId });
   };
 
   return (
     <>
       <div>
-        <div className="flex items-center font-bold text-3xl pb-4 border-b-2 border-black">
+        <div className="flex items-center pb-4 text-3xl font-bold border-b-2 border-black">
           <span>[{detailData.category}]</span>
           {detailData.title}
 
@@ -80,7 +83,7 @@ const Detail = () => {
                     clickBookmark(removeBookmark);
                   }}
                 >
-                  북마크 함
+                  <BookmarkCheck />
                 </button>
               ) : (
                 <button
@@ -88,21 +91,19 @@ const Detail = () => {
                     clickBookmark(addBookmark);
                   }}
                 >
-                  북마크 안 함
+                  <Bookmark />
                 </button>
               )}
             </>
           )}
         </div>
-        <div className="flex flex-col py-2 px-3">
-          <div className="ml-auto pb-2 text-gray-600">
+        <div className="flex flex-col px-3 py-2">
+          <div className="pb-2 ml-auto text-gray-600">
             {detailData.date} / {WriterNickname}
           </div>
           <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
         </div>
-
         <div>{detailData.cafe_name}</div>
-
         <Map cafeData={cafeData} />
 
         <Link to={`/edit?article_id=${nowArticleId}`}>수정</Link>
@@ -114,6 +115,9 @@ const Detail = () => {
         >
           삭제
         </button>
+      </div>
+      <div className="mt-8">
+        <Comments nowArticleId={nowArticleId} />
       </div>
     </>
   );

@@ -1,14 +1,15 @@
-import SpotListItem from '../components/SpotListItem';
 import { useState, useEffect } from 'react';
 import { DATA_API } from '../api/api';
+import UserListItem from '../components/UserListItem';
+import { useDetailItemClick } from '../utils/goDetail';
 
-const List = () => {
+const UsersCommutity = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const itemsPerPage = 12;
 
-  const [endIndex, setEndIndex] = useState(itemsPerPage);
+  const [endIndex, setEndIndex] = useState(12);
 
   // 스크롤 이벤트
   const handleScroll = () => {
@@ -26,7 +27,7 @@ const List = () => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const { data } = await DATA_API.get(`/cafedb?_limit=${endIndex}`);
+        const { data } = await DATA_API.get(`/articles?_limit=${endIndex}`);
         if (itemsPerPage < data.length) {
           setHasMore(false);
         }
@@ -62,18 +63,22 @@ const List = () => {
   };
 
   return (
-    <div className="max-w-[1500px] my-0 mx-[auto]">
-      <div className="flex justify-end gap-5 p-5">
+    <div className="max-w-[1500px] my-0 mx-[auto] pb-[100px] sm:pb-[50px]">
+      <div className="pt-[60px] pb-[40px] sm:px-[20px]">
+        <h2 className="text-[24px] font-bold mb-[10px]">카페로그</h2>
+        <h2 className="text-[18px] text-[#858585]">카페에서의 일상과 경험을 기록해보세요.</h2>
+      </div>
+      <div className="flex justify-end gap-5 p-5 text-[#61443A]">
         <button onClick={alignmentBtn}>가나다순</button>
         <button onClick={latestBtn}>최신순</button>
       </div>
-      <ul className="grid gap-[20px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
+      <ul className="grid gap-[20px] grid-cols-1 p-5 pt-[3%]">
         {articles.map((article, index) => {
-          return <SpotListItem key={index} data={article} />;
+          return <UserListItem key={index} data={article} />;
         })}
       </ul>
       {loading && <div>Loading...</div>}
     </div>
   );
 };
-export default List;
+export default UsersCommutity;

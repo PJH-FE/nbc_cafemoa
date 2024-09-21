@@ -1,12 +1,16 @@
 import { useMutation } from '@tanstack/react-query';
 import { login, register } from '../api/AuthClient';
 import useUserStore from '../zustand/bearStore';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DATA_API } from '../api/api';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { getUserByMoneyPullId } from '../services/userService';
 
 const AuthForm = ({ mode }) => {
+  const idRef = useRef(null);
+  const passwordRef = useRef(null);
+  const nicknameRef = useRef(null);
+
   const [formData, setFormData] = useState({
     id: '',
     password: '',
@@ -28,7 +32,7 @@ const AuthForm = ({ mode }) => {
         const user = await getUserByMoneyPullId(data.userId);
 
         if (!user) {
-          alert('사용자를 찾을 수 없습니다. 다시 회원가입 해주세요.');
+          alert('해당 사용자를 찾을 수 없습니다. 회원가입 해주세요.');
           navigate('/signup');
           return;
         }
@@ -38,7 +42,8 @@ const AuthForm = ({ mode }) => {
       }
     },
     onError: error => {
-      console.error('회원가입 실패', error.message);
+      alert('아이디 또는 비밀번호를 확인해주세요.');
+      console.error('요청 실패', error.message);
     },
   });
 
@@ -57,45 +62,87 @@ const AuthForm = ({ mode }) => {
     return data;
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    mutate(formData);
-  };
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (!formData.id || formData.id.length < 4) {
+      alert('아이디는 최소 4글자 이상이여야 합니다.');
+      idRef.current.focus();
+      return;
+    }
+    if (!formData.password || formData.password.length < 4) {
+      alert('비밀번호는 최소 4글자 이상이여야 합니다.');
+      passwordRef.current.focus();
+      return;
+    }
+    if (mode === 'signup' && (!formData.nickname || formData.nickname.length < 2)) {
+      alert('닉네임은 최소 2글자 이상이여야 합니다.');
+      nicknameRef.current.focus();
+      return;
+    }
+    mutate(formData);
+  };
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input
-          type="text"
-          name="id"
-          placeholder="아이디"
-          value={formData.id}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="비밀번호"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        {mode === 'signup' && (
-          <input
-            type="text"
-            name="nickname"
-            placeholder="닉네임"
-            value={formData.nickname}
-            onChange={handleChange}
-            required
-          />
+    <div className="flex justify-center items-center min-h-screen bg-[#F4EFEB]">
+      <div className="p-10 min-h-[550px] w-full max-w-md">
+        <h1 className="text-2xl mb-8 font-bold text-center text-[#61443A]">
+          {mode === 'signup' ? 'SignUp' : 'Login'}
+        </h1>
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col">
+            <label className="label-primary">ID</label>
+            <input
+              className="input-primary"
+              type="text"
+              name="id"
+              placeholder="아이디"
+              value={formData.id}
+              onChange={handleChange}
+              ref={idRef}
+              required
+            />
+            <label className="label-primary">PASSWORD</label>
+            <input
+              className="input-primary"
+              type="password"
+              name="password"
+              placeholder="비밀번호"
+              value={formData.password}
+              onChange={handleChange}
+              ref={passwordRef}
+              required
+            />
+            {mode === 'signup' && (
+              <>
+                <label className="label-primary">NICKNAME</label>
+                <input
+                  className="input-primary"
+                  type="text"
+                  name="nickname"
+                  placeholder="닉네임"
+                  value={formData.nickname}
+                  onChange={handleChange}
+                  ref={nicknameRef}
+                  required
+                />
+              </>
+            )}
+          </div>
+          <button className="bg-[#61443A] text-white font-bold rounded w-full py-2 px-4 hover:opacity-50">
+            {mode === 'signup' ? 'Sign Up' : 'Login'}
+          </button>
+        </form>
+        {mode === 'login' && (
+          <div className="text-center mt-4 text-[#61443A] underline">
+            <Link to="/signup">CREATE AN ACCOUNT</Link>
+          </div>
         )}
       </div>
-      <button type="sumbit">{mode === 'signup' ? '회원가입' : '로그인'}</button>
-    </form>
+    </div>
   );
 };
 

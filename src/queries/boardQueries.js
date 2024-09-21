@@ -5,14 +5,15 @@ export const queryKeys = {
   boardController: {
     articles: () => ['articles'],
     users: () => ['users'],
+    cafedb: () => ['cafedb'],
   },
 };
 
 // 게시글 상세 불러오기
 const fetchDetail = async ({ queryKey }) => {
   const [_, id] = queryKey;
-  const response = await DATA_API.get(`/articles/${id}`);
-  return response.data;
+  const response = await DATA_API.get(`/articles?id=${id}`);
+  return response.data[0];
 };
 
 export const useFetchDetail = id => {
@@ -109,5 +110,19 @@ export const useRemoveBookmark = setLoginUserData => {
       }));
       queryClient.invalidateQueries(queryKeys.boardController.articles);
     },
+  });
+};
+
+// 게시글 상세 불러오기
+const fetchCafeInfo = async ({ queryKey }) => {
+  const [_, id] = queryKey;
+  const response = await DATA_API.get(`/cafedb/${id}`);
+  return response.data;
+};
+
+export const useFetchCafeInfo = id => {
+  return useQuery({
+    queryKey: [...queryKeys.boardController.cafedb(), id],
+    queryFn: fetchCafeInfo,
   });
 };

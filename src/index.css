@@ -1,6 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'KoddiUDOnGothic-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/KoddiUDOnGothic-Regular.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HakgyoansimAllimjangTTF-B';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* box-sizing 규칙을 명시합니다. */
 *,
 *::before,
@@ -8,6 +23,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'KoddiUDOnGothic-Regular', sans-serif;
 }
 
 /* 폰트 크기의 팽창을 방지합니다. */
@@ -29,6 +45,7 @@ blockquote,
 dl,
 dd {
   margin-block-end: 0;
+  font-family: 'KoddiUDOnGothic-Regular';
 }
 
 /* list를 role값으로 갖는 ul, ol 요소의 기본 목록 스타일을 제거합니다. */
@@ -42,6 +59,8 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   overflow-x: hidden;
+  font-family: 'KoddiUDOnGothic-Regular';
+  position: relative;
 }
 
 /* 제목 요소와 상호작용하는 요소에 대해 line-height를 더 짧게 설정합니다. */
@@ -92,4 +111,13 @@ textarea:not([rows]) {
 /* 고정된 모든 항목에는 여분의 스크롤 여백이 있어야 합니다. */
 :target {
   scroll-margin-block: 5ex;
+}
+
+@layer components {
+  .label-primary {
+    @apply text-gray-600 text-sm mb-2;
+  }
+  .input-primary {
+    @apply border-b border-[#61443A] text-[#61443A] bg-[#F4EFEB] focus:outline-none rounded w-full py-2 px-3 mb-4;
+  }
 }
