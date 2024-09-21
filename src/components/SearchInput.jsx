@@ -25,7 +25,7 @@ const SearchInput = ({ isSearchOpen, setIsSearchOpen }) => {
       <div className="hidden lg:flex">
         <form onSubmit={handleSearchSubmit} className="flex">
           <input
-            className="focus: outline-none border-b border-[#61443A]"
+            className="focus: outline-none border-b border-[#61443A] text-[#61443A]"
             type="text"
             value={searchKeyword}
             onChange={handleInputChange}
@@ -43,10 +43,10 @@ const SearchInput = ({ isSearchOpen, setIsSearchOpen }) => {
       </div>
 
       {isSearchOpen && (
-        <div className="fixed top-[1.6rem] left-0 z-50 flex w-full mt-4 p-2 items-center justify-center">
+        <div className="hidden sm:flex fixed top-[1.6rem] left-0 z-50 w-full mt-4 p-2 items-center justify-center">
           <form onSubmit={handleSearchSubmit} className="flex w-full mt-4 p-2 items-center justify-center">
             <input
-              className="focus: outline-none focus:ring-blue-500 w-full px-4 py-2 border rounded-md"
+              className="focus: outline-none w-full px-4 py-2 border rounded-md text-[#61443A]"
               type="text"
               value={searchKeyword}
               onChange={handleInputChange}

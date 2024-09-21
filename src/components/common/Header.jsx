@@ -91,7 +91,6 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
-          {/* <div className="flex cursor-pointer flex-row border rounded px-3"></div> */}
           <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
 
           {!userInfo ? (
