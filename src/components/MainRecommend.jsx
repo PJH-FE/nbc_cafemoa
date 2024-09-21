@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import SpotListItem from './SpotListItem';
 import { ChevronRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { DATA_API } from '../api/api';
+import useUserStore from '../zustand/bearStore';
 
 const MainRecommend = () => {
   const [cateInLists, setCateInLists] = useState([]); //필터링된 리스트 상태저장
   const navigate = useNavigate();
+  const { closeMenu } = useUserStore();
 
   //어떤 데이터 쓸건지 지정
   const {
@@ -44,6 +46,7 @@ const MainRecommend = () => {
     setCateInLists(filterCateInList);
     const cateInListsParam = encodeURIComponent(JSON.stringify(filterCateInList));
     navigate(`/list-category?cateInLists=${cateInListsParam}`);
+    closeMenu();
   };
 
   return (

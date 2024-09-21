@@ -37,6 +37,7 @@ const useUserStore = create(
       },
       closeMenu: () => set({ isMenuOpen: false }),
       setActiveTab: index => set({ activeTab: index }),
+      removeTab: () => set({ activeTab: false }),
     }),
     {
       name: 'user-storage',

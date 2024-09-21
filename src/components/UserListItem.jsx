@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDetailItemClick } from '../utils/goDetail';
+import { getCategoryColor } from '../utils/getCategoryColor';
 
 const UserListItem = ({ data }) => {
   const { detailItemClick } = useDetailItemClick();
@@ -10,7 +11,9 @@ const UserListItem = ({ data }) => {
     >
       <div className="flex flex-col gap-[20px]">
         <h2 className="font-bold text-[20px]">{data.title}</h2>
-        <span># {data.category}</span>
+        <span className="text-[14px]" style={{ color: getCategoryColor(data.category) }}>
+          # {data.category}
+        </span>
       </div>
 
       <div>
