@@ -2,10 +2,10 @@ import { CircleChevronDown, CircleChevronUp, SquarePen } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useUserStore from '../zustand/bearStore';
+import { useEffect } from 'react';
 
 const WritingFixBtn = () => {
   const userInfo = useUserStore(state => state.getUserInfo());
-  console.log(userInfo);
 
   const handleGoToTop = () => {
     window.scrollTo({
@@ -19,6 +19,14 @@ const WritingFixBtn = () => {
       behavior: 'smooth',
     });
   };
+
+  const { closeMenu } = useUserStore();
+
+  useEffect(() => {
+    if (location.pathname === '/write') {
+      closeMenu();
+    }
+  }, [location.pathname, closeMenu]);
 
   return (
     <div className="fixed gap-1 bottom-[3%] right-[3%] z-50 flex flex-col items-center">

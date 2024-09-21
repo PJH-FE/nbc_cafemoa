@@ -4,9 +4,11 @@ import { Bookmark, BookmarkCheck } from 'lucide-react';
 import useUserStore from '../zustand/bearStore';
 import { useAddBookmark, useRemoveBookmark } from '../queries/boardQueries';
 import { DATA_API } from '../api/api';
+import { getCategoryColor } from '../utils/getCategoryColor';
 
 const SpotListItem = ({ data }) => {
   const { cafeInfoItemClick } = useDetailItemClick();
+  const { closeMenu } = useUserStore();
 
   // 로그인 한 유저 정보
   const userInfo = useUserStore(state => state.getUserInfo());
@@ -35,11 +37,13 @@ const SpotListItem = ({ data }) => {
     await bookmarkEvent.mutate({ id: loginUserData?.user_id, articleId: data.id });
   };
 
+  const handleCafeInfoItem = () => {
+    cafeInfoItemClick(data.id);
+    closeMenu();
+  };
+
   return (
-    <div
-      className="flex flex-col gap-[10px] w-full h-full cursor-pointe "
-      onClick={() => cafeInfoItemClick(data.id)}
-    >
+    <div className="flex flex-col gap-[10px] w-full h-full cursor-pointe " onClick={handleCafeInfoItem}>
       <div className="relative w-full h-full max-h-[400px]">
         <img className="object-cover w-full h-full" src={data.thumbnail} alt={data.title} />
         <span className="absolute top-[10px] right-[10px]">
@@ -72,7 +76,9 @@ const SpotListItem = ({ data }) => {
         <h2 className="font-semibold">{data.title}</h2>
         <p className="font-normal text-slate-500 text-[13px]">{data.region}</p>
       </div>
-      <span className="text-left"># {data.category}</span>
+      <span className="text-left text-[14px]" style={{ color: getCategoryColor(data.category) }}>
+        # {data.category}
+      </span>
     </div>
   );
 };

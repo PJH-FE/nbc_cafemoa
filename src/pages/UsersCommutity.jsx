@@ -8,7 +8,6 @@ const UsersCommutity = () => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const itemsPerPage = 12;
-
   const [endIndex, setEndIndex] = useState(12);
 
   // 스크롤 이벤트
@@ -61,6 +60,11 @@ const UsersCommutity = () => {
     articleData.sort((a, b) => new Date(b.date) - new Date(a.date));
     setArticles(articleData);
   };
+
+  // 처음 렌더링될 때 최신순으로 정렬
+  useEffect(() => {
+    latestBtn();
+  }, []);
 
   return (
     <div className="max-w-[1500px] my-0 mx-[auto] pb-[100px] sm:pb-[50px]">
