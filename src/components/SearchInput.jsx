@@ -2,7 +2,7 @@ import { Search } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const SearchInput = () => {
+const SearchInput = ({ isSearchOpen, setIsSearchOpen }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const navigate = useNavigate();
@@ -21,18 +21,35 @@ const SearchInput = () => {
   };
 
   return (
-    <form onSubmit={handleSearchSubmit} className="flex">
-      <input
-        className="focus: outline-none"
-        type="text"
-        value={searchKeyword}
-        onChange={handleInputChange}
-        placeholder="검색"
-      />
-      <button>
-        <Search />
-      </button>
-    </form>
+    <>
+      <div className="hidden lg:flex">
+        <form onSubmit={handleSearchSubmit} className="flex">
+          <input
+            className="focus: outline-none"
+            type="text"
+            value={searchKeyword}
+            onChange={handleInputChange}
+            placeholder="검색"
+          />
+          <button>
+            <Search />
+          </button>
+        </form>
+      </div>
+
+      <div className={`${isSearchOpen ? 'block' : 'hidden'} fixed flex`}>
+        <form onSubmit={handleSearchSubmit}>
+          <input
+            className="focus: outline-none"
+            type="text"
+            value={searchKeyword}
+            onChange={handleInputChange}
+            placeholder="검색"
+          />
+          <button onClick={() => setIsSearchOpen(false)}>X</button>
+        </form>
+      </div>
+    </>
   );
 };
 

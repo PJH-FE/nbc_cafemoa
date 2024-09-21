@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AlignJustify, X, LayoutGrid, User, Bookmark, MessagesSquare } from 'lucide-react';
+import { AlignJustify, X, LayoutGrid, User, Bookmark, MessagesSquare, Search } from 'lucide-react';
 import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
@@ -17,6 +17,7 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
   const [activeTab, setActiveTab] = useState(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const tabMenu = [
     {
@@ -78,8 +79,12 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
-          <div className="cursor-pointer flex flex-row border rounded px-3">
-            <SearchInput />
+          <div className="hidden lg:flex cursor-pointer flex-row border rounded px-3"></div>
+          <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
+          <div className="hidden sm:flex">
+            <button onClick={() => setIsSearchOpen(true)}>
+              <Search />
+            </button>
           </div>
           {!userInfo ? (
             <>
