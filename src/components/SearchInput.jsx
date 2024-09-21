@@ -1,6 +1,7 @@
 import { Search, X } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SearchInput = ({ isSearchOpen, setIsSearchOpen }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -15,7 +16,7 @@ const SearchInput = ({ isSearchOpen, setIsSearchOpen }) => {
     if (searchKeyword) {
       navigate(`/search-results?keyword=${searchKeyword}`);
     } else {
-      alert('검색어를 입력해주세요.');
+      toast.error('검색어를 입력해주세요.');
     }
     setSearchKeyword('');
   };

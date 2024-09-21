@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { DATA_API } from '../api/api';
 import useUserStore from '../zustand/bearStore';
+import { toast } from 'react-toastify';
 
 const Comments = ({ nowArticleId }) => {
   const queryClient = useQueryClient();
@@ -76,7 +77,7 @@ const Comments = ({ nowArticleId }) => {
   // 댓글 추가 처리
   const handleAddComment = () => {
     if (!commentTexts) {
-      alert('댓글을 입력해주세요');
+      toast.error('댓글을 입력해주세요');
       return;
     } // 빈 내용 방지
     addComment({
