@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { AlignJustify, X, LayoutGrid, User, Bookmark, MessagesSquare } from 'lucide-react';
+import { AlignJustify, X, LayoutGrid, User, Bookmark, MessagesSquare, Search } from 'lucide-react';
 import useUserStore from '../../zustand/bearStore';
 import { useState, useEffect } from 'react';
 import MainCategory from '../MainCategory';
@@ -17,6 +17,8 @@ const Header = () => {
   };
 
   const navigate = useNavigate();
+
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const tabMenu = [
     {
@@ -89,16 +91,15 @@ const Header = () => {
           </ul>
         </nav>
         <div className="flex gap-2 sm:flex-[.45] sm:justify-end">
-          <div className="flex flex-row px-3 border rounded cursor-pointer">
-            <SearchInput />
-          </div>
+          <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
+
           {!userInfo ? (
             <>
               <Link className="hidden lg:block" to="/login">
-                로그인
+                Login
               </Link>
               <Link className="hidden lg:block" to="/signup">
-                회원가입
+                Sign Up
               </Link>
             </>
           ) : (
