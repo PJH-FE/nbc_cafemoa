@@ -5,14 +5,14 @@ export default function ArticlesSection({ articles }) {
 
   return (
     <section className="w-6/12 bg-white">
-      <h1 className="text-xl bg-customHardBorder text-white h-16 flex justify-center items-center font-semibold">
+      <h1 className="text-xl bg-primary01 text-white h-16 flex justify-center items-center font-semibold">
         작성글
       </h1>
       {articles?.length ? (
         articles.map(article => (
           <article
             key={article.id}
-            className="h-14 flex items-center justify-between cursor-pointer p-2 border-customHardBorder border-b-2"
+            className="h-14 flex items-center justify-between cursor-pointer p-2 border-primary01 border-b-2"
             onClick={() => navigate(`/detail/${article.id}`)}
           >
             <span>{article.title}</span>

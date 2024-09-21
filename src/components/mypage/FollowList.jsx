@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import FollowListItem from './FollowListItem';
 
-const buttonBoxStyle =
-  'border-customHardBorder border-2 flex flex-1 justify-center items-center cursor-pointer';
+const buttonBoxStyle = 'border-primary01 border-2 flex flex-1 justify-center items-center cursor-pointer';
 
 export default function FollowList({ following, followers }) {
   const [isFollowing, setIsFollowing] = useState(false);
@@ -12,7 +11,7 @@ export default function FollowList({ following, followers }) {
       <div className="w-full h-12 flex">
         <div
           className={`${buttonBoxStyle} ${
-            !isFollowing ? 'text-white bg-customHardBorder' : 'text-customHardBorder bg-white'
+            !isFollowing ? 'text-white bg-primary01' : 'text-primary01 bg-white'
           }`}
           onClick={() => setIsFollowing(false)}
         >
@@ -20,7 +19,7 @@ export default function FollowList({ following, followers }) {
         </div>
         <div
           className={`${buttonBoxStyle} ${
-            !isFollowing ? 'text-customHardBorder bg-white' : 'text-white bg-customHardBorder'
+            !isFollowing ? 'text-primary01 bg-white' : 'text-white bg-primary01'
           }`}
           onClick={() => setIsFollowing(true)}
         >

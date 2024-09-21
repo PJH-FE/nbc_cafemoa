@@ -11,7 +11,7 @@ function FollowerList({ followers, title }) {
     <section>
       {followers?.length ? (
         followers.map(follower => (
-          <div key={follower.id} className="border-b-customHardBorder border-2 p-2 px-4">
+          <div key={follower.id} className="border-b-primary01 border-2 p-2 px-4">
             <Link to={`/detail/${follower.id}`} className="flex gap-4">
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-800 flex items-center justify-center">
                 <img

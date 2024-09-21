@@ -30,7 +30,7 @@ export default function NicknameEditor({ changeNickname: onNicknameChange, userN
               onChange={handleNicknameChange}
               value={nickname}
               placeholder={currentNickname}
-              className="border rounded-md p-1 focus:outline-none focus:ring-1 focus:ring-[#3B3030] border-customHardBorder text-sm mr-2"
+              className="border rounded-md p-1 focus:outline-none focus:ring-1 focus:ring-[#3B3030] border-primary01 text-sm mr-2"
             />
             <button
               className="text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs"

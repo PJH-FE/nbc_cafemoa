@@ -16,7 +16,7 @@ export default function DescrtiptionEditor({ changeDescription, description: cur
   return (
     <form className="relative mt-2" onSubmit={handleSubmit}>
       <textarea
-        className="border rounded-md p-1 w-full min-h-20 focus:outline-none focus:ring-1 focus:ring-[#3B3030] text-sm border-customHardBorder"
+        className="border rounded-md p-1 w-full min-h-20 focus:outline-none focus:ring-1 focus:ring-[#3B3030] text-sm border-primary01"
         onChange={handleDescriptionChange}
         value={updatedDescription}
         rows={2}
