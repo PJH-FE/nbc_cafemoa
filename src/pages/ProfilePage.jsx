@@ -21,7 +21,13 @@ const ProfilePage = () => {
 
   return (
     <main className="flex justify-between gap-12 min-h-[54rem] w-screen py-16 px-32 bg-[#F4EFEB]">
-      <ProfileSection followers={followers} following={following} id={profile_id} isMyProfile={isMyProfile} />
+      <ProfileSection
+        followers={followers}
+        following={following}
+        id={profile_id}
+        isMyProfile={isMyProfile}
+        articles={articles}
+      />
       <ArticlesSection articles={articles} />
     </main>
   );

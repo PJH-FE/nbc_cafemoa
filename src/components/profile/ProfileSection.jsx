@@ -6,10 +6,10 @@ import FollowList from './FollowList';
 import { useState } from 'react';
 import FollowButton from './FollowButton';
 
-export default function ProfileSection({ followers, following, id, isMyProfile }) {
+export default function ProfileSection({ articles, followers, following, id, isMyProfile }) {
   const [] = useState();
   const { user, changeNickname, changeProfileImage, changeDescription } = useUser(id);
-  const { description, written_articles } = user;
+  const { description } = user;
 
   return (
     <div className="bg-white flex flex-col w-5/12 relative shadow-xl">
@@ -30,7 +30,7 @@ export default function ProfileSection({ followers, following, id, isMyProfile }
             isMyProfile={isMyProfile}
           />
           <div className="flex gap-4 ">
-            <span>게시글 : {written_articles.length}개</span>
+            <span>게시글 : {articles.length}개</span>
             <span>팔로우 : {followers.length}명</span>
           </div>
           <DescriptionEditor
