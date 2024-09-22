@@ -18,17 +18,17 @@ const UserListItem = ({ data }) => {
 
   return (
     <div
-      className="flex items-start justify-between  gap-[10px] w-full h-full cursor-pointe border-black border-t-[1px] pt-[20px]"
+      className="flex items-start justify-between gap-[10px] w-full h-full cursor-pointer border-black border-t-[1px] pt-[20px]"
       onClick={() => detailItemClick(data.id)}
     >
-      <div className="flex flex-col gap-[20px]">
+      <div className="flex flex-col gap-2">
         <h2 className="font-bold text-[20px]">{data.title}</h2>
         <span className="text-[14px]" style={{ color: getCategoryColor(data.category) }}>
           # {data.category}
         </span>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center flex-shrink-0 gap-2">
         <span>{WriterNickname}</span>
         <span>|</span>
         <span>{data.date}</span>
