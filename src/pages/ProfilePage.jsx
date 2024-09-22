@@ -27,6 +27,7 @@ const ProfilePage = () => {
           following={following}
           id={profile_id}
           isMyProfile={isMyProfile}
+          articles={articles}
         />
         <ArticlesSection articles={articles} />
       </div>

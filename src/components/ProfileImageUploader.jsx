@@ -37,7 +37,7 @@ export default function ProfileImageUploader({ profileURL, changeProfileImage, i
         disabled={!isMyProfile}
       />
       <div
-        className={`relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-centerrelative ${
+        className={`relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-center ${
           isMyProfile && 'cursor-pointer'
         }`}
         onClick={() => fileInputRef.current.click()}

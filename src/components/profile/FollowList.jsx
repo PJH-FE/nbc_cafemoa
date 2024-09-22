@@ -7,7 +7,7 @@ export default function FollowList({ following, followers }) {
   const [isFollowing, setIsFollowing] = useState(false);
 
   return (
-    <section className="flex-1">
+    <section className="flex-1 sm:border-x-2 border-primary01">
       <div className="flex w-full">
         <div
           className={`${buttonBoxStyle} ${
