@@ -36,7 +36,7 @@ export default function ProfileImageUploader({ profileURL, changeProfileImage, i
         disabled={!isMyProfile}
       />
       <div
-        className={`w-36 h-36 rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-center bg-gray-900 relative ${
+        className={`w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-center bg-gray-900 relative ${
           isMyProfile && 'cursor-pointer'
         }`}
         onClick={() => fileInputRef.current.click()}
@@ -48,7 +48,7 @@ export default function ProfileImageUploader({ profileURL, changeProfileImage, i
             className={`w-full h-full object-cover ${isMyProfile && 'opacity-35'} object-center`}
           />
         )}
-        {isMyProfile && <div className="absolute text-white text-sm">이미지 변경</div>}
+        {isMyProfile && <div className="absolute text-sm text-white">이미지 변경</div>}
       </div>
     </>
   );

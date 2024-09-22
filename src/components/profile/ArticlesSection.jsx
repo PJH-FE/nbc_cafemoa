@@ -4,19 +4,19 @@ export default function ArticlesSection({ articles }) {
   const navigate = useNavigate();
 
   return (
-    <section className="w-6/12 bg-white">
-      <h1 className="text-xl bg-primary01 text-white h-16 flex justify-center items-center font-semibold">
+    <section className="w-[50%] bg-white sm:w-full">
+      <h1 className="flex items-center justify-center py-[15px] text-xl font-semibold text-white bg-primary01">
         작성글
       </h1>
       {articles?.length ? (
         articles.map(article => (
           <article
             key={article.id}
-            className="h-14 flex items-center justify-between cursor-pointer p-2 border-primary01 border-b-2"
+            className="flex items-center justify-between p-[20px] border-b-2 cursor-pointer h-14 border-primary01"
             onClick={() => navigate(`/detail?article_id=${article.id}`)}
           >
-            <span>{article.title}</span>
-            <span>{article.date}</span>
+            <span className="text-[18px]">{article.title}</span>
+            <span className="text-[18px]">{article.date}</span>
           </article>
         ))
       ) : (
