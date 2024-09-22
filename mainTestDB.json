@@ -490,15 +490,8 @@
       "user_nickname": "코딩왕 ",
       "description": "코딩과 여행을 사랑하는 개발자!",
       "following": [],
-      "follower": [
-        2,
-        3
-      ],
-      "written_articles": [
-        101,
-        102,
-        103
-      ],
+      "follower": [2, 3],
+      "written_articles": [101, 102, 103],
       "bookmarked": []
     },
     {
@@ -507,18 +500,10 @@
       "profile_image": "https://sdkvrrggsuuhvxrvsobx.supabase.co/storage/v1/object/public/avatars/avatar_1726724943669.png",
       "user_nickname": "여행가",
       "description": "세계를 탐험하는 여행 블로거!",
-      "following": [
-        1,
-        3
-      ],
-      "follower": [
-        1
-      ],
+      "following": [1, 3],
+      "follower": [1],
       "written_articles": [],
-      "bookmarked": [
-        101,
-        102
-      ]
+      "bookmarked": [101, 102]
     },
     {
       "id": "3",
@@ -529,11 +514,7 @@
       "following": [],
       "follower": [],
       "written_articles": [],
-      "bookmarked": [
-        "cafedb11",
-        "cafedb06",
-        "cafedb02"
-      ]
+      "bookmarked": ["cafedb11", "cafedb06", "cafedb02"]
     },
     {
       "id": "4",
@@ -543,9 +524,7 @@
       "description": "커피의 매력에 빠진 사람!",
       "following": [],
       "follower": [],
-      "written_articles": [
-        104
-      ],
+      "written_articles": [104],
       "bookmarked": []
     },
     {
@@ -556,9 +535,7 @@
       "description": "뷰 좋은 카페를 찾는 사람.",
       "following": [],
       "follower": [],
-      "written_articles": [
-        105
-      ],
+      "written_articles": [105],
       "bookmarked": []
     },
     {
@@ -569,11 +546,161 @@
       "description": "디저트를 사랑하는 사람입니다.",
       "following": [],
       "follower": [],
-      "written_articles": [
-        106,
-        107
-      ],
+      "written_articles": [106, 107],
       "bookmarked": []
+    }
+  ],
+  "comments": [
+    {
+      "id": "c001",
+      "postId": "101",
+      "author_id": "2",
+      "text": "익선동카페 정말 멋져 보여요! 다음에 방문하고 싶네요.",
+      "date": "2024-09-18"
+    },
+    {
+      "id": "c002",
+      "postId": "102",
+      "author_id": "3",
+      "text": "전주에 이렇게 예쁜 한옥카페가 있는 줄 몰랐어요!",
+      "date": "2024-09-17"
+    },
+    {
+      "id": "c003",
+      "postId": "103",
+      "author_id": "1",
+      "text": "춘천에서 24시 카페라니, 너무 좋아요!",
+      "date": "2024-09-16"
+    },
+    {
+      "id": "c004",
+      "postId": "104",
+      "author_id": "5",
+      "text": "애견동반 가능한 카페라니, 반려동물과 함께 가고 싶어요.",
+      "date": "2024-09-16"
+    },
+    {
+      "id": "c005",
+      "postId": "105",
+      "author_id": "6",
+      "text": "종로구의 뷰 좋은 카페라니 사진만 봐도 힐링되는 느낌이에요.",
+      "date": "2024-09-15"
+    },
+    {
+      "id": "c006",
+      "postId": "106",
+      "author_id": "a06c",
+      "text": "안산시에 있는 카캉스, 꼭 방문해봐야겠어요!",
+      "date": "2024-09-14"
+    },
+    {
+      "id": "c007",
+      "postId": "107",
+      "author_id": "4",
+      "text": "은평구에 있는 기공 카페, 디저트가 맛있다고 들었어요.",
+      "date": "2024-09-14"
+    },
+    {
+      "id": "c009",
+      "postId": "102",
+      "author_id": "2",
+      "text": "전주 여행 계획에 이 카페를 추가해야겠어요!",
+      "date": "2024-09-18"
+    },
+    {
+      "id": "c010",
+      "postId": "103",
+      "author_id": "5",
+      "text": "24시 운영이라 늦은 시간에도 편하게 이용할 수 있어 좋네요.",
+      "date": "2024-09-17"
+    },
+    {
+      "id": "c011",
+      "postId": "101",
+      "author_id": "1",
+      "text": "수표로28길에 위치한 한옥카페, 분위기가 정말 좋겠어요.",
+      "date": "2024-09-20"
+    },
+    {
+      "id": "c012",
+      "postId": "104",
+      "author_id": "2",
+      "text": "대전 서구의 투드커피, 반려동물과 함께 가기 딱 좋은 곳 같아요!",
+      "date": "2024-09-19"
+    },
+    {
+      "id": "c013",
+      "postId": "105",
+      "author_id": "3",
+      "text": "종로구에 있는 테르트르, 방문해보고 싶은 카페 목록에 추가했어요.",
+      "date": "2024-09-18"
+    },
+    {
+      "id": "c014",
+      "postId": "106",
+      "author_id": "4",
+      "text": "안산시의 카캉스, 위치도 좋아보이고 뷰도 기대되네요.",
+      "date": "2024-09-17"
+    },
+    {
+      "id": "c015",
+      "postId": "107",
+      "author_id": "5",
+      "text": "기공 카페에서 디저트와 함께 여유로운 시간을 보내고 싶어요.",
+      "date": "2024-09-16"
+    },
+    {
+      "id": "c016",
+      "postId": "101",
+      "author_id": "6",
+      "text": "한옥과 현대적인 요소가 잘 어우러진 카페라니 정말 궁금해요.",
+      "date": "2024-09-21"
+    },
+    {
+      "id": "c017",
+      "postId": "102",
+      "author_id": "a06c",
+      "text": "전주에 위치한 너의고요 카페, 분위기가 너무 좋아 보여요!",
+      "date": "2024-09-20"
+    },
+    {
+      "id": "c018",
+      "postId": "103",
+      "author_id": "2",
+      "text": "춘천의 24시 무인카페 레트로엣, 늦은 밤에도 이용할 수 있어서 좋아요.",
+      "date": "2024-09-19"
+    },
+    {
+      "id": "c019",
+      "postId": "104",
+      "author_id": "3",
+      "text": "투드커피에서 반려동물과 함께 커피를 마시는 건 정말 즐거울 것 같아요.",
+      "date": "2024-09-18"
+    },
+    {
+      "id": "c020",
+      "postId": "105",
+      "author_id": "1",
+      "text": "테르트르의 멋진 뷰와 함께 커피를 즐기고 싶어요.",
+      "date": "2024-09-17"
+    },
+    {
+      "id": "3acf",
+      "text": "dd",
+      "author_id": "a06c",
+      "postId": "104"
+    },
+    {
+      "id": "0ec1",
+      "text": "dd",
+      "author_id": "a06c",
+      "postId": "cafedb03"
+    },
+    {
+      "id": "88f8",
+      "text": "내일 가봐야겠어요!",
+      "author_id": "a06c",
+      "postId": "101"
     }
   ]
 }
