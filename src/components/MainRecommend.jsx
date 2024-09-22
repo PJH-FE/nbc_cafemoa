@@ -50,7 +50,7 @@ const MainRecommend = () => {
   };
 
   return (
-    <div className="flex flex-col gap-[40px] px-[20px] py-[100px] max-w-[1500px] w-full mx-auto ">
+    <div className="flex flex-col gap-[40px] px-[20px] py-[100px] sm:pt-[60px] sm:pb-[0px] max-w-[1500px] w-full mx-auto ">
       <div className="flex items-center justify-between">
         <h2 className="text-[20px]">새로운 카페</h2>
         <span className="flex items-center gap-[5px] cursor-pointer" onClick={openListHandle}>
