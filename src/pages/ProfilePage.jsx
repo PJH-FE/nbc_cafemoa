@@ -7,27 +7,23 @@ import { useParams } from 'react-router-dom';
 
 const ProfilePage = () => {
   const { profile_id } = useParams();
+
   const { getUserInfo } = useUserStore();
-  const { id } = getUserInfo();
+  const userInfo = getUserInfo();
+  const id = userInfo ? userInfo.id : null;
+
   const { data: articles } = useGetArticlesByAuthorIdQuery(profile_id);
-  const {
-    data: { followers, following },
-  } = useGetUserRelationsQuery(profile_id);
+
+  const { data: relations } = useGetUserRelationsQuery(profile_id);
+  const { followers, following } = relations;
 
   const isMyProfile = profile_id === id;
 
   return (
-    <div className="h-[100vh] sm:h-[auto] w-screen bg-[#F4EFEB]">
-      <div className="flex sm:flex-col sm:pb-[60px] lg:justify-between gap-[50px] w-full h-[80vh] sm:h-[auto] content">
-        <ProfileSection
-          followers={followers}
-          following={following}
-          id={profile_id}
-          isMyProfile={isMyProfile}
-        />
-        <ArticlesSection articles={articles} />
-      </div>
-    </div>
+    <main className="flex justify-between gap-12 min-h-[54rem] w-screen py-16 px-32 bg-[#F4EFEB]">
+      <ProfileSection followers={followers} following={following} id={profile_id} isMyProfile={isMyProfile} />
+      <ArticlesSection articles={articles} />
+    </main>
   );
 };
 export default ProfilePage;

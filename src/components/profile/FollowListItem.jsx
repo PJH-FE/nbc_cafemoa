@@ -8,6 +8,7 @@ function FollowerList({ followers, title }) {
   };
 
   return (
+
     <section className="h-[calc(100%-51px)] sm:py-[20px] sm:bg-white flex flex-col item-center">
       {followers?.length ? (
         followers.map(follower => (

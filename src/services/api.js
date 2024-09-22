@@ -36,6 +36,46 @@ const updateUser = async (userId, data) => {
   return response.data;
 };
 
+const toggleFollow = async (currentUserId, targetUserId, action) => {
+  const currentUserResponse = await DATA_API.get(`/users/${currentUserId}`);
+  const currentUser = currentUserResponse.data;
+
+  const targetUserResponse = await DATA_API.get(`/users/${targetUserId}`);
+  const targetUser = targetUserResponse.data;
+
+  let updatedCurrentUser;
+  let updatedTargetUser;
+
+  if (action === 'follow') {
+    updatedCurrentUser = {
+      ...currentUser,
+      following: [...currentUser.following, targetUserId],
+    };
+
+    updatedTargetUser = {
+      ...targetUser,
+      follower: [...targetUser.follower, currentUserId],
+    };
+  } else if (action === 'unfollow') {
+    updatedCurrentUser = {
+      ...currentUser,
+      following: currentUser.following.filter(id => id !== targetUserId),
+    };
+
+    updatedTargetUser = {
+      ...targetUser,
+      follower: targetUser.follower.filter(id => id !== currentUserId),
+    };
+  }
+
+  await Promise.all([
+    DATA_API.patch(`/users/${currentUserId}`, updatedCurrentUser),
+    DATA_API.patch(`/users/${targetUserId}`, updatedTargetUser),
+  ]);
+
+  return { updatedCurrentUser, updatedTargetUser, toggleFollow };
+};
+
 const api = { getArticlesByAuthorId, getFollowersAndFollowing, getUserById, updateUser };
 
 export default api;
