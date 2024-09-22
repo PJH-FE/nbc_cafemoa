@@ -80,6 +80,6 @@ const Map = ({ cafeData, post, setPost, height = '400px' }) => {
     }
   }, [cafeData]);
 
-  return <div id="map" className={`w-full h-[450px]`}></div>;
+  return <div id="map" className={`w-full h-[380px]`}></div>;
 };
 export default Map;
