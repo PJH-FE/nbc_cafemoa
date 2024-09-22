@@ -8,11 +8,11 @@ export default function FollowList({ following, followers }) {
 
   return (
     <section className="flex-1">
-      <div className="w-full h-12 flex">
+      <div className="flex w-full">
         <div
           className={`${buttonBoxStyle} ${
             !isFollowing ? 'text-white bg-primary01' : 'text-primary01 bg-white'
-          }`}
+          } text-[18px] py-[10px]`}
           onClick={() => setIsFollowing(false)}
         >
           팔로우
@@ -20,7 +20,7 @@ export default function FollowList({ following, followers }) {
         <div
           className={`${buttonBoxStyle} ${
             !isFollowing ? 'text-primary01 bg-white' : 'text-white bg-primary01'
-          }`}
+          } text-[18px] py-[10px]`}
           onClick={() => setIsFollowing(true)}
         >
           팔로잉

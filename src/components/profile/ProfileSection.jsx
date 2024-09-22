@@ -9,16 +9,16 @@ export default function ProfileSection({ followers, following, id, isMyProfile }
   const { description, written_articles } = user;
 
   return (
-    <div className="bg-white flex flex-col w-5/12 ">
-      <section className="h-1/4 w-full flex items-center">
-        <div className="p-4 ">
+    <div className="bg-white sm:bg-transparent flex flex-col w-[50%] sm:w-full ">
+      <section className="flex items-center w-full h-1/4 sm:h-full sm:flex-col p-[30px] sm:p-[0px] sm:pb-[16px] gap-[30px]">
+        <div className="">
           <ProfileImageUploader
             profileURL={user.profile_image}
             changeProfileImage={changeProfileImage}
             isMyProfile={isMyProfile}
           />
         </div>
-        <div className="w-full pr-4">
+        <div className="flex flex-col gap-[10px] w-full pr-4 sm:pr-0 sm:items-center">
           <NicknameEditor
             changeNickname={changeNickname}
             userNickname={user.user_nickname}

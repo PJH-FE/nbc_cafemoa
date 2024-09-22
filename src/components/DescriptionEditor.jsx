@@ -25,15 +25,16 @@ export default function DescrtiptionEditor({
   return (
     <>
       {isMyProfile ? (
-        <form className="relative mt-3" onSubmit={handleSubmit}>
+        <form className="relative mt-3 sm:mt-[30px] sm:w-full" onSubmit={handleSubmit}>
           <textarea
-            className="border rounded-md p-2 w-full min-h-20 focus:outline-none focus:ring-1 focus:ring-[#3B3030] text-sm border-primary01"
+            className="border-[2px] rounded-[4px] p-[15px] w-full min-h-20 focus:outline-none focus:ring-1 focus:ring-[#3B3030] text-sm border-primary01"
             onChange={handleDescriptionChange}
             value={updatedDescription}
             rows={2}
+            placeholder="한 줄 소개 적어보기"
           />
           <button
-            className="absolute bottom-2.5 right-1 text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs"
+            className="absolute bottom-[15px] right-[7px] text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs"
             type="submit"
           >
             수정

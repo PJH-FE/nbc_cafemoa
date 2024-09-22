@@ -48,7 +48,6 @@ const MainRecommend = () => {
     navigate(`/list-category?cateInLists=${cateInListsParam}`);
     closeMenu();
   };
-
   return (
     <div className="flex flex-col gap-[40px] px-6 py-[100px] max-w-[1500px] w-full mx-auto ">
       <div className="flex items-center justify-between">
@@ -76,7 +75,7 @@ const MainRecommend = () => {
                 key={index}
                 className="swiper-slide swiper-slide-next text-center text-[18px] w-[80%] flex justify-center items-center"
               >
-                <SpotListItem data={data} />
+                <SpotListItem key={index} data={data} />
               </SwiperSlide>
             );
           })}
