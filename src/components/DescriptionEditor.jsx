@@ -27,7 +27,7 @@ export default function DescrtiptionEditor({
       {isMyProfile ? (
         <form className="relative mt-3 sm:mt-[30px] sm:w-full" onSubmit={handleSubmit}>
           <textarea
-            className="border-[2px] rounded-[4px] p-[15px] w-full min-h-20 focus:outline-none focus:ring-1 focus:ring-[#3B3030] text-sm border-primary01"
+            className="border-[2px] rounded-[4px] p-[15px] w-full min-h-20 focus:outline-none focus:ring-1 focus:ring-[#3B3030] text-sm border-primary01 resize-none"
             onChange={handleDescriptionChange}
             value={updatedDescription}
             rows={2}

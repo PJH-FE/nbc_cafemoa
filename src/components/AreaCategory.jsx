@@ -114,13 +114,13 @@ const AreaCategory = () => {
             return (
               <SwiperSlide
                 key={idex}
-                className="p-[20px] w-[120px] bg-[#F4EFEB] rounded-full bg-cover bg-center"
+                className="w-[120px] h-[120px] bg-[#F4EFEB] rounded-full bg-cover bg-center overflow-hidden"
                 onClick={() => onClickfilter(area.title)}
                 style={{ backgroundImage: `url(${area.img})` }}
                 aria-label={area.title}
               >
-                <div className="relative w-full h-full">
-                  <p className=" w-[80px] h-[80px] flex items-center justify-center text-[#fff] text-[20px] opacity-1 ">
+                <div className="relative w-full h-full bg-[rgba(0,0,0,0.3)]">
+                  <p className=" w-full h-full flex items-center justify-center text-[#fff] text-[20px] opacity-1 ">
                     {area.title}
                   </p>
                 </div>

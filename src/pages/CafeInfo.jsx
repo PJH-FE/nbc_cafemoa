@@ -60,14 +60,14 @@ const CafeInfo = () => {
           <div className="w-full lg:max-w-[calc(50%-2.5rem)] flex-shrink-0 ">
             <span className="flex sm:h-0 sm:py-[50%] h-full items-center justify-center relative rounded-lg overflow-hidden">
               <img
-                className="lg:absolute object-cover min-h-full min-w-full"
+                className="absolute object-cover min-h-full min-w-full"
                 src={cafeInfo.thumbnail}
                 alt="thumbnail"
               />
             </span>
           </div>
 
-          <div className="w-full lg:max-w-[calc(50%-2.5rem)] flex-shrink-0 shadow-[0_4px_15px_1px_rgba(0,0,0,0.25)] rounded-lg p-10 sm:p-4">
+          <div className="w-full lg:max-w-[calc(50%-2.5rem)] flex-shrink-0 shadow-[0_4px_15px_1px_rgba(0,0,0,0.25)] rounded-lg p-10 sm:p-5">
             <div className="flex justify-between items-center mb-5">
               <div className="w-fit rounded text-[18px] py-1 px-3 font-bold text-primary01 bg-primary03">
                 {cafeInfo.category}

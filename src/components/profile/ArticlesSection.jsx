@@ -20,7 +20,7 @@ export default function ArticlesSection({ articles }) {
           </article>
         ))
       ) : (
-        <p className="text-center mt-52">작성한 글이 없습니다</p>
+        <p className="text-center py-5">작성한 글이 없습니다</p>
       )}
     </section>
   );

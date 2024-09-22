@@ -160,13 +160,13 @@ const Comments = ({ nowArticleId }) => {
                     <div className="flex items-end gap-4">
                       <button
                         onClick={() => handleEditComment(comment)}
-                        className="w-20 border-2 border-primary01 rounded-full hover:border-primary01 hover:bg-primary01 hover:text-white"
+                        className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-white hover:bg-primary01 hover:text-white duration-300"
                       >
                         완료
                       </button>
                       <button
                         onClick={() => setEditingCommentId(null)}
-                        className="w-20 border-2 border-[#61443A] rounded-full hover:bg-[#61443A] hover:text-white"
+                        className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-primary01 text-white hover:bg-white hover:text-primary01 duration-300"
                       >
                         취소
                       </button>
