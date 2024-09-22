@@ -3,16 +3,14 @@ import NicknameEditor from '../../components/NicknameEditor';
 import useUser from '../../hooks/useUser';
 import DescriptionEditor from '../DescriptionEditor';
 import FollowList from './FollowList';
-import { useState } from 'react';
 import FollowButton from './FollowButton';
 
 export default function ProfileSection({ articles, followers, following, id, isMyProfile }) {
-  const [] = useState();
   const { user, changeNickname, changeProfileImage, changeDescription } = useUser(id);
   const { description } = user;
 
   return (
-    <div className="bg-white sm:bg-transparent flex flex-col w-[40%] lg:border-2 border-primary01 sm:w-full lg:shadow-xl rounded-[6px]">
+    <div className="bg-white sm:bg-transparent flex flex-col w-[45%] lg:border-2 border-primary01 sm:w-full lg:shadow-xl rounded-[6px]">
       <section className="flex items-center w-full sm:h-full sm:flex-col py-[30px] px-6 sm:p-[0px] sm:pb-[16px] gap-[30px]">
         <div>
           <ProfileImageUploader
