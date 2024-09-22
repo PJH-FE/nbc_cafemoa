@@ -26,7 +26,7 @@ const MainRecommend = () => {
     },
   });
 
-  if (isPending) return <div>loding,,</div>;
+  if (isPending) return;
   if (isError) return <div>error,,</div>;
 
   // 현재 날짜 가져오기

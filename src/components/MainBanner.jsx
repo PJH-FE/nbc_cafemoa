@@ -75,7 +75,7 @@ const MainBanner = () => {
     closeMenu();
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return;
   if (isError) return <div>Error loading articles</div>;
 
   return (
