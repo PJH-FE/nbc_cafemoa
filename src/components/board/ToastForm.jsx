@@ -62,6 +62,17 @@ function TuiEditor({ content, isEdit = false }) {
     setPost({ ...post, content: contentData });
   };
 
+  const findThumbnailImage = () => {
+    const regex = /<img\s+[^>]*src="([^"]+)"/;
+    const match = regex.exec(post.content);
+
+    if (match) {
+      const firstMatch = match[1];
+      return firstMatch;
+    }
+    return null;
+  };
+
   // supabase로 업로드 이미지 관리
   const handleImage = async (file, callback) => {
     const { data, error } = await supabase.storage.from('posts').upload(`${postId}/${Date.now()}`, file);
@@ -107,14 +118,20 @@ function TuiEditor({ content, isEdit = false }) {
     };
 
     const updateResult = () => {
-      updatePost.mutate({ id: nowPostId, post: { ...post } });
+      updatePost.mutate({ id: nowPostId, post: { ...post, thumbnail: findThumbnailImage() } });
       navigate(`/detail?article_id=${nowPostId}`);
     };
 
     {
       isEdit
         ? updateResult({ post })
-        : createResult({ ...post, author_id: userId, id: postId, date: getNowDate() });
+        : createResult({
+            ...post,
+            thumbnail: findThumbnailImage(),
+            author_id: userId,
+            id: postId,
+            date: getNowDate(),
+          });
     }
   };
 
@@ -125,18 +142,13 @@ function TuiEditor({ content, isEdit = false }) {
           e.preventDefault();
           handleOnSubmit();
         }}
-        className="flex flex-col max-w-screen-xl gap-6 mx-auto max-w-[1500px] py-[60px] sm:px-[16px] sm:py-[48px]"
+        className="flex flex-col gap-6 mx-auto py-10  sm:py-6"
       >
-        <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-[30px] py-6">
-          {/* <label htmlFor="title" className="text-2xl min-w-24">
-            제목
-          </label> */}
-
+        <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-[30px] pb-6">
           <select
-            className="border border-[#61443A] px-[20px] py-[10px] rounded-[6px]"
+            className="border border-[#61443A] px-3 py-[10px] rounded-[6px]"
             name="category"
             id="category"
-            className="border-[1px] h-9 px-2 border-black outline-none rounded-[4px]"
             value={post.category}
             onChange={e => changeValue(e)}
           >
@@ -174,8 +186,8 @@ function TuiEditor({ content, isEdit = false }) {
           onChange={handleEditorChange}
         />
 
-        <div className="flex flex-wrap items-center gap-[30px] pt-[60px]">
-          <div className="flex flex-col items-start w-full md:w-[calc(50%-8px)] gap-4">
+        <div className="flex flex-col gap-[30px] pt-[60px]">
+          <div className="flex flex-col items-start w-full gap-4">
             <label htmlFor="cafe_name" className="text-[18px] text-[#61443A]">
               카페 이름
             </label>
@@ -191,7 +203,7 @@ function TuiEditor({ content, isEdit = false }) {
             />
           </div>
 
-          <div className="flex flex-col items-start w-full md:w-[calc(50%-8px)] gap-4">
+          <div className="flex flex-col items-start w-full gap-4">
             <label htmlFor="cafe_address" className="text-[18px] text-[#61443A]">
               카페 주소
             </label>
@@ -207,10 +219,10 @@ function TuiEditor({ content, isEdit = false }) {
             />
           </div>
 
-          <Map cafeData={cafeData} post={post} setPost={setPost} />
+          <Map height="300px" cafeData={cafeData} post={post} setPost={setPost} />
         </div>
 
-        <button type="submit" className="bg-[#61443A] text-[#fff] py-[16px] rounded-[6px]">
+        <button type="submit" className="text-lg text-white font-bold bg-[#61443A] py-4 rounded-[6px]">
           {isEdit ? '수정' : '등록'}
         </button>
       </form>

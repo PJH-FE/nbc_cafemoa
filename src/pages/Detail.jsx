@@ -136,10 +136,10 @@ const Detail = () => {
 
           <div className="cafe-map mt-[120px]">
             <div className="address mb-10">
-              <div className="text-4xl font-bold">&apos;{detailData.cafe_name}&apos; 찾아오시는 길</div>
+              <div className="text-3xl font-bold">&apos;{detailData.cafe_name}&apos; 찾아오시는 길</div>
               <span className="block text-xl mt-3">{detailData.cafe_address}</span>
             </div>
-            <Map cafeData={cafeData} />
+            <Map height="600px" cafeData={cafeData} />
           </div>
         </div>
 

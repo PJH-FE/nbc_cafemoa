@@ -44,8 +44,8 @@ const SearchInput = ({ isSearchOpen, setIsSearchOpen }) => {
       </div>
 
       {isSearchOpen && (
-        <div className="hidden sm:flex fixed top-[1.6rem] left-0 z-50 w-full mt-4 p-2 items-center justify-center">
-          <form onSubmit={handleSearchSubmit} className="flex w-full mt-4 p-2 items-center justify-center">
+        <div className="hidden sm:flex absolute top-[100%] left-0 z-50 w-full p-2 items-center justify-center bg-white border-t-[1px] border-primary01 shadow-[0_17px_15px_-5px_rgba(0,0,0,0.3)]">
+          <form onSubmit={handleSearchSubmit} className="flex w-full p-2 items-center justify-center">
             <input
               className="focus: outline-none w-full px-4 py-2 border rounded-md text-[#61443A]"
               type="text"

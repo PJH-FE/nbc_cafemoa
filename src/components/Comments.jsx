@@ -42,8 +42,6 @@ const Comments = ({ nowArticleId }) => {
     enabled: !!nowArticleId,
   });
 
-  console.log('comments', comments);
-
   // useMutation 훅을 사용하여 addComment 함수 정의
   const { mutate: addComment } = useMutation({
     mutationFn: async comment => {
@@ -115,106 +113,102 @@ const Comments = ({ nowArticleId }) => {
   return (
     <>
       {/* 댓글 입력 폼 */}
-      <div className="flex justify-between px-10">
-        <p>댓글</p>
-      </div>
+      <div className="sub-title pb-3 mt-[120px] mb-4 border-b-2 border-b-primary01">댓글</div>
       {userInfo?.id && (
-        <div className="px-10">
-          <div className="flex flex-col px-10">
-            <textarea
-              type="text"
-              placeholder="댓글을 입력하세요.."
-              value={commentTexts}
-              onChange={e => {
-                setCommentTexts(e.target.value);
-              }}
-              className="border-2 border-[#A57454] rounded resize-none"
-            ></textarea>
-            <button
-              type="submit"
-              onClick={handleAddComment}
-              className="self-end bg-[#61443A] text-white w-24 h-8 rounded my-2 hover:shadow-xl transition-shadow "
-            >
-              댓글 추가
-            </button>
-          </div>
+        <div className="flex flex-col mb-16">
+          <textarea
+            type="text"
+            placeholder="댓글을 입력하세요.."
+            value={commentTexts}
+            onChange={e => {
+              setCommentTexts(e.target.value);
+            }}
+            className="border-2 border-primary01 px-3 py-3 text-lg outline-none rounded resize-none"
+          ></textarea>
+          <button
+            type="submit"
+            onClick={handleAddComment}
+            className="ml-auto text-lg bg-primary01 text-white w-fit px-6 py-2 rounded mt-4 hover:shadow-xl transition-shadow "
+          >
+            댓글 추가
+          </button>
         </div>
       )}
+
       {/* 댓글목록 */}
-      <div className="px-20 ">
+      <div className="comment-area">
         {comments.length > 0 ? (
           comments?.map(comment => {
             return (
-              <>
-                <hr className="w-full border-[#61443A]" />
-                <div key={comment.id} className="flex items-center justify-between my-4">
-                  {/* 수정모드일 때 */}
-                  {editingCommentId === comment.id ? (
-                    <div className="flex w-full gap-4">
-                      <div className="flex gap-4">
-                        <textarea
-                          rows={'10'}
-                          cols={'50'}
-                          type="text"
-                          placeholder="수정할 댓글을 입력하세요.."
-                          value={editContent}
-                          onChange={e => setEditContent(e.target.value)}
-                          className="rounded border-2 border-[#A57454] w-[1100px] h-[40px] resize-none " // w, h 지우면 rows,cols가 의미가 없어짐
-                        />
-                        <div className="flex items-end gap-4">
-                          <button
-                            onClick={() => handleEditComment(comment)}
-                            className="w-20 border-2 border-[#A57454] rounded-full hover:border-[#A57454] hover:bg-[#A57454] hover:text-white"
-                          >
-                            완료
-                          </button>
-                          <button
-                            onClick={() => setEditingCommentId(null)}
-                            className="w-20 border-2 border-[#61443A] rounded-full hover:bg-[#61443A] hover:text-white"
-                          >
-                            취소
-                          </button>
-                        </div>
-                      </div>
+              <div
+                key={comment.id}
+                className="flex items-center justify-between py-4 px-4 even:bg-primary03 border-b-2 first:border-t-2 border-primary01"
+              >
+                {/* 수정모드일 때 */}
+                {editingCommentId === comment.id ? (
+                  <>
+                    <textarea
+                      rows={'1'}
+                      cols={'50'}
+                      type="text"
+                      placeholder="수정할 댓글을 입력하세요.."
+                      value={editContent}
+                      onChange={e => setEditContent(e.target.value)}
+                      className="rounded border-2 border-primary01 w-4/5 min-h-10 px-2 py-1 outline-none text-lg resize-none " // w, h 지우면 rows,cols가 의미가 없어짐
+                    />
+
+                    <div className="flex items-end gap-4">
+                      <button
+                        onClick={() => handleEditComment(comment)}
+                        className="w-20 border-2 border-primary01 rounded-full hover:border-primary01 hover:bg-primary01 hover:text-white"
+                      >
+                        완료
+                      </button>
+                      <button
+                        onClick={() => setEditingCommentId(null)}
+                        className="w-20 border-2 border-[#61443A] rounded-full hover:bg-[#61443A] hover:text-white"
+                      >
+                        취소
+                      </button>
                     </div>
-                  ) : (
-                    <>
-                      <div className="flex items-center justify-between w-full">
-                        <div>
-                          <span>{comment.text}</span> /{' '}
-                          <Link to={`/profile/${comment.author_id}`} className="text-gray-600">
-                            {comment.user_nickname}
-                          </Link>
-                        </div>
-                        {userInfo?.id === comment.author_id && (
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => {
-                                setEditingCommentId(comment.id);
-                                setEditContent(comment.text); // 수정 모드로 전환
-                              }}
-                              className="w-20 border-2 border-[#A57454] rounded-full hover:border-[#A57454] hover:bg-[#A57454] hover:text-white"
-                            >
-                              수정
-                            </button>
-                            <button
-                              onClick={() => handleDeleteComment(comment.id)}
-                              className="w-20 border-2 border-[#61443A] rounded-full hover:bg-[#61443A] hover:text-white"
-                            >
-                              삭제
-                            </button>
-                          </div>
-                        )}
+                  </>
+                ) : (
+                  <>
+                    <div className="flex flex-col">
+                      <span className="text-lg">{comment.text}</span>{' '}
+                      <Link to={`/profile/${comment.author_id}`} className="text-primary02 text-base">
+                        {comment.user_nickname}
+                      </Link>
+                    </div>
+
+                    {userInfo?.id === comment.author_id && (
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => {
+                            setEditingCommentId(comment.id);
+                            setEditContent(comment.text); // 수정 모드로 전환
+                          }}
+                          className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-white hover:bg-primary01 hover:text-white duration-300"
+                        >
+                          수정
+                        </button>
+                        <button
+                          onClick={() => handleDeleteComment(comment.id)}
+                          className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-primary01 text-white hover:bg-white hover:text-primary01 duration-300"
+                        >
+                          삭제
+                        </button>
                       </div>
-                    </>
-                  )}
-                </div>
-                <hr className="w-full border-[#61443A]" />
-              </>
+                    )}
+                  </>
+                )}
+              </div>
             );
           })
         ) : (
-          <div className="rounded border-2 bg-[#F4EFEB] w-full h-[60px] mt-2">작성된 댓글이 없습니다.</div>
+          <div className="rounded  bg-primary03 font-bold text-primary01 text-xl w-full py-8 px-6">
+            작성된 댓글이 없습니다.
+          </div>
         )}
       </div>
     </>

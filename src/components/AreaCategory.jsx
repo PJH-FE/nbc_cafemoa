@@ -93,8 +93,8 @@ const AreaCategory = () => {
 
   return (
     <div className="pl-[20px] py-[50px] flex flex-col gap-[40px] max-w-[1500px] mx-auto overflow-hidden w-full">
-      <h2>지역 카테고리</h2>
-      {/* <ul className="w-full h-[300px] grid lg:grid-cols-6 lg:grid-rows-2 gap-[20px] sm:grid-cols-3 sm:grid-rows-4"> */}
+      <h2 className="sub-title">지역 카테고리</h2>
+
       <ul className="flex gap-4 overflow-x-scroll sm:pr-[20px]">
         {areaCategory.map((area, idex) => {
           return (
