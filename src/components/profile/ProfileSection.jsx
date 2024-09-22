@@ -3,13 +3,18 @@ import NicknameEditor from '../../components/NicknameEditor';
 import useUser from '../../hooks/useUser';
 import DescriptionEditor from '../DescriptionEditor';
 import FollowList from './FollowList';
+import { useState } from 'react';
+import FollowButton from './FollowButton';
 
 export default function ProfileSection({ followers, following, id, isMyProfile }) {
+  const [] = useState();
   const { user, changeNickname, changeProfileImage, changeDescription } = useUser(id);
   const { description, written_articles } = user;
 
   return (
-    <div className="bg-white flex flex-col w-5/12 ">
+    <div className="bg-white flex flex-col w-5/12 relative shadow-xl">
+      {!isMyProfile && <FollowButton profile_id={id} />}
+
       <section className="h-1/4 w-full flex items-center">
         <div className="p-4 ">
           <ProfileImageUploader

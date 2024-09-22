@@ -8,7 +8,7 @@ function FollowerList({ followers, title }) {
   };
 
   return (
-    <section>
+    <section className="flex-1 overflow-scroll">
       {followers?.length ? (
         followers.map(follower => (
           <div key={follower.id} className="border-b-primary01 border-2 p-2 px-4">

@@ -8,7 +8,7 @@ const useUpdateUserMutation = () => {
   return useMutation({
     mutationFn: ({ userId, field, value }) => api.updateUser(userId, { [field]: value }),
     onSuccess: () => {
-      queryClient.invalidateQueries(queryKey.default.userById);
+      queryClient.invalidateQueries(queryKey.default.userById(userId));
     },
   });
 };

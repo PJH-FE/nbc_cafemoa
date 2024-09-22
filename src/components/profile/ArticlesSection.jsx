@@ -4,7 +4,7 @@ export default function ArticlesSection({ articles }) {
   const navigate = useNavigate();
 
   return (
-    <section className="w-6/12 bg-white">
+    <section className="w-6/12 bg-white shadow-xl">
       <h1 className="text-xl bg-primary01 text-white h-16 flex justify-center items-center font-semibold">
         작성글
       </h1>
