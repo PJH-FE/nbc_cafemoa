@@ -12,18 +12,18 @@ export default function ProfileSection({ followers, following, id, isMyProfile }
   const { description, written_articles } = user;
 
   return (
-    <div className="bg-white flex flex-col w-5/12 relative shadow-xl">
+    <div className="bg-white sm:bg-transparent flex flex-col w-[40%] border-2 border-primary01 sm:w-full lg:shadow-xl rounded-[6px]">
       {!isMyProfile && <FollowButton profile_id={id} />}
 
-      <section className="h-1/4 w-full flex items-center">
-        <div className="p-4">
+      <section className="flex items-center w-full sm:h-full sm:flex-col py-[30px] px-6 sm:p-[0px] sm:pb-[16px] gap-[30px]">
+        <div>
           <ProfileImageUploader
             profileURL={user.profile_image}
             changeProfileImage={changeProfileImage}
             isMyProfile={isMyProfile}
           />
         </div>
-        <div className="flex flex-col gap-[10px] w-full pr-4 sm:pr-0 sm:items-center">
+        <div className="flex flex-col gap-[10px] w-full sm:items-center">
           <NicknameEditor
             changeNickname={changeNickname}
             userNickname={user.user_nickname}

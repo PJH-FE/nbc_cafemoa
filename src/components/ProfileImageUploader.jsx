@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '../supabase/supabase';
+import { CircleUserRound } from 'lucide-react';
 
 export default function ProfileImageUploader({ profileURL, changeProfileImage, isMyProfile }) {
   const [image, setImage] = useState(() => profileURL);
@@ -36,19 +37,21 @@ export default function ProfileImageUploader({ profileURL, changeProfileImage, i
         disabled={!isMyProfile}
       />
       <div
-        className={`w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-center bg-gray-900 relative ${
+        className={`relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full border-2 border-gray-800 overflow-hidden flex items-center justify-centerrelative ${
           isMyProfile && 'cursor-pointer'
         }`}
         onClick={() => fileInputRef.current.click()}
       >
-        {image && (
-          <img
-            src={image}
-            alt="Uploaded"
-            className={`w-full h-full object-cover ${isMyProfile && 'opacity-35'} object-center`}
-          />
+        {image ? (
+          <img src={image} alt="Uploaded" className={`w-full h-full object-cover object-center`} />
+        ) : (
+          <CircleUserRound size={180} strokeWidth={1} />
         )}
-        {isMyProfile && <div className="absolute text-sm text-white">이미지 변경</div>}
+        {isMyProfile && (
+          <div className="opacity-0 hover:opacity-100 duration-300 absolute flex w-full h-full items-center justify-center bg-[rgba(0,0,0,0.4)] text-sm text-white">
+            이미지 변경
+          </div>
+        )}
       </div>
     </>
   );
