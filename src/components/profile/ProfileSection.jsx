@@ -12,7 +12,7 @@ export default function ProfileSection({ articles, followers, following, id, isM
   const { description } = user;
 
   return (
-    <div className="bg-white sm:bg-transparent flex flex-col w-[40%] lg:border-2 border-primary01 sm:w-full lg:shadow-xl rounded-[6px]">
+    <div className="bg-white sm:bg-transparent flex flex-col w-[45%] lg:border-2 border-primary01 sm:w-full lg:shadow-xl rounded-[6px]">
       <section className="flex items-center w-full sm:h-full sm:flex-col py-[30px] px-6 sm:p-[0px] sm:pb-[16px] gap-[30px]">
         <div>
           <ProfileImageUploader
