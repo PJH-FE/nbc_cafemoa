@@ -3,11 +3,9 @@ import NicknameEditor from '../../components/NicknameEditor';
 import useUser from '../../hooks/useUser';
 import DescriptionEditor from '../DescriptionEditor';
 import FollowList from './FollowList';
-import { useState } from 'react';
 import FollowButton from './FollowButton';
 
 export default function ProfileSection({ articles, followers, following, id, isMyProfile }) {
-  const [] = useState();
   const { user, changeNickname, changeProfileImage, changeDescription } = useUser(id);
   const { description } = user;
 
