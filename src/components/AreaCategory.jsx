@@ -4,6 +4,11 @@ import { cateListHandle } from '../utils/cateListHandle';
 import { DATA_API } from '../api/api';
 import { useQuery } from '@tanstack/react-query';
 import useUserStore from '../zustand/bearStore';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules';
+
+import 'swiper/css/free-mode';
+import 'swiper/css/scrollbar';
 
 const areaCategory = [
   {
@@ -93,28 +98,37 @@ const AreaCategory = () => {
 
   return (
     <div className="pl-[20px] py-[50px] flex flex-col gap-[40px] max-w-[1500px] mx-auto overflow-hidden w-full">
-      <h2>지역 카테고리</h2>
-      {/* <ul className="w-full h-[300px] grid lg:grid-cols-6 lg:grid-rows-2 gap-[20px] sm:grid-cols-3 sm:grid-rows-4"> */}
-      <ul className="flex gap-4 overflow-x-scroll sm:pr-[20px]">
-        {areaCategory.map((area, idex) => {
-          return (
-            <li
-              key={idex}
-              className="p-[20px] bg-[#F4EFEB] rounded-full bg-cover bg-center"
-              onClick={() => onClickfilter(area.title)}
-              style={{ backgroundImage: `url(${area.img})` }}
-              aria-label={area.title}
-            >
-              <div className="relative w-full h-ful">
-                <p className=" w-[80px] h-[80px] flex items-center justify-center text-[#fff] text-[20px] opacity-1 ">
-                  {area.title}
-                </p>
-                <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-black/70 to-transparent"></div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <div>
+        <h2 className="pb-[40px]">지역 카테고리</h2>
+        <Swiper
+          className="mySwiper gap-4 overflow-x-scroll block sm:pr-[20px]"
+          direction={'horizontal'}
+          freeMode={true}
+          scrollbar={{ draggable: true }}
+          mousewheel={true}
+          spaceBetween={20}
+          slidesPerView={'auto'}
+          modules={[FreeMode, Scrollbar, Mousewheel]}
+        >
+          {areaCategory.map((area, idex) => {
+            return (
+              <SwiperSlide
+                key={idex}
+                className="p-[20px] w-[120px] bg-[#F4EFEB] rounded-full bg-cover bg-center"
+                onClick={() => onClickfilter(area.title)}
+                style={{ backgroundImage: `url(${area.img})` }}
+                aria-label={area.title}
+              >
+                <div className="relative w-full h-full">
+                  <p className=" w-[80px] h-[80px] flex items-center justify-center text-[#fff] text-[20px] opacity-1 ">
+                    {area.title}
+                  </p>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </div>
   );
 };

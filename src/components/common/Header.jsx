@@ -67,7 +67,6 @@ const Header = () => {
   }, [location.pathname, closeMenu, removeTab]);
 
   return (
-
     <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
       <header className="flex justify-between items-center lg:gap-[30px] px-6 h-[74px]">
         <div className="flex gap-[20px] items-center  sm:justify-between">
@@ -130,7 +129,7 @@ const Header = () => {
           onClick={closeMenu}
         >
           <div className="lg:absolute w-full h-[300px] sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
-            <div className="sm:px-[50px] sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
+            <div className="sm:px-[20px] sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
               <button onClick={toggleMenu} className="justify-end hidden sm:flex">
                 <X className="text-[#fff]" />
               </button>
@@ -150,11 +149,13 @@ const Header = () => {
               ) : (
                 <div className="items-center justify-between hidden sm:flex">
                   <h2 className="text-[#fff] text-[24px]">
-                    <span className="text-[#fff] text-[24px]">{userInfo.user_nickname}</span>님 안녕하세요!
+                    <span className="text-[#fff] text-[24px] leading-[1.5]">{userInfo.user_nickname}</span>님
+                    <br />
+                    안녕하세요!
                   </h2>
                   <button
                     onClick={handleLogout}
-                    className="text-[#fff] text-[13px] py-[5px] px-[8px] border border-white rounded-[18px]"
+                    className="text-[#fff] text-[12px] py-[5px] px-[8px] border border-white rounded-[18px]"
                   >
                     로그아웃
                   </button>
