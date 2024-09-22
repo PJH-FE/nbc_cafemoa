@@ -15,7 +15,7 @@ export default function DescrtiptionEditor({
   const handleSubmit = e => {
     e.preventDefault();
     changeDescription(updatedDescription);
-    toast.error('변경이 완료되었습니다');
+    toast.success('변경이 완료되었습니다');
   };
 
   useEffect(() => {

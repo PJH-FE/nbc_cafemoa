@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { DATA_API } from '../api/api';
 import useUserStore from '../zustand/bearStore';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Comments = ({ nowArticleId }) => {
   const queryClient = useQueryClient();
@@ -181,7 +182,9 @@ const Comments = ({ nowArticleId }) => {
                       <div className="flex items-center justify-between w-full">
                         <div>
                           <span>{comment.text}</span> /{' '}
-                          <span className="text-gray-600">{comment.user_nickname}</span>
+                          <Link to={`/profile/${comment.author_id}`} className="text-gray-600">
+                            {comment.user_nickname}
+                          </Link>
                         </div>
                         {userInfo?.id === comment.author_id && (
                           <div className="flex gap-2">

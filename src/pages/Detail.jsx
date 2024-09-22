@@ -86,7 +86,7 @@ const Detail = () => {
           </div>
           <div className="flex flex-col px-4 pb-4 border-b-2 border-primary01">
             <div className="py-4 ml-auto text-[#5c5c5c]">
-              {WriterNickname} / {detailData.date}
+              <Link to={`/profile/${detailData?.author_id}`}>{WriterNickname}</Link> / {detailData.date}
             </div>
             <div dangerouslySetInnerHTML={{ __html: detailData.content }}></div>
             <div className="flex items-center justify-end gap-4 mt-20">

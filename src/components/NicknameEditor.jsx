@@ -21,7 +21,7 @@ export default function NicknameEditor({
     }
 
     onNicknameChange(cleanedNickname);
-    toast.error('변경이 완료되었습니다');
+    toast.success('변경이 완료되었습니다');
     setIsEditing(false);
     setNickname('');
   };
