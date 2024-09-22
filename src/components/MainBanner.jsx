@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cateListHandle } from '../utils/cateListHandle';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import { DATA_API } from '../api/api';
 import { useQuery } from '@tanstack/react-query';
@@ -78,15 +79,24 @@ const MainBanner = () => {
   if (isError) return <div>Error loading articles</div>;
 
   return (
-    <div className="py-[40px] bg-[#F4EFEB]">
-      <h2 className="lg:pl-[12vw] sm:pl-[20px] py-[40px] sm:py-[20px] text-xl">오늘의 추천</h2>
-      <div className="lg:pl-[12vw] sm:pl-[20px] overflow-hidden">
-        <Swiper slidesPerView={'auto'} spaceBetween={20} className="mySwiper w-[100%] h-[800px] sm:h-[500px]">
+    <div className="pt-6 bg-[#F4EFEB]">
+      <div className="overflow-hidden">
+        <Swiper
+          modules={[Autoplay]}
+          loop={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          slidesPerView={'auto'}
+          spaceBetween={24}
+          className="mySwiper w-[100%] h-[40vw] px-6 sm:h-[500px]"
+        >
           {mainBannerCate.map((cate, index) => {
             return (
               <SwiperSlide
                 key={index}
-                className="text-center text-[18px] bg-slate-50 lg:w-[80%] sm:w-[90%] flex justify-start items-end"
+                className="text-center text-[18px] bg-slate-50 cursor-pointer lg:w-[80%] sm:w-[90%] flex justify-start items-end"
                 onClick={() => onClickfilter(cate.title)}
                 style={{
                   backgroundImage: `url(${cate.img})`,

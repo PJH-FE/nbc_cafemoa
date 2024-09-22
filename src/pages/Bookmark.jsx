@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import useUserStore from '../zustand/bearStore';
 import { useState } from 'react';
 import defaultUrl from '../assets/noimage.png';
+import { getCategoryColor } from '../utils/getCategoryColor';
 
 const Bookmark = () => {
   const [articles, setArticles] = useState([]);
   const { getUserInfo } = useUserStore();
-  const { bookmarked } = getUserInfo();
+  const { bookmarked, user_nickname } = getUserInfo();
 
   const apiHost = async () => {
     // articles, cafedb 내용 둘 다 호출
@@ -47,22 +48,33 @@ const Bookmark = () => {
   };
 
   return (
-    <div className="px-10">
-      <h1 className="mt-2 mb-3 text-xl font-bold">북마크한 게시물</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+    <div className="content">
+      <div className="flex flex-wrap items-end justify-between gap-4 pb-4 mb-6 border-b-4 border-primary01">
+        <div>
+          <h2 className="sub-title mb-[10px]">북마크</h2>
+          <h2 className="text-[18px] text-[#858585]">{user_nickname}님이 북마크하신 카페 리스트입니다.</h2>
+        </div>
+      </div>
+
+      <div className="grid gap-y-[50px] gap-x-[10px] grid-cols-4 sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
         {bookmarkedArticles.map(bookmark => {
           return (
-            <Link to={linkTo(bookmark)} key={bookmark.id}>
-              <div key={bookmark.id} className="overflow-hidden border rounded-lg shadow-lg w-72">
-                <img
-                  src={bookmark.thumbnail ?? defaultUrl}
-                  alt={bookmark.title}
-                  className="object-cover w-full h-64"
-                />
+            <Link to={linkTo(bookmark)} key={bookmark.id} className="block w-full">
+              <div key={bookmark.id} className="overflow-hidden border rounded-lg shadow-lg">
+                <div className="relative flex items-center justify-center w-full py-[62.25%] h-0 overflow-hidden">
+                  <img
+                    className="absolute z-10 object-cover min-w-full min-h-full"
+                    src={bookmark.thumbnail ?? defaultUrl}
+                    alt={bookmark.title}
+                  />
+                </div>
                 <div className="p-4">
                   <p className="text-sm text-gray-500">{bookmark.region}</p>
                   <h3 className="text-lg font-semibold">{bookmark.title}</h3>
-                  <p className="text-sm text-blue-500">#{bookmark.category}</p>
+
+                  <p className="text-sm" style={{ color: getCategoryColor(bookmark.category) }}>
+                    # {bookmark.category}
+                  </p>
                 </div>
               </div>
             </Link>

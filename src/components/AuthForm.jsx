@@ -116,6 +116,7 @@ const AuthForm = ({ mode }) => {
               type="password"
               name="password"
               placeholder="비밀번호"
+              autoComplete="off"
               value={formData.password}
               onChange={handleChange}
               ref={passwordRef}

@@ -65,12 +65,20 @@ const List = () => {
     latestBtn();
   }, []);
   return (
-    <div className="max-w-[1500px] my-0 mx-[auto]">
-      <div className="flex justify-end gap-5 p-5">
-        <button onClick={alignmentBtn}>가나다순</button>
-        <button onClick={latestBtn}>최신순</button>
+    <div className="content">
+      <div className="flex flex-wrap items-end justify-between gap-4 pb-4 mb-6 border-b-4 border-primary01">
+        <div>
+          <h2 className="sub-title mb-[10px]">모아보기</h2>
+          <h2 className="text-[18px] text-[#858585]">카페모아가 제공하는 카페정보들을 확인해보세요.</h2>
+        </div>
+
+        <div className="flex justify-end gap-5 ml-auto text-[#61443A]">
+          <button onClick={alignmentBtn}>가나다순</button>
+          <button onClick={latestBtn}>최신순</button>
+        </div>
       </div>
-      <ul className="grid gap-y-[50px] gap-x-[10px] grid-cols-4 p-5 pt-[3%] sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
+
+      <ul className="grid gap-y-[50px] gap-x-[10px] grid-cols-4 sm:grid-cols-2 sm:gap-x-[10px] sm:gap-y-[50px]">
         {articles.map((article, index) => {
           return <SpotListItem key={index} data={article} />;
         })}

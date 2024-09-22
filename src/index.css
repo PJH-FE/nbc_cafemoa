@@ -23,10 +23,13 @@
 
 @layer components {
   .content {
-    @apply max-w-[1500px] mx-auto pt-[60px] px-6;
+    @apply max-w-[1500px] mx-auto pt-[60px] px-6 sm:pt-8;
   }
   .title {
     @apply text-4xl font-bold pb-3 border-b-2 border-black;
+  }
+  .sub-title {
+    @apply text-2xl font-bold;
   }
   .label-primary {
     @apply text-gray-600 text-sm mb-2;

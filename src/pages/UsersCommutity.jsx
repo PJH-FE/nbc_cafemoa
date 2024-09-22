@@ -67,16 +67,19 @@ const UsersCommutity = () => {
   }, []);
 
   return (
-    <div className="max-w-[1500px] my-0 mx-[auto] pb-[100px] sm:pb-[50px]">
-      <div className="pt-[60px] pb-[40px] sm:px-[20px]">
-        <h2 className="text-[24px] font-bold mb-[10px]">카페로그</h2>
-        <h2 className="text-[18px] text-[#858585]">카페에서의 일상과 경험을 기록해보세요.</h2>
+    <div className="content sm:pb-[50px]">
+      <div className="flex flex-wrap items-end justify-between gap-4 pb-4 border-b-4 border-primary01">
+        <div>
+          <h2 className="sub-title mb-[10px]">카페로그</h2>
+          <h2 className="text-[18px] text-[#858585]">카페에서의 일상과 경험을 기록해보세요.</h2>
+        </div>
+
+        <div className="flex justify-end gap-5 ml-auto text-[#61443A]">
+          <button onClick={alignmentBtn}>가나다순</button>
+          <button onClick={latestBtn}>최신순</button>
+        </div>
       </div>
-      <div className="flex justify-end gap-5 p-5 text-[#61443A]">
-        <button onClick={alignmentBtn}>가나다순</button>
-        <button onClick={latestBtn}>최신순</button>
-      </div>
-      <ul className="grid gap-[20px] grid-cols-1 p-5 pt-[3%]">
+      <ul className="grid gap-[20px] grid-cols-1">
         {articles.map((article, index) => {
           return <UserListItem key={index} data={article} />;
         })}

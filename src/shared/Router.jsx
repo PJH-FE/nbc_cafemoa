@@ -21,7 +21,6 @@ const Router = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/profile/:profile_id" element={<PrivateRouter page={<ProfilePage />} />} />
             <Route path="/bookmark" element={<PrivateRouter page={<Bookmark />} />} />
             <Route path="/write" element={<PrivateRouter page={<Write />} />} />
             <Route path="/edit" element={<PrivateRouter page={<Edit />} />} />
@@ -29,6 +28,7 @@ const Router = () => {
             <Route path="/login" element={<PublicRouter page={<Login />} />} />
             <Route path="/signup" element={<PublicRouter page={<SignUp />} />} />
 
+            <Route path="/profile/:profile_id" element={<ProfilePage />} />
             <Route path="/list" element={<List />} />
             <Route path="/list-category" element={<ListCategory />} />
             <Route path="/users-commutity" element={<UsersCommutity />} />

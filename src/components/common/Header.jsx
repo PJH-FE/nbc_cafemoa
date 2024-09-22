@@ -25,7 +25,7 @@ const Header = () => {
 
   const tabMenu = [
     {
-      title: '피드보기',
+      title: '모아보기',
       link: '/list',
       icon: <LayoutGrid />,
     },
@@ -67,7 +67,7 @@ const Header = () => {
   }, [location.pathname, closeMenu, removeTab]);
 
   return (
-    <div className="sticky top-0 z-10 bg-white border-b border-slate-300">
+    <div className="sticky top-0 z-50 bg-white border-b border-slate-300">
       <header className="flex justify-between items-center lg:gap-[30px] px-6 h-[74px]">
         <div className="flex gap-[20px] items-center  sm:justify-between">
           <div onClick={toggleMenu} className="cursor-pointer">
@@ -78,7 +78,7 @@ const Header = () => {
           <Link to="/">
             <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
           </Link>
-          <ul className="flex gap-2 h-[100%]">
+          <ul className="flex gap-4 h-[100%]">
             {tabMenu.map((tab, index) => {
               if (tab.title === '북마크' && !userInfo) return;
               return (
@@ -91,7 +91,7 @@ const Header = () => {
                   })}
                   onClick={() => tabMenuClick(index)}
                 >
-                  <Link className="flex items-center h-full" to={tab.link}>
+                  <Link className="flex items-center text-xl  text-primary01 h-full" to={tab.link}>
                     {tab.title}
                   </Link>
                 </li>
@@ -102,7 +102,7 @@ const Header = () => {
         <Link to="/" className="hidden sm:block">
           <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
         </Link>
-        <div className="flex gap-[10px] sm:justify-end">
+        <div className="flex gap-6 sm:justify-end">
           <SearchInput isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
 
           {!userInfo ? (
@@ -128,11 +128,11 @@ const Header = () => {
       </header>
       {isMenuOpen ? (
         <div
-          className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40"
+          className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40 z-50"
           onClick={closeMenu}
         >
-          <div className="lg:absolute w-full h-[300px] sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-white">
-            <div className="sm:px-[20px] sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
+          <div className="lg:absolute lg:shadow-lg w-full h-[300px] sm:max-w-[500px] sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-primary03">
+            <div className="sm:px-6 sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
               <button onClick={toggleMenu} className="justify-end hidden sm:flex">
                 <X className="text-[#fff]" />
               </button>

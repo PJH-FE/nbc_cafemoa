@@ -10,7 +10,7 @@ export default function ProfileSection({ followers, following, id, isMyProfile }
 
   return (
     <div className="bg-white sm:bg-transparent flex flex-col w-[50%] sm:w-full ">
-      <section className="flex items-center w-full h-1/4 sm:h-full sm:flex-col p-[30px] sm:p-[0px] sm:pb-[16px] gap-[30px]">
+      <section className="flex items-center w-full sm:h-full sm:flex-col p-[30px] sm:p-[0px] sm:pb-[16px] gap-[30px]">
         <div className="">
           <ProfileImageUploader
             profileURL={user.profile_image}
