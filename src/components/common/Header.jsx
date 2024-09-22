@@ -36,7 +36,7 @@ const Header = () => {
     },
     {
       title: '마이페이지',
-      link: '/mypage',
+      link: `/profile/${userInfo?.id}`,
       icon: <User />,
     },
     {
@@ -80,6 +80,7 @@ const Header = () => {
           </Link>
           <ul className="flex gap-2 h-[100%]">
             {tabMenu.map((tab, index) => {
+              if (tab.title === '북마크' && !userInfo) return;
               return (
                 <li
                   key={index}
@@ -90,7 +91,9 @@ const Header = () => {
                   })}
                   onClick={() => tabMenuClick(index)}
                 >
-                  <Link to={tab.link}>{tab.title}</Link>
+                  <Link className="flex items-center h-full" to={tab.link}>
+                    {tab.title}
+                  </Link>
                 </li>
               );
             })}
@@ -116,7 +119,7 @@ const Header = () => {
               <button className="hidden lg:block" onClick={handleLogout}>
                 Logout
               </button>
-              <Link className="hidden lg:block" to="/mypage">
+              <Link className="hidden lg:block" to={`/profile/${userInfo.id}`}>
                 Mypage
               </Link>
             </>

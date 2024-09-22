@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MyPage from '../pages/MyPage';
+import ProfilePage from '../pages/ProfilePage';
 import Write from '../pages/Write';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
-import Search from '../pages/SearchResults';
 import List from '../pages/List';
 import Detail from '../pages/Detail';
 import Home from '../pages/Home';
@@ -14,6 +13,7 @@ import ListCategory from '../pages/ListCategory';
 import UsersCommutity from '../pages/UsersCommutity';
 import SearchResults from '../pages/SearchResults';
 import CafeInfo from '../pages/CafeInfo';
+import { PrivateRouter, PublicRouter } from './PrivateRouter';
 
 const Router = () => {
   return (
@@ -21,21 +21,13 @@ const Router = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* <Route path="/mypage" element={<PrivateRouter page={<MyPage />} />} />
+            <Route path="/profile/:profile_id" element={<PrivateRouter page={<ProfilePage />} />} />
             <Route path="/bookmark" element={<PrivateRouter page={<Bookmark />} />} />
             <Route path="/write" element={<PrivateRouter page={<Write />} />} />
             <Route path="/edit" element={<PrivateRouter page={<Edit />} />} />
 
             <Route path="/login" element={<PublicRouter page={<Login />} />} />
-            <Route path="/signup" element={<PublicRouter page={<SignUp />} />} /> */}
-
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/bookmark" element={<Bookmark />} />
-            <Route path="/write" element={<Write />} />
-            <Route path="/edit" element={<Edit />} />
-
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<PublicRouter page={<SignUp />} />} />
 
             <Route path="/list" element={<List />} />
             <Route path="/list-category" element={<ListCategory />} />

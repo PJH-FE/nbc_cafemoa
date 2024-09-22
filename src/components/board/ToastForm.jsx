@@ -11,6 +11,7 @@ import { useUpdatePost } from '../../queries/boardQueries';
 import FormInput from './FormInput';
 import { categoryList } from '../../data/category';
 import useUserStore from '../../zustand/bearStore';
+import { toast } from 'react-toastify';
 
 const toolbar = [['heading', 'bold', 'italic', 'strike'], ['hr', 'quote', 'ul', 'ol'], ['image']];
 
@@ -30,7 +31,7 @@ function TuiEditor({ content, isEdit = false }) {
   const [cafeData, setCafeData] = useState({ cafe_address: content?.cafe_address || '' });
   const navigate = useNavigate();
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const nowPostId = searchParams.get('article_id');
   const updatePost = useUpdatePost();
 
@@ -85,19 +86,19 @@ function TuiEditor({ content, isEdit = false }) {
   // 데이터 전송
   const handleOnSubmit = () => {
     if (!post.title) {
-      alert('타이틀을 입력해주세요');
+      toast.error('타이틀을 입력해주세요');
       return;
     }
     if (!post.content) {
-      alert('내용을 입력해주세요');
+      toast.error('내용을 입력해주세요');
       return;
     }
     if (!post.cafe_address) {
-      alert('카페 주소를 입력해주세요');
+      toast.error('카페 주소를 입력해주세요');
       return;
     }
     if (!post.cafe_name) {
-      alert('카페 상호명을 입력해주세요');
+      toast.error('카페 상호명을 입력해주세요');
       return;
     }
     const createResult = async post => {
