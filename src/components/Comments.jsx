@@ -160,13 +160,13 @@ const Comments = ({ nowArticleId }) => {
                     <div className="flex items-end gap-4">
                       <button
                         onClick={() => handleEditComment(comment)}
-                        className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-white hover:bg-primary01 hover:text-white duration-300"
+                        className="w-fit sm:px-2 px-4 py-1 border-2 border-primary01 rounded-[4px] bg-white hover:bg-primary01 hover:text-white duration-300"
                       >
                         완료
                       </button>
                       <button
                         onClick={() => setEditingCommentId(null)}
-                        className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-primary01 text-white hover:bg-white hover:text-primary01 duration-300"
+                        className="w-fit sm:px-2 px-4 py-1 border-2 border-primary01 rounded-[4px] bg-primary01 text-white hover:bg-white hover:text-primary01 duration-300"
                       >
                         취소
                       </button>
@@ -188,13 +188,13 @@ const Comments = ({ nowArticleId }) => {
                             setEditingCommentId(comment.id);
                             setEditContent(comment.text); // 수정 모드로 전환
                           }}
-                          className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-white hover:bg-primary01 hover:text-white duration-300"
+                          className="w-fit sm:px-2 px-4 py-1 border-2 border-primary01 rounded-[4px] bg-white hover:bg-primary01 hover:text-white duration-300"
                         >
                           수정
                         </button>
                         <button
                           onClick={() => handleDeleteComment(comment.id)}
-                          className="w-fit px-4 py-1 border-2 border-primary01 rounded-[4px] bg-primary01 text-white hover:bg-white hover:text-primary01 duration-300"
+                          className="w-fit sm:px-2 px-4 py-1 border-2 border-primary01 rounded-[4px] bg-primary01 text-white hover:bg-white hover:text-primary01 duration-300"
                         >
                           삭제
                         </button>
