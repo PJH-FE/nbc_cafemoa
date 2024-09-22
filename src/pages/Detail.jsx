@@ -80,7 +80,7 @@ const Detail = () => {
     <>
       <div className="content">
         <div>
-          <div className="flex items-center gap-2 px-3 pb-4 sm:text-2xl text-3xl font-bold border-b-2 border-primary01">
+          <div className="flex flex-wrap items-center gap-2 px-3 pb-4 sm:text-2xl text-3xl font-bold border-b-2 border-primary01">
             <span className="flex-shrink-0">[{detailData.category}]</span>
             {detailData.title}
           </div>
