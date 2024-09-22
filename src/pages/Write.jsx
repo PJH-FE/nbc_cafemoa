@@ -4,7 +4,7 @@ const Write = () => {
   return (
     <>
       <div className="content">
-        <div className="title">글쓰기</div>
+        <div className="sub-title pb-2 border-b-4 border-primary01">글쓰기</div>
         <ToastForm />
       </div>
     </>

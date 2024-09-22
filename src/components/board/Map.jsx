@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const { kakao } = window;
 
-const Map = ({ cafeData, post, setPost }) => {
+const Map = ({ cafeData, post, setPost, height = '400px' }) => {
   useEffect(() => {
     const mapContainer = document.getElementById('map'), // 지도를 표시할 div
       mapOption = {
@@ -80,6 +80,6 @@ const Map = ({ cafeData, post, setPost }) => {
     }
   }, [cafeData]);
 
-  return <div id="map" className="w-full h-[600px]"></div>;
+  return <div id="map" className={`w-full h-[380px]`}></div>;
 };
 export default Map;

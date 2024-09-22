@@ -48,11 +48,10 @@ const MainRecommend = () => {
     navigate(`/list-category?cateInLists=${cateInListsParam}`);
     closeMenu();
   };
-
   return (
-    <div className="flex flex-col gap-[40px] px-[20px] py-[100px] max-w-[1500px] w-full mx-auto ">
+    <div className="flex flex-col gap-[40px] px-6 py-[100px] max-w-[1500px] w-full mx-auto ">
       <div className="flex items-center justify-between">
-        <h2 className="text-[20px]">새로운 카페</h2>
+        <h2 className="sub-title">새로운 카페</h2>
         <span className="flex items-center gap-[5px] cursor-pointer" onClick={openListHandle}>
           전체보기
           <ChevronRight />
@@ -60,7 +59,7 @@ const MainRecommend = () => {
       </div>
       {/* pc */}
       <div className="hidden lg:block">
-        <ul className="grid grid-cols-4 w-full gap-[20px]">
+        <ul className="grid grid-cols-4 w-full gap-6">
           {top4LatestSpots.map(data => {
             // 클릭시 해당디테일페이지로 이동
             return <SpotListItem key={data.id} data={data} />;
@@ -69,14 +68,14 @@ const MainRecommend = () => {
       </div>
       {/* mo */}
       <div className="hidden overflow-hidden sm:block">
-        <Swiper slidesPerView={'auto'} spaceBetween={20} className="mySwiper w-[100%] h-[600px]">
+        <Swiper slidesPerView={'auto'} spaceBetween={20} className="mySwiper w-[100%]">
           {top4LatestSpots.map((data, index) => {
             return (
               <SwiperSlide
                 key={index}
                 className="swiper-slide swiper-slide-next text-center text-[18px] w-[80%] flex justify-center items-center"
               >
-                <SpotListItem data={data} />
+                <SpotListItem key={index} data={data} />
               </SwiperSlide>
             );
           })}

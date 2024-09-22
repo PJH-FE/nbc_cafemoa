@@ -43,7 +43,11 @@ const AuthForm = ({ mode }) => {
       }
     },
     onError: error => {
-      toast.error('아이디 또는 비밀번호를 확인해주세요.');
+      if (error.message === '이미 사용중인 사용자입니다.') {
+        toast.error('이미 사용중인 사용자입니다.');
+      } else {
+        toast.error('아이디 또는 비밀번호를 확인해주세요.');
+      }
       console.error('요청 실패', error.message);
     },
   });
@@ -112,6 +116,7 @@ const AuthForm = ({ mode }) => {
               type="password"
               name="password"
               placeholder="비밀번호"
+              autoComplete="off"
               value={formData.password}
               onChange={handleChange}
               ref={passwordRef}

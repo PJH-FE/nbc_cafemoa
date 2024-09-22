@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const DATA_API = axios.create({
-  // baseURL: 'https://sugary-scarce-story.glitch.me'
-  baseURL: 'http://localhost:4000',
+  baseURL: 'https://cooked-proximal-sorrel.glitch.me',
+  //baseURL: 'http://localhost:4000',
 });

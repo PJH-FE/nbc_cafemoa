@@ -72,14 +72,14 @@ const MainCategory = () => {
   if (isError) return <div>Error loading articles</div>;
 
   return (
-    <div className="px-[10px] py-[50px] flex flex-col gap-[20px] max-w-[1500px] w-full mx-auto">
+    <div className="px-6 py-[50px] flex flex-col gap-[20px] max-w-[1500px] w-full mx-auto">
       {/* <h2>이런 카페 어때요</h2> */}
-      <ul className="flex gap-[20px] sm:gap-[10px] w-[100%] h-[300px] sm:grid sm:grid-cols-4 ">
+      <ul className="flex gap-6 sm:gap-[10px] w-[100%]  sm:grid sm:grid-cols-4 ">
         {category.map((cate, index) => {
           return (
             <li key={index} className="flex-1 cursor-pointer" onClick={() => onClickfilter(cate.title)}>
-              <span className="flex flex-col gap-2 h-full sm:h-[auto] sm:py-[10px] max-h-[200px] rounded-[30px] bg-[#fff] items-center justify-center text-[20px]">
-                <span className="text-[40px]">{cate.icon}</span>
+              <span className="flex flex-col gap-2 sm:h-[auto] sm:py-6 py-8 max-h-[200px] rounded-[30px] bg-[#fff] items-center justify-center text-[20px]">
+                <span className="sm:text-3xl text-[40px]">{cate.icon}</span>
                 <p className="text-[17px] text-[#61443A]">{cate.title}</p>
               </span>
             </li>

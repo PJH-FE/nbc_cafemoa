@@ -21,7 +21,7 @@ export default function NicknameEditor({
     }
 
     onNicknameChange(cleanedNickname);
-    toast.error('변경이 완료되었습니다');
+    toast.success('변경이 완료되었습니다');
     setIsEditing(false);
     setNickname('');
   };
@@ -45,11 +45,13 @@ export default function NicknameEditor({
             </button>
           </div>
         ) : (
-          <div>
-            <span className="text-xl font-bold mr-1">{currentNickname}</span>
+          <div className="flex items-end">
+            <span className="text-[28px] font-bold mr-1" style={{ lineHeight: 'normal' }}>
+              {currentNickname}
+            </span>
             <span>님</span>
             <button
-              className={`ml-2 mt-2 text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs ${
+              className={`ml-[10px] text-white rounded-md px-3 py-1 bg-[#3B3030] hover:bg-[#2a2a2a] transition text-xs ${
                 !isMyProfile && 'hidden'
               }`}
               onClick={() => setIsEditing(true)}

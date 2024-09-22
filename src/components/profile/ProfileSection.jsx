@@ -16,14 +16,14 @@ export default function ProfileSection({ followers, following, id, isMyProfile }
       {!isMyProfile && <FollowButton profile_id={id} />}
 
       <section className="h-1/4 w-full flex items-center">
-        <div className="p-4 ">
+        <div className="p-4">
           <ProfileImageUploader
             profileURL={user.profile_image}
             changeProfileImage={changeProfileImage}
             isMyProfile={isMyProfile}
           />
         </div>
-        <div className="w-full pr-4">
+        <div className="flex flex-col gap-[10px] w-full pr-4 sm:pr-0 sm:items-center">
           <NicknameEditor
             changeNickname={changeNickname}
             userNickname={user.user_nickname}

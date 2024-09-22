@@ -12,15 +12,15 @@ export default function ArticlesSection({ articles }) {
         articles.map(article => (
           <article
             key={article.id}
-            className="h-14 flex items-center justify-between cursor-pointer p-2 border-primary01 border-b-2"
+            className="flex items-center justify-between p-[20px] border-b-2 cursor-pointer h-14 border-primary01"
             onClick={() => navigate(`/detail?article_id=${article.id}`)}
           >
-            <span>{article.title}</span>
-            <span>{article.date}</span>
+            <span className="text-[18px]">{article.title}</span>
+            <span className="text-[18px]">{article.date}</span>
           </article>
         ))
       ) : (
-        <p className="text-center mt-52">작성한 글이 없습니다</p>
+        <p className="text-center py-5">작성한 글이 없습니다</p>
       )}
     </section>
   );

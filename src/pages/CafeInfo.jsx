@@ -56,14 +56,18 @@ const CafeInfo = () => {
   return (
     <>
       <div className="content">
-        <div className="flex gap-20 flex-wrap items-start sm:gap-6">
+        <div className="flex gap-20 flex-wrap lg:items-stretch sm:gap-6">
           <div className="w-full lg:max-w-[calc(50%-2.5rem)] flex-shrink-0 ">
-            <span className="flex items-center relative h-0 py-[50%]  rounded-lg overflow-hidden">
-              <img className="object-cover min-h-full min-w-full" src={cafeInfo.thumbnail} alt="thumbnail" />
+            <span className="flex sm:h-0 sm:py-[50%] h-full items-center justify-center relative rounded-lg overflow-hidden">
+              <img
+                className="absolute object-cover min-h-full min-w-full"
+                src={cafeInfo.thumbnail}
+                alt="thumbnail"
+              />
             </span>
           </div>
 
-          <div className="w-full lg:max-w-[calc(50%-2.5rem)] flex-shrink-0 shadow-[0_4px_15px_1px_rgba(0,0,0,0.25)] rounded-lg p-10 sm:p-4">
+          <div className="w-full lg:max-w-[calc(50%-2.5rem)] flex-shrink-0 shadow-[0_4px_15px_1px_rgba(0,0,0,0.25)] rounded-lg p-10 sm:p-5">
             <div className="flex justify-between items-center mb-5">
               <div className="w-fit rounded text-[18px] py-1 px-3 font-bold text-primary01 bg-primary03">
                 {cafeInfo.category}
@@ -94,7 +98,7 @@ const CafeInfo = () => {
               )}
             </div>
 
-            <div className="flex items-center gap-4 text-3xl font-bold">
+            <div className="flex items-center gap-4 text-3xl sm:text-2xl font-bold">
               {cafeInfo.title}
               {cafeInfo.sns && (
                 <Link to={cafeInfo.sns} target="_blank" className="block w-6">
@@ -113,7 +117,7 @@ const CafeInfo = () => {
               <span className="text-lg">{cafeInfo.phone}</span>
             </div>
 
-            <div className="flex items-start gap-4 mt-3">
+            <div className="flex items-start gap-4 mt-3 mb-8">
               <span className="flex items-center gap-2 min-w-[100px] text-xl font-bold">
                 <Clock size={18} /> Hours
               </span>
@@ -127,14 +131,9 @@ const CafeInfo = () => {
                 })}
               </div>
             </div>
+
+            <Map height="300px" cafeData={cafeData} />
           </div>
-        </div>
-        <div className="cafe-map mt-[120px] pt-[60px] border-t-4 border-primary03">
-          <div className="address mb-10">
-            <div className="text-4xl font-bold">&apos;{cafeInfo.title}&apos; 찾아오시는 길</div>
-            <span className="block text-xl mt-3">{cafeInfo.cafe_address}</span>
-          </div>
-          <Map cafeData={cafeData} />
         </div>
         <div className="mt-8">
           <Comments nowArticleId={nowCafeId} />
