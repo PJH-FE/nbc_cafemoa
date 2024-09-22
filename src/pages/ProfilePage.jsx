@@ -20,10 +20,18 @@ const ProfilePage = () => {
   const isMyProfile = profile_id === id;
 
   return (
-    <main className="flex justify-between gap-12 min-h-[54rem] w-screen py-16 px-32 bg-[#F4EFEB]">
-      <ProfileSection followers={followers} following={following} id={profile_id} isMyProfile={isMyProfile} />
-      <ArticlesSection articles={articles} />
-    </main>
+    <div className="h-[100vh] sm:h-[auto]  bg-[#F4EFEB]">
+      <div className="flex sm:flex-col sm:pb-[60px] lg:justify-between gap-[50px] w-full h-[80vh] sm:h-[auto] content">
+        <ProfileSection
+          followers={followers}
+          following={following}
+          id={profile_id}
+          isMyProfile={isMyProfile}
+          articles={articles}
+        />
+        <ArticlesSection articles={articles} />
+      </div>
+    </div>
   );
 };
 export default ProfilePage;

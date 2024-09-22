@@ -69,7 +69,7 @@ export default function FollowButton({ profile_id }) {
   }, [result.following, profile_id]);
 
   return (
-    <button className="absolute top-5 right-5" onClick={onClick}>
+    <button onClick={onClick}>
       <FollowIcon isClicked={isClicked} />
     </button>
   );
