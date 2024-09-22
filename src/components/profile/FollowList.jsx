@@ -15,7 +15,7 @@ export default function FollowList({ following, followers }) {
           } text-[18px] py-[10px]`}
           onClick={() => setIsFollowing(false)}
         >
-          팔로우
+          팔로잉
         </div>
         <div
           className={`${buttonBoxStyle} ${
@@ -23,7 +23,7 @@ export default function FollowList({ following, followers }) {
           } text-[18px] py-[10px]`}
           onClick={() => setIsFollowing(true)}
         >
-          팔로잉
+          팔로우
         </div>
       </div>
       {isFollowing ? (
