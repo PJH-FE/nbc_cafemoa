@@ -115,26 +115,28 @@ const Comments = ({ nowArticleId }) => {
       <div className="flex justify-between px-10">
         <p>댓글</p>
       </div>
-      <div className="px-10">
-        <div className="flex flex-col px-10">
-          <textarea
-            type="text"
-            placeholder="댓글을 입력하세요.."
-            value={commentTexts}
-            onChange={e => {
-              setCommentTexts(e.target.value);
-            }}
-            className="border-2 border-[#A57454] rounded resize-none"
-          ></textarea>
-          <button
-            type="submit"
-            onClick={handleAddComment}
-            className="self-end bg-[#61443A] text-white w-24 h-8 rounded mt-2 hover:shadow-xl transition-shadow"
-          >
-            댓글 추가
-          </button>
+      {userInfo?.id && (
+        <div className="px-10">
+          <div className="flex flex-col px-10">
+            <textarea
+              type="text"
+              placeholder="댓글을 입력하세요.."
+              value={commentTexts}
+              onChange={e => {
+                setCommentTexts(e.target.value);
+              }}
+              className="border-2 border-[#A57454] rounded resize-none"
+            ></textarea>
+            <button
+              type="submit"
+              onClick={handleAddComment}
+              className="self-end bg-[#61443A] text-white w-24 h-8 rounded mt-2 hover:shadow-xl transition-shadow"
+            >
+              댓글 추가
+            </button>
+          </div>
         </div>
-      </div>
+      )}
       {/* 댓글목록 */}
       <div className="px-20 ">
         {comments?.map(comment => {
