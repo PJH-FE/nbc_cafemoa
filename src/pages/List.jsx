@@ -44,8 +44,7 @@ const List = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll); // 컴포넌트가 언마운트 될 때 이벤트 제거
-  }, [loading, hasMore]);
-  //추후 IntersectionObserver 로 변경하기,,
+  }, []);
 
   //가나다순 버튼
   const alignmentBtn = () => {

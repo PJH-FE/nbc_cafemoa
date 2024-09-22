@@ -1,6 +1,522 @@
 {
   "cafedb": [
     {
+      "id": "",
+      "date": "2024-08-01",
+      "category": "모각코",
+      "title": "모노블럭",
+      "cafe_address": "서울 마포구 와우산로23길 14",
+      "region": "서울",
+      "sns": "https://www.instagram.com/cafecamptong/",
+      "phone": "02-3144-2040",
+      "openingHours": {
+        "매일": "11:00 ~ 22:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAxMjlfMTEx%2FMDAxNzA2NTE0NjYxNzY1.hFf6Pq2_NakomPvaalMEuE8hVVjJh1C8S9qeBierxqMg._njKWWCh-rX9D7IbceOfJUC8bVNenTNGChLL-CHOPl8g.JPEG.donnahan92%2FIMG_6219.jpg"
+    },
+    {
+      "id": "",
+      "date": "2024-08-12",
+      "category": "모각코",
+      "title": "프로토콜 연희점",
+      "cafe_address": "서울 서대문구 연희로 109 2층",
+      "region": "서울",
+      "sns": "https://www.instagram.com/protokoll.roasters/",
+      "phone": "0507-1389-6159",
+      "openingHours": {
+        "매일": "10:30 ~ 22:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimage.nmv.naver.net%2Fblog_2024_09_17_2409%2Fy0K3fFbC6w_01.jpg"
+    },
+    {
+      "id": "",
+      "date": "2024-08-03",
+      "category": "모각코",
+      "title": "카페동네 신림점",
+      "cafe_address": "서울특별시 관악구 남부순환로 1600-1, 2층, 3층, 4층",
+      "region": "서울",
+      "sns": "",
+      "phone": "0507-1389-6159",
+      "openingHours": {
+        "매일": "08:00 ~ 04:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230118_206%2F1674049714488Tnch3_JPEG%2F1515112541760.jpg"
+    },
+    {
+      "id": "",
+      "date": "2024-09-03",
+      "category": "모각코",
+      "title": "부산커피",
+      "cafe_address": "부산 금정구 장전온천천로 93",
+      "region": "부산",
+      "sns": "",
+      "phone": "051-583-7171",
+      "openingHours": {
+        "월": "11:00 ~ 21:30",
+        "화": "10:30 ~ 22:00",
+        "수": "10:30 ~ 22:00",
+        "목": "10:30 ~ 22:00",
+        "금": "10:30 ~ 22:00",
+        "토": "10:00 ~ 22:00",
+        "일": "10:00 ~ 22:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA1MDlfMTAx%2FMDAxNzE1MjQyODM5NjI1.lYbWc0Uc2V6f4wNiiEFbzl3feM5TgJlZVXfijM8HaOgg.YyWsy5ltkSfx0LQf2qyrsNuEtxHhrz-WfSy1OQp4YRwg.JPEG%2F20240509_163201.jpg.jpg%3Ftype%3Dw1500_60_sharpen"
+    },
+    {
+      "id": "",
+      "date": "2024-09-13",
+      "category": "24시",
+      "title": "The november 라운지",
+      "cafe_address": "인천 연수구 컨벤시아대로230번길 42 아라플라자 121호",
+      "region": "인천",
+      "sns": "",
+      "phone": "032-858-1984",
+      "openingHours": {
+        "매일": "00:00 ~ 24:30"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200908_63%2F15994932028846sanu_JPEG%2F9DQeCd8i4yhRj1636kZqmUJ_.jpg"
+    },
+    {
+      "id": "",
+      "date": "2024-09-01",
+      "category": "애견카페",
+      "title": "제주네 애견카페",
+      "cafe_address": "서울 양천구 신월로 266 2층 201호",
+      "region": "서울",
+      "sns": "instagram.com/cafe_jejune",
+      "phone": "010-2901-1272",
+      "openingHours": {
+        "평일": "17:00 ~ 20:00",
+        "주말": "12:00 ~ 20:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230118_206%2F1674049714488Tnch3_JPEG%2F1515112541760.jpg"
+    },
+    {
+      "id": "",
+      "date": "2024-09-20",
+      "category": "뷰맛집",
+      "title": "카페 뤼미에르",
+      "cafe_address": "강원특별자치도 강릉시 창해로14번길 18",
+      "region": "강원",
+      "sns": "www.instagram.com/cafe__lumiere",
+      "phone": "0507-1447-0225",
+      "openingHours": {
+        "매일": "09:00 ~ 23:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2Fd5e2623ee320d97edafd88f688aabb6854fa42b1%3Foriginal"
+    },
+    {
+      "id": "",
+      "date": "2024-09-18",
+      "category": "뷰맛집",
+      "title": "바다지기공방카페",
+      "cafe_address": "강원특별자치도 양양군 손양면 선사유적로 237",
+      "region": "강원",
+      "sns": "www.instagram.com/badajigy",
+      "phone": "010-3011-2950",
+      "openingHours": {
+        "매일": "10:00 ~ 18:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocalad_thumb%2Ft%2F6fb34521989faf99bf62b8f350ffab948090fad1"
+    },
+    {
+      "id": "",
+      "date": "2024-09-17",
+      "category": "한옥",
+      "title": "운암정 한옥베이커리",
+      "cafe_address": "강원특별자치도 정선군 사북읍 하이원길 175 운암정",
+      "region": "강원",
+      "sns": "",
+      "phone": "033-590-7631",
+      "openingHours": {
+        "매일": "10:00 ~ 22:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2Fae4b65705dee35ad6b0fbdb161006047bb0467ac%3Foriginal"
+    },
+    {
+      "id": "",
+      "date": "2024-09-16",
+      "category": "디저트",
+      "title": "반다99",
+      "cafe_address": "경북 경주시 경감로 579",
+      "region": "경북",
+      "sns": "www.instagram.com/yejin_usual",
+      "phone": "054-748-3456",
+      "openingHours": {
+        "월": "정기휴무 (매주 월요일)",
+        "화": "11:00 ~ 21:00",
+        "수": "11:00 ~ 21:00",
+        "목": "11:00 ~ 21:00",
+        "금": "11:00 ~ 21:00",
+        "토": "11:00 ~ 21:00",
+        "일": "11:00 ~ 21:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=https%3A%2F%2Fpostfiles.pstatic.net%2FMjAyMzA4MDRfMTg2%2FMDAxNjkxMTI3MDQzMjQz.W_AnaML6mQR5DmkLv7iNxhFWXIBSf2OnUuqJXYgr4LYg.gFLIb2jb3FkjvXbC-_0KdaSaB3WPe1o-gflt96Xd5fcg.JPEG.dlsdud715%2FIMG_3422.jpg%3Ftype%3Dw773"
+    },
+    {
+      "id": "",
+      "date": "2024-09-21",
+      "category": "한옥",
+      "title": "카페 수피아",
+      "cafe_address": "경북 경주시 새남산길 57 1층",
+      "region": "경북",
+      "sns": "www.instagram.com/cafe_supia",
+      "phone": "054-774-7487",
+      "openingHours": {
+        "월": "11:00 ~ 20:00",
+        "화": "11:00 ~ 20:00",
+        "수": "11:00 ~ 21:00",
+        "목": "11:00 ~ 21:00",
+        "금": "11:00 ~ 21:00",
+        "토": "11:00 ~ 21:00",
+        "일": "11:00 ~ 21:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=https%3A%2F%2Fpostfiles.pstatic.net%2FMjAyMzEwMzFfMjEy%2FMDAxNjk4NzYxMDAyNjIw.V76B5WBTyvGHhX8cxK8RxTbMJHOQ7dsXwJxI3iLfWDIg.-Q_rPofKfnA1rJaY4PHPFZxHQWWexayoxv-tSc2Owpcg.JPEG.fls7488%2FDSC01152.JPG%3Ftype%3Dw386"
+    },
+    {
+      "id": "",
+      "date": "2024-09-22",
+      "category": "한옥",
+      "title": "카페드몽돌",
+      "cafe_address": "전남 여수시 돌산읍 계동로 552",
+      "region": "전남",
+      "sns": "www.instagram.com/cafe_de_mongdol",
+      "phone": "061-644-7775",
+      "openingHours": {
+        "매일": "10:00 ~ 19:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocalfiy%2F12D84D0D73834D668105103E49A8CD0F"
+    },
+    {
+      "id": "",
+      "date": "2024-09-20",
+      "category": "뷰맛집",
+      "title": "카페여수에서",
+      "cafe_address": "전남 여수시 중앙5길 29",
+      "region": "전남",
+      "sns": "instagram.com/in__yeosu",
+      "phone": "061-662-9931",
+      "openingHours": {
+        "월": "12:00 ~ 21:00",
+        "화": "정기휴무 (매주 화요일)",
+        "수": "12:00 ~ 21:00",
+        "목": "12:00 ~ 21:00",
+        "금": "12:00 ~ 21:00",
+        "토": "12:00 ~ 21:00",
+        "일": "12:00 ~ 21:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F6f64a336c2a7004016fe46f5b5577dc6cfca2f0c%3Foriginal"
+    },
+    {
+      "id": "",
+      "date": "2024-09-15",
+      "category": "뷰맛집",
+      "title": "여수카페포",
+      "cafe_address": "전남 여수시 고소5길 16 2,3층",
+      "region": "전남",
+      "sns": "www.instagram.com/cafefor_16",
+      "phone": "061-666-6363",
+      "openingHours": {
+        "월": "10:00 ~ 20:00",
+        "화": "10:00 ~ 20:00",
+        "수": "정기휴무 (매주 수요일)",
+        "목": "10:00 ~ 20:00",
+        "금": "10:00 ~ 20:00",
+        "토": "10:00 ~ 21:00",
+        "일": "10:00 ~ 20:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2Fb94c950f5db4a595c3dc732fc6e4c7b13c1c7ab4%3Foriginal"
+    },
+    {
+      "id": "",
+      "date": "2024-09-19",
+      "category": "뷰맛집",
+      "title": "카페대너리스",
+      "cafe_address": "경기 남양주시 조안면 북한강로 914 1-2층",
+      "region": "경기",
+      "sns": "https://www.instagram.com/cafe_daenerys.official/",
+      "phone": "031-521-9700",
+      "openingHours": {
+        "평일": "10:00 ~ 24:00",
+        "주말": "08:00 ~ 24:00",
+        "휴게시간": "15:30 ~ 17:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTEwMDdfMTYx%2FMDAxNjMzNjA5Mjc5NjQ5.5x5EGmcbI1CRb-G8R2IoCHg-mkXZJgVnGKBatI-D_xcg.QKO5KifZEMYfVs6tntpEML9j3sYIWqX3iQd4uybhsR8g.JPEG.vv-ictory%2F%25BA%25CF%25C7%25D1%25B0%25AD_%25BA%25E4%25B0%25A1_%25BF%25B9%25BC%25FA%25C0%25CC%25B4%25D9_%25C4%25AB%25C6%25E4_%25B4%25EB%25B3%25CA%25B8%25AE%25BD%25BA_%252820%2529.jpg&type=sc960_832"
+    },
+    {
+      "id": "",
+      "date": "2024-09-15",
+      "category": "디저트",
+      "title": "더하이브",
+      "cafe_address": "경기 남양주시 화도읍 경춘로2180번길 24-10",
+      "region": "경기",
+      "sns": "https://www.instagram.com/the____hive/",
+      "phone": "0503-7258-7684",
+      "openingHours": {
+        "매일": "10:00 ~ 21:00"
+      },
+      "thumbnail": "https://d12zq4w4guyljn.cloudfront.net/20220416050517300_photo_GNtCRjNogBBb.jpg"
+    },
+    {
+      "id": "",
+      "date": "2024-09-10",
+      "category": "디저트",
+      "title": "테라로사 서종점",
+      "cafe_address": "경기 양평군 서종면 북한강로 992 1, 2층",
+      "region": "경기",
+      "sns": "",
+      "phone": "0503-7258-7684",
+      "openingHours": {
+        "매일": "09:00 ~ 21:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2Fe89f6119fa1e8f68852220d76591e4467cc11ad9%3Foriginal"
+    },
+    {
+      "id": "",
+      "date": "2024-09-03",
+      "category": "디저트",
+      "title": "필구커피",
+      "cafe_address": "서울 은평구 불광천길 442-29 1층",
+      "region": "서울",
+      "sns": "instagram.com/filgucoffee",
+      "phone": "",
+      "openingHours": {
+        "월": "11:00 ~ 19:00",
+        "화": "정기휴무 (매주 화요일)",
+        "수": "11:00 ~ 19:00",
+        "목": "11:00 ~ 19:00",
+        "금": "11:00 ~ 19:00",
+        "토": "11:00 ~ 21:00",
+        "일": "11:00 ~ 21:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=https%3A%2F%2Fpostfiles.pstatic.net%2FMjAyMzA5MjFfMjA2%2FMDAxNjk1MzAxMzg0NzA1.7WNtT7qq-jWCjwXHuhtBZ3356BC7-ZMvFHyAFkNjfP0g.GT632z0CGKmHgU_yBT1bWOnRGHl9bXoLDlTOCufy1y4g.JPEG.ovo_y%2FIMG_6074.JPG%3Ftype%3Dw966"
+    },
+    {
+      "id": "",
+      "date": "2024-08-07",
+      "category": "애견동반",
+      "title": "노마드",
+      "cafe_address": "충남 홍성군 홍북읍 홍북로 530-24",
+      "region": "충남",
+      "sns": "",
+      "phone": "",
+      "openingHours": {
+        "매일": "10:00 ~ 21:30"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Ffiy_reboot%2Fplace%2FF970392A6CAB452B9FBEF7EF36633089"
+    },
+    {
+      "id": "",
+      "date": "2024-08-29",
+      "category": "애견동반",
+      "title": "티니포렛",
+      "cafe_address": "충남 예산군 덕산면 시량부흥길 12 1층",
+      "region": "충남",
+      "sns": "https://www.instagram.com/tinyforet___/",
+      "phone": "010-4948-2049",
+      "openingHours": {
+        "월": "10:00 ~ 18:00",
+        "화": "10:00 ~ 18:00",
+        "수": "10:00 ~ 18:00",
+        "목": "정기휴무 (매주 목요일)",
+        "금": "10:00 ~ 18:00",
+        "토": "10:00 ~ 18:00",
+        "일": "10:00 ~ 18:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=https%3A%2F%2Fpostfiles.pstatic.net%2FMjAyMzA5MjdfMTIz%2FMDAxNjk1NzgwNTYwNzk4.FKhsxBMTAz71zgGgLllScwxHW40wdrZmsoJLWRZrD44g.gOZu947GqYWdm1tJHQwAwyWiHGDNxUGFQstAA8aiHNMg.JPEG.namnamso%2FIMG_9158.jpg%3Ftype%3Dw466"
+    },
+    {
+      "id": "",
+      "date": "2024-08-28",
+      "category": "디저트",
+      "title": "1209",
+      "cafe_address": "서울 강남구 언주로 709 송암빌딩 1층",
+      "region": "서울",
+      "sns": "www.instagram.com/1209.official",
+      "phone": "0507-1413-1211",
+      "openingHours": {
+        "월": "08:00 ~ 21:00",
+        "화": "08:00 ~ 21:00",
+        "수": "08:00 ~ 21:00",
+        "목": "08:00 ~ 21:00",
+        "금": "08:00 ~ 21:00",
+        "토": "11:00 ~ 18:00",
+        "일": "정기휴무 (매주 일요일)"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA5MTNfMjMy%2FMDAxNzI2MTk0OTQ0NTgx.ZowgRD4HC94FHUYR2zGMaUbPioHeqq5_JAuQva1uYCcg.ScazrEgm_w9HBuh_9LuUGgjn-VAzwUga5BcZRxfD_qQg.JPEG%2F8E5EE876-58EF-4FBB-AE39-DEBACF4B8E7B.jpeg%3Ftype%3Dw1500_60_sharpen"
+    },
+    {
+      "id": "",
+      "date": "2024-09-22",
+      "category": "디저트",
+      "title": "레자미오네뜨",
+      "cafe_address": "서울 강남구 학동로5길 5 1층",
+      "region": "서울",
+      "sns": "www.instagram.com/lesamishonnetes",
+      "phone": "0507-1497-1872",
+      "openingHours": {
+        "매일": "09:00 ~ 20:00"
+      },
+      "thumbnail": "https://postfiles.pstatic.net/MjAyMzEwMzFfNzEg/MDAxNjk4NzIzODYzMjIy.WCbJsbo9gnVMD2U4uy2LlLRdS2sdMOTLi4-ATpFOzuQg.bLrk8dPii0JJ26jTR6u2iM3-USiEnrcqHvbHSIw2TeEg.JPEG.llleyj/SE-88d7bcc3-7599-11ee-ba49-0b7c1e24ec00.jpg?type=w773"
+    },
+    {
+      "id": "",
+      "date": "2024-07-12",
+      "category": "뷰맛집",
+      "title": "라온숨",
+      "cafe_address": "경기 남양주시 화도읍 북한강로 1146 1, 2층",
+      "region": "경기",
+      "sns": "www.instagram.com/raonsoom_",
+      "phone": "031-591-3433",
+      "openingHours": {
+        "매일": "10:00 ~ 22:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F48993428181A4903B00C16152F50A1CB"
+    },
+    {
+      "id": "",
+      "date": "2024-07-19",
+      "category": "디저트",
+      "title": "아오오",
+      "cafe_address": "제주특별자치도 서귀포시 성산읍 환해장성로 75 1,2층",
+      "region": "제주",
+      "sns": "instagram.com/cafe.ooo",
+      "phone": "",
+      "openingHours": {
+        "매일": "09:00 ~ 19:20"
+      },
+      "thumbnail": "https://post-phinf.pstatic.net/MjAyMzEwMjNfMTMg/MDAxNjk4MDYzMDgzNDQ4.g1_6zJKvpH4g0W_uWB31pN2T6czRhQhRNbFGBGnKNDwg.PMSua4XridAYWHqDgFsQbRAyX5OVugK37dWvtubNvgYg.JPEG/20230920_124755.jpg?type=w1200"
+    },
+    {
+      "id": "",
+      "date": "2024-07-20",
+      "category": "뷰맛집",
+      "title": "해지개",
+      "cafe_address": "제주특별자치도 제주시 애월읍 애월북서길 52 1,2층",
+      "region": "제주",
+      "sns": "www.instagram.com/raonsoom_",
+      "phone": "064-799-8585",
+      "openingHours": {
+        "매일": "09:00 ~ 21:00"
+      },
+      "thumbnail": "https://post-phinf.pstatic.net/MjAyMzEwMjNfMjQy/MDAxNjk4MDYzODc0Mjk3.wbXxKDA-rN-xt_1zzXcfYXSjhUOeuxCwrtu6kN01djMg.r2eBJtBze-EPfcduKpFCSAFKo0rfqqeW7RQPGAb7Yesg.JPEG/%EC%A0%9C%EC%A3%BC%EC%98%A4%EC%85%98%EB%B7%B0%EC%B9%B4%ED%8E%98_%ED%95%B4%EC%A7%80%EA%B0%9C-22.jpg?type=w1200"
+    },
+    {
+      "id": "",
+      "date": "2024-09-20",
+      "category": "뷰맛집",
+      "title": "스나오코히",
+      "cafe_address": "제주특별자치도 서귀포시 하신상로9번길 2 1층",
+      "region": "제주",
+      "sns": "www.instagram.com/raonsoom_",
+      "phone": "031-591-3433",
+      "openingHours": {
+        "월": "정기휴무 (매주 월요일)",
+        "화": "12:00 ~ 17:00",
+        "수": "12:00 ~ 17:00",
+        "목": "12:00 ~ 17:00",
+        "금": "12:00 ~ 17:00",
+        "토": "12:00 ~ 17:00",
+        "일": "12:00 ~ 16:00"
+      },
+      "thumbnail": "https://post-phinf.pstatic.net/MjAyMzEwMjNfMzYg/MDAxNjk4MDYzNjEzMTg4.sjsHuV1b38QaJijIOe8hiXUAGScTy0IY-5l-HlO6wz4g.GLTovx3_sZN407jdWxyvddplyc-xqIwlwirViiwC8XEg.JPEG/20230920_153344.jpg?type=w1200"
+    },
+    {
+      "id": "",
+      "date": "2024-09-07",
+      "category": "디저트",
+      "title": "메리앤메리커피 풍납점",
+      "cafe_address": "서울 송파구 풍성로26길 54 1층",
+      "region": "서울",
+      "sns": "instagram.com/marynmarycoffee_",
+      "phone": "02-488-5639",
+      "openingHours": {
+        "월": "정기휴무 (매주 월요일)",
+        "화": "12:00 ~ 22:00",
+        "수": "12:00 ~ 22:00",
+        "목": "12:00 ~ 22:00",
+        "금": "12:00 ~ 22:00",
+        "토": "12:00 ~ 22:00",
+        "일": "12:00 ~ 22:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA2MjlfMTQ2%2FMDAxNzE5NjMwMjgyNDg2.8TtxgaMpkhuMI3fmBIZv4mmkI4HAIioR48pJWY-GRqYg.PcKc6CSEofvkW-6l8sy5NiBporFpKkahwL6LBy-yGdgg.JPEG%2F62C229E1-47D1-416D-94D8-4C2769687CDA.jpeg%3Ftype%3Dw1500_60_sharpen"
+    },
+    {
+      "id": "",
+      "date": "2024-09-06",
+      "category": "한옥",
+      "title": "스타벅스 경주대릉원점",
+      "cafe_address": "경북 경주시 첨성로 125",
+      "region": "경북",
+      "sns": "",
+      "phone": "1522-3232",
+      "openingHours": {
+        "월": "08:00 ~ 22:00",
+        "화": "08:00 ~ 22:00",
+        "수": "08:00 ~ 22:00",
+        "목": "08:00 ~ 22:00",
+        "금": "08:00 ~ 23:00",
+        "토": "08:00 ~ 23:00",
+        "일": "08:00 ~ 22:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F48158a9cf2d0f6430c9956eadcb5aafaa3ed07d5%3Foriginal"
+    },
+    {
+      "id": "",
+      "date": "2024-09-03",
+      "category": "뷰맛집",
+      "title": "텅",
+      "cafe_address": "서울 종로구 율곡로 82 7층 701호",
+      "region": "서울",
+      "sns": "https://www.instagram.com/tung_seoul/",
+      "phone": "02-766-1933",
+      "openingHours": {
+        "월": "08:00 ~ 22:00",
+        "화": "08:00 ~ 22:00",
+        "수": "08:00 ~ 22:00",
+        "목": "08:00 ~ 22:00",
+        "금": "08:00 ~ 23:00",
+        "토": "08:00 ~ 23:00",
+        "일": "08:00 ~ 22:00"
+      },
+      "thumbnail": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230323_227%2F1679546108601vEt9j_JPEG%2F20220828-103723525.jpg"
+    },
+    {
+      "id": "",
+      "date": "2024-09-03",
+      "category": "뷰맛집",
+      "title": "커피앤시가렛",
+      "cafe_address": "서울 중구 서소문로 116 유원빌딩 17층",
+      "region": "서울",
+      "sns": "https://www.instagram.com/coffeeandcigarettes1706/",
+      "phone": "02-777-7557",
+      "openingHours": {
+        "월": "08:30 ~ 21:00",
+        "화": "08:30 ~ 21:00",
+        "수": "08:30 ~ 21:00",
+        "목": "08:30 ~ 21:00",
+        "금": "08:30 ~ 21:00",
+        "토": "11:00 ~ 21:00",
+        "공휴일": "11:00 ~ 21:00",
+        "일": "정기휴무 (매주 일요일)"
+      },
+      "thumbnail": "https://postfiles.pstatic.net/MjAyMDA0MjhfODUg/MDAxNTg4MDUzODkyMDM3.iPaWEogeUKtHlDCsQgjYDkpohLTA17yNRIjhPEsoN30g.j3mF6ajlZkyG95QPC0Cn7vKhXHZuSAnI9pCFgKNsOc4g.JPEG.melong826/24CC171D-86ED-4F10-9899-B96B410AA68A.jpg?type=w966"
+    },
+    {
+      "id": "",
+      "date": "2024-09-01",
+      "category": "뷰맛집",
+      "title": "타자기",
+      "cafe_address": "서울 용산구 신흥로 97-5 2층",
+      "region": "서울",
+      "sns": "https://www.instagram.com/cafe_tajagi/",
+      "phone": "010-4445-8918",
+      "openingHours": {
+        "매일": "12:00 ~ 22:00"
+      },
+      "thumbnail": "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2F8C6F595241C343898C699EBA05BF4928"
+    },
+    {
       "id": "cafedb01",
       "date": "2024-09-20",
       "category": "애견동반",
@@ -548,6 +1064,17 @@
       "follower": [],
       "written_articles": [106, 107],
       "bookmarked": []
+    },
+    {
+      "id": "466e",
+      "user_id": "lbrkr970",
+      "user_nickname": "임마요",
+      "profile_image": "",
+      "description": "",
+      "following": [],
+      "follower": [],
+      "written_articles": [],
+      "bookmarked": ["101"]
     }
   ],
   "comments": [
