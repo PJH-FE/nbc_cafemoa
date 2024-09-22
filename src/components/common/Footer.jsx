@@ -26,8 +26,8 @@ const member = [
 const Footer = () => {
   return (
     <div className="min-h-[200px] mt-[120px] sm:min-h-[300px] sm:mt-[80px]">
-      <div className="absolute bottom-0 w-full">
-        <div className="flex sm:flex-col sm:gap-[20px] sm:items-start items-center justify-between px-[20px] py-[58px] max-w-[1500px] w-full mx-[auto] my-0 border-[#61443A] border-t-[1px] sm:px-[20px]">
+      <div className="absolute bottom-0 w-full  border-[#61443A] border-t-[1px] ">
+        <div className="flex sm:flex-col sm:gap-[20px] sm:items-start items-center justify-between px-[20px] py-[58px] max-w-[1500px] w-full mx-[auto] my-0 sm:px-[20px]">
           <Link to="/">
             <div className="font-hakgyo text-[1.5rem] text-[#61443A]">CAFEMOA</div>
           </Link>
