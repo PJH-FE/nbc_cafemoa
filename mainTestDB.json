@@ -1283,6 +1283,30 @@
       "text": "내일 가봐야겠어요!",
       "author_id": "a06c",
       "postId": "101"
+    },
+    {
+      "id": "91c5",
+      "text": "너무 예뻐요!",
+      "author_id": "466e",
+      "postId": "cafedb38",
+      "user_nickname": "임마요",
+      "date": "2024-09-22T14:12:51.059Z"
+    },
+    {
+      "id": "8e23",
+      "text": "여기 붕어빵 마싯어용",
+      "author_id": "466e",
+      "postId": "cafedb17",
+      "user_nickname": "임마요",
+      "date": "2024-09-22T14:13:09.946Z"
+    },
+    {
+      "id": "26d3",
+      "text": "비주얼 너무 예쁜데여! ",
+      "author_id": "466e",
+      "postId": "cafedb36",
+      "user_nickname": "임마요",
+      "date": "2024-09-22T14:13:41.118Z"
     }
   ]
 }
