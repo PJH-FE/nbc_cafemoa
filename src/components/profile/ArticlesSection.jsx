@@ -4,8 +4,8 @@ export default function ArticlesSection({ articles }) {
   const navigate = useNavigate();
 
   return (
-    <section className="w-[50%] bg-white sm:w-full">
-      <h1 className="flex items-center justify-center py-[15px] text-xl font-semibold text-white bg-primary01">
+    <section className="w-[55%] sm:w-full bg-white shadow-xl rounded-[6px] overflow-hidden">
+      <h1 className="text-xl bg-primary01 text-white h-16 flex justify-center items-center font-semibold">
         작성글
       </h1>
       {articles?.length ? (

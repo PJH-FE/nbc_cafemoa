@@ -80,8 +80,8 @@ const Detail = () => {
     <>
       <div className="content">
         <div>
-          <div className="flex items-center gap-2 px-3 pb-4 text-3xl font-bold border-b-2 border-primary01">
-            <span>[{detailData.category}]</span>
+          <div className="flex flex-wrap items-center gap-2 px-3 pb-4 sm:text-2xl text-3xl font-bold border-b-2 border-primary01">
+            <span className="flex-shrink-0">[{detailData.category}]</span>
             {detailData.title}
           </div>
           <div className="flex flex-col px-4 pb-4 border-b-2 border-primary01">
@@ -136,8 +136,10 @@ const Detail = () => {
 
           <div className="cafe-map mt-[120px]">
             <div className="address mb-10">
-              <div className="text-3xl font-bold">&apos;{detailData.cafe_name}&apos; 찾아오시는 길</div>
-              <span className="block text-xl mt-3">{detailData.cafe_address}</span>
+              <div className="sm:text-2xl text-3xl font-bold">
+                &apos;{detailData.cafe_name}&apos; 찾아오시는 길
+              </div>
+              <span className="block sm:text-lg sm:mt-1 text-xl mt-3">{detailData.cafe_address}</span>
             </div>
             <Map height="450px" cafeData={cafeData} />
           </div>

@@ -131,8 +131,8 @@ const Header = () => {
           className="sm:fixed sm:top-0 sm:left-0 sm:w-full sm:h:full sm:bg-black sm:bg-opacity-40 z-50"
           onClick={closeMenu}
         >
-          <div className="lg:absolute lg:shadow-lg w-full h-[300px] min-w-[390px]  sm:max-w-[500px] sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-primary03">
-            <div className="sm:px-6 sm:pt-[30px] sm:pb-[50px] flex flex-col bg-[#61443A] gap-[30px]">
+          <div className="lg:absolute lg:shadow-lg w-full min-w-[390px]  sm:max-w-[500px] sm:w-[90vw] sm:h-[100vh] sm:flex sm:flex-col sm:gap-[20px] bg-primary03">
+            <div className="sm:px-6 sm:pt-[20px] sm:pb-[35px] flex flex-col bg-[#61443A] gap-[30px]">
               <button onClick={toggleMenu} className="justify-end hidden sm:flex">
                 <X className="text-[#fff]" />
               </button>

@@ -3,7 +3,7 @@ import useGetUserByIdQuery from '../queries/useGetUserByIdQuery';
 
 const useUser = userId => {
   const { data: user } = useGetUserByIdQuery(userId);
-  const { mutate: updateUser } = useUpdateUserMutation();
+  const { mutate: updateUser } = useUpdateUserMutation(userId);
 
   const updateUserInfo = (field, value) => {
     updateUser({ userId, field, value });
