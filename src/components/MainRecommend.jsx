@@ -31,12 +31,12 @@ const MainRecommend = () => {
 
   // 현재 날짜 가져오기
   const today = new Date();
-  // 7일 이내 신규글 확인
+  // 5달 이내 신규글 확인
   const filterCateInList = cafeDbData.filter(list => {
     const articleDate = new Date(list.date);
     const diffTime = Math.abs(today - articleDate);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays <= 7;
+    return diffDays <= 150;
   });
 
   //최신순 정렬 후 4개만 뽑기
@@ -59,7 +59,7 @@ const MainRecommend = () => {
       </div>
       {/* pc */}
       <div className="hidden lg:block">
-        <ul className="grid grid-cols-4 w-full gap-6">
+        <ul className="grid w-full grid-cols-4 gap-6">
           {top4LatestSpots.map(data => {
             // 클릭시 해당디테일페이지로 이동
             return <SpotListItem key={data.id} data={data} />;
